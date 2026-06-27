@@ -1,0 +1,115 @@
+@use 'styles/abstracts' as *;
+
+.header {
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: var(--space-10);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.back {
+  @include type-scale('label-md');
+  @include focus-ring;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: color var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover { color: var(--color-text-primary); }
+  }
+}
+
+.tag {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-interactive-primary);
+  background-color: var(--color-interactive-primary-muted);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+}
+
+.typeBadge {
+  @include type-scale('label-sm');
+  text-transform: capitalize;
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+}
+
+.headline {
+  @include type-scale('display-md');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  text-wrap: balance;
+
+  @include respond-to('lg') {
+    @include type-scale('display-lg');
+  }
+}
+
+.excerpt {
+  @include type-scale('body-xl');
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+  max-width: 65ch;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.authorName {
+  @include type-scale('label-lg');
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.authorRole {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+
+.metaDivider {
+  width: 1px;
+  height: 32px;
+  background-color: var(--color-border-default);
+}
+
+.metaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.metaLabel {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.metaValue {
+  @include type-scale('label-md');
+  color: var(--color-text-secondary);
+}

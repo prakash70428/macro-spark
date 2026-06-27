@@ -1,0 +1,152 @@
+@use 'styles/abstracts' as *;
+
+.page { padding-block: var(--space-12) var(--space-20); }
+
+.pageHeader {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.heading {
+  @include type-scale('display-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+.sub {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  max-width: 55ch;
+}
+
+// ── Category tabs ─────────────────────────────────────────────────────────────
+.tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-10);
+}
+.tab {
+  @include type-scale('label-sm');
+  @include focus-ring;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-subtle);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  text-decoration: none;
+  &.active, &:hover {
+    background: var(--color-interactive-primary);
+    color: #fff;
+    border-color: var(--color-interactive-primary);
+  }
+}
+
+// ── Indicator grid ────────────────────────────────────────────────────────────
+.sectionTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-14);
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('lg') { grid-template-columns: repeat(3, 1fr); }
+}
+.card {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.cardLabel {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+}
+.cardValue {
+  @include type-scale('heading-lg');
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.cardChange {
+  @include type-scale('body-sm');
+  &.positive { color: var(--color-market-positive); }
+  &.negative { color: var(--color-market-negative); }
+  &.neutral  { color: var(--color-text-tertiary); }
+}
+.cardMeta {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-3);
+}
+
+// ── Chart placeholder ─────────────────────────────────────────────────────────
+.chartSection { margin-bottom: var(--space-14); }
+.chartPlaceholder {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--color-text-tertiary);
+  border: 1px dashed var(--color-border-subtle);
+}
+.chartIcon { font-size: 2rem; opacity: 0.4; }
+.chartLabel { @include type-scale('body-sm'); }
+
+// ── Dataset list ──────────────────────────────────────────────────────────────
+.datasetList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.dataset {
+  @include surface(1);
+  border-radius: var(--radius-8);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  text-decoration: none;
+  transition: background var(--duration-fast) ease;
+  &:hover { background: var(--color-bg-elevated); }
+}
+.datasetInfo { display: flex; flex-direction: column; gap: var(--space-1); }
+.datasetName {
+  @include type-scale('body-md');
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+.datasetDesc {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+.datasetBadge {
+  @include type-scale('label-sm');
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: rgba(59,130,246,.1);
+  color: var(--color-interactive-primary);
+  white-space: nowrap;
+}

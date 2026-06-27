@@ -1,0 +1,8 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — THEMES: BARREL
+// Dark is loaded first — it defines the :root defaults.
+// Light overrides with [data-theme="light"] selector.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@forward 'dark';
+@forward 'light';

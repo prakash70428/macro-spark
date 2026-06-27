@@ -1,0 +1,171 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — ABSTRACTS: MIXINS
+// All reusable SCSS mixins. Every mixin consumes CSS custom properties
+// defined in base/_root.scss — never raw values or primitives.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use 'functions' as fn;
+@use 'tokens' as t;
+@forward 'breakpoints'; // Re-export respond-to, respond-below, respond-between
+
+// ── focus-ring() ──────────────────────────────────────────────────────────────
+// Accessible, consistent focus indicator for all interactive elements.
+// Applied via :focus-visible (not :focus) to avoid showing on mouse click.
+// Usage: @include focus-ring;
+@mixin focus-ring($offset: 3px, $color: var(--color-interactive-primary)) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    border-radius: 2px;
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// ── visually-hidden() ─────────────────────────────────────────────────────────
+// Hides content visually while keeping it accessible to screen readers.
+// Use for icon labels, skip links, and decorative aria-labels.
+// Usage: @include visually-hidden;
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ── truncate() ────────────────────────────────────────────────────────────────
+// Single-line text truncation with ellipsis.
+// Usage: @include truncate;
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ── truncate-multiline() ─────────────────────────────────────────────────────
+// Multi-line text clamp with ellipsis using -webkit-line-clamp.
+// Supported in all modern browsers.
+// Usage: @include truncate-multiline(3);
+@mixin truncate-multiline($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ── surface() ─────────────────────────────────────────────────────────────────
+// Applies the correct background and border for a given elevation level.
+// Elevation on dark backgrounds is expressed through brightness, not shadows.
+//
+// Levels: 0 (canvas), 1 (card), 2 (elevated/modal), 3 (tooltip)
+// Usage: @include surface(1);
+@mixin surface($level: 0) {
+  $surfaces: (
+    0: (
+      bg: var(--color-bg-canvas),
+      border: none,
+    ),
+    1: (
+      bg: var(--color-bg-surface),
+      border: 1px solid var(--color-border-default),
+    ),
+    2: (
+      bg: var(--color-bg-elevated),
+      border: 1px solid var(--color-border-subtle),
+    ),
+    3: (
+      bg: var(--color-bg-inverse),
+      border: none,
+    ),
+  );
+
+  $config: map.get($surfaces, $level);
+
+  @if $config == null {
+    @error "Surface level #{$level} not found. Available: 0, 1, 2, 3";
+  }
+
+  background-color: map.get($config, 'bg');
+  border: map.get($config, 'border');
+}
+
+// ── type-scale() ──────────────────────────────────────────────────────────────
+// Applies all typographic properties for a named scale level.
+// Values are CSS custom properties defined per-level in base/_root.scss.
+//
+// Usage: @include type-scale('body-lg');
+//        @include type-scale('heading-md');
+@mixin type-scale($level) {
+  @if not list.index(t.$type-scale-keys, $level) {
+    @error "Type scale level '#{$level}' not found. "
+         + "Available: #{t.$type-scale-keys}";
+  }
+
+  font-family: var(--ts-#{$level}-family);
+  font-size: var(--ts-#{$level}-size);
+  font-weight: var(--ts-#{$level}-weight);
+  line-height: var(--ts-#{$level}-line-height);
+  letter-spacing: var(--ts-#{$level}-tracking);
+}
+
+// ── z-index() ────────────────────────────────────────────────────────────────
+// Sets z-index from the named $z-index map.
+// Usage: @include z-index('modal');
+@mixin z-index($level) {
+  z-index: fn.z($level);
+}
+
+// ── grid-column() ─────────────────────────────────────────────────────────────
+// Shorthand for placing an element on the CSS grid.
+// Usage: @include grid-column(1, 8);   → grid-column: 1 / span 8
+//        @include grid-column(3, -1);  → grid-column: 3 / -1
+@mixin grid-column($start, $span-or-end) {
+  @if $span-or-end == -1 {
+    grid-column: #{$start} / -1;
+  } @else {
+    grid-column: #{$start} / span #{$span-or-end};
+  }
+}
+
+// ── hover-lift() ──────────────────────────────────────────────────────────────
+// Subtle lift effect on hover. Used for cards and interactive surfaces.
+// Disabled on touch devices — hover states are sticky on touch.
+// Usage: @include hover-lift;
+@mixin hover-lift($y: -2px, $duration: 200ms) {
+  transition: transform #{$duration} var(--ease-out-smooth),
+              border-color #{$duration} ease;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(#{$y});
+      border-color: var(--color-border-strong);
+    }
+  }
+}
+
+// ── interactive-scale() ───────────────────────────────────────────────────────
+// Micro-animation for buttons and interactive elements.
+// Usage: @include interactive-scale;
+@mixin interactive-scale($hover: 1.01, $active: 0.98) {
+  transition: transform var(--duration-fast) var(--ease-out-smooth);
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(#{$hover});
+    }
+  }
+
+  &:active {
+    transform: scale(#{$active});
+    transition-duration: var(--duration-instant);
+  }
+}

@@ -1,0 +1,60 @@
+@use 'styles/abstracts' as *;
+
+// ── Heading ───────────────────────────────────────────────────────────────────
+.heading { color: var(--color-text-primary); }
+
+.display2xl { @include type-scale('display-2xl'); }
+.displayXl  { @include type-scale('display-xl'); }
+.displayLg  { @include type-scale('display-lg'); }
+.displayMd  { @include type-scale('display-md'); }
+.displaySm  { @include type-scale('display-sm'); }
+.headingXl  { @include type-scale('heading-xl'); }
+.headingLg  { @include type-scale('heading-lg'); }
+.headingMd  { @include type-scale('heading-md'); }
+.headingSm  { @include type-scale('heading-sm'); }
+
+// ── Body ──────────────────────────────────────────────────────────────────────
+.body { color: var(--color-text-primary); }
+
+.bodyXl { @include type-scale('body-xl'); }
+.bodyLg { @include type-scale('body-lg'); }
+.bodyMd { @include type-scale('body-md'); }
+.bodySm { @include type-scale('body-sm'); }
+
+// ── Label ─────────────────────────────────────────────────────────────────────
+.label { color: var(--color-text-secondary); }
+
+.labelLg { @include type-scale('label-lg'); }
+.labelMd { @include type-scale('label-md'); }
+.labelSm { @include type-scale('label-sm'); }
+
+// ── Eyebrow ───────────────────────────────────────────────────────────────────
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-widest);
+}
+
+// ── Caption ───────────────────────────────────────────────────────────────────
+.caption {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+
+// ── Color modifiers ───────────────────────────────────────────────────────────
+.colorPrimary   { color: var(--color-text-primary) !important; }
+.colorSecondary { color: var(--color-text-secondary) !important; }
+.colorTertiary  { color: var(--color-text-tertiary) !important; }
+.colorAccent    { color: var(--color-interactive-primary) !important; }
+.colorPositive  { color: var(--color-market-positive) !important; }
+.colorNegative  { color: var(--color-market-negative) !important; }
+
+// ── Alignment modifiers ───────────────────────────────────────────────────────
+.alignLeft   { text-align: left; }
+.alignCenter { text-align: center; }
+.alignRight  { text-align: right; }
+
+// ── Balance / pretty ──────────────────────────────────────────────────────────
+.balance { text-wrap: balance; }
+.pretty  { text-wrap: pretty; }

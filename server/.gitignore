@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment — contains secrets, never commit
+.env
+.env.local
+
+# Logs — generated at runtime
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Build artefacts
+dist/
+build/

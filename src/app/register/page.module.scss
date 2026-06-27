@@ -1,0 +1,54 @@
+@use 'styles/abstracts' as *;
+
+// Reuse login layout
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10) var(--space-4);
+  background: var(--color-bg-canvas);
+}
+.card {
+  @include surface(1);
+  border-radius: var(--radius-16);
+  padding: var(--space-10) var(--space-8);
+  width: 100%;
+  max-width: 440px;
+}
+.logo {
+  @include type-scale('heading-sm');
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: var(--space-8);
+  text-align: center;
+  span { color: var(--color-interactive-primary); }
+}
+.heading { @include type-scale('heading-md'); color: var(--color-text-primary); margin-bottom: var(--space-2); }
+.sub     { @include type-scale('body-sm'); color: var(--color-text-secondary); margin-bottom: var(--space-8); }
+.perks   { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-8); }
+.perk    {
+  display: flex; align-items: center; gap: var(--space-3);
+  @include type-scale('body-sm'); color: var(--color-text-secondary);
+  &::before { content: '✓'; color: var(--color-market-positive); font-weight: 700; }
+}
+.form  { display: flex; flex-direction: column; gap: var(--space-5); }
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.label { @include type-scale('label-sm'); color: var(--color-text-secondary); }
+.input {
+  @include type-scale('body-sm');
+  @include focus-ring;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-canvas);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  color: var(--color-text-primary);
+  &::placeholder { color: var(--color-text-tertiary); }
+  &:focus-visible { border-color: var(--color-interactive-primary); outline: none; }
+}
+.terms { @include type-scale('caption'); color: var(--color-text-tertiary); text-align: center; }
+.termsLink { color: var(--color-interactive-primary); text-decoration: none; &:hover { text-decoration: underline; } }
+.footer { text-align: center; margin-top: var(--space-6); @include type-scale('body-sm'); color: var(--color-text-secondary); }
+.footerLink { color: var(--color-interactive-primary); text-decoration: none; font-weight: var(--font-weight-medium); &:hover { text-decoration: underline; } }

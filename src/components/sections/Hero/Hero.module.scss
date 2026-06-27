@@ -1,0 +1,221 @@
+@use 'styles/abstracts' as *;
+
+// ── Root ──────────────────────────────────────────────────────────────────────
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: var(--space-16);
+  overflow: hidden;
+}
+
+// ── Background ────────────────────────────────────────────────────────────────
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  // Subtle dot grid
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(201, 169, 74, 0.04) 0%, transparent 50%),
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+}
+
+// Gradient overlay — makes bottom readable
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(10, 10, 11, 0.3) 50%,
+    var(--color-bg-canvas) 100%
+  );
+}
+
+[data-theme='light'] .bg {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(146, 114, 14, 0.04) 0%, transparent 50%),
+    radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+}
+
+[data-theme='light'] .bgGradient {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    var(--color-bg-canvas) 100%
+  );
+}
+
+// ── Content ───────────────────────────────────────────────────────────────────
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-accent-gold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+
+  &::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background-color: var(--color-accent-gold);
+  }
+}
+
+.heading {
+  @include type-scale('display-xl');
+  color: var(--color-text-primary);
+  max-width: 16ch;
+  margin-bottom: var(--space-6);
+  text-wrap: balance;
+
+  @include respond-to('lg') {
+    @include type-scale('display-2xl');
+  }
+
+  em {
+    font-style: italic;
+    color: var(--color-interactive-primary);
+  }
+}
+
+.sub {
+  @include type-scale('body-xl');
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+  margin-bottom: var(--space-10);
+}
+
+// ── CTAs ──────────────────────────────────────────────────────────────────────
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-16);
+}
+
+// ── Trust badges ──────────────────────────────────────────────────────────────
+.trust {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.trustDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-status-success);
+  flex-shrink: 0;
+}
+
+.trustLabel {
+  @include type-scale('label-md');
+  color: var(--color-text-tertiary);
+}
+
+// ── Floating data pill ────────────────────────────────────────────────────────
+.dataPill {
+  position: absolute;
+  top: 30%;
+  right: 6%;
+  display: none;
+  flex-direction: column;
+  gap: var(--space-3);
+  z-index: 1;
+
+  @include respond-to('xl') {
+    display: flex;
+  }
+}
+
+.pill {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 160px;
+}
+
+.pillLabel {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+}
+
+.pillValue {
+  @include type-scale('heading-md');
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  color: var(--color-text-primary);
+}
+
+.pillChange {
+  @include type-scale('label-md');
+  font-family: var(--font-mono);
+
+  &.positive { color: var(--color-market-positive); }
+  &.negative { color: var(--color-market-negative); }
+}
+
+// ── Scroll hint ───────────────────────────────────────────────────────────────
+.scrollHint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  z-index: 1;
+  opacity: 0.4;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--color-text-secondary));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.1); }
+}
+
+.scrollText {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  writing-mode: vertical-rl;
+}

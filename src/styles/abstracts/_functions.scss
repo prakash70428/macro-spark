@@ -1,0 +1,68 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — ABSTRACTS: FUNCTIONS
+// Pure SCSS functions — no CSS output, no side effects.
+// All functions can be called from any layer without creating output.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+@use 'tokens' as t;
+
+// ── rem() ─────────────────────────────────────────────────────────────────────
+// Convert a pixel value to rem.
+// Assumes a 16px root font size (browser default).
+// Usage: font-size: rem(24px);  → 1.5rem
+//        padding: rem(16px) rem(24px);
+@function rem($px) {
+  @if math.is-unitless($px) {
+    @return math.div($px, 16) * 1rem;
+  }
+  @return math.div($px, 16px) * 1rem;
+}
+
+// ── fluid() ───────────────────────────────────────────────────────────────────
+// Generates a CSS clamp() value for fluid scaling between two viewport widths.
+// The value grows linearly from $min-size at $min-vw to $max-size at $max-vw.
+//
+// Usage: font-size: fluid(16px, 24px);          → clamp(1rem, ..., 1.5rem)
+//        font-size: fluid(16px, 24px, 480px, 1280px);
+//
+// How it works:
+//   slope     = (max-size - min-size) / (max-vw - min-vw)
+//   intercept = min-size - slope * min-vw
+//   clamp(min-rem, intercept-rem + slope*100vw, max-rem)
+@function fluid($min-size, $max-size, $min-vw: 768px, $max-vw: 1280px) {
+  $slope: math.div($max-size - $min-size, $max-vw - $min-vw);
+  $intercept: $min-size - $slope * $min-vw;
+
+  $min-rem: rem($min-size);
+  $max-rem: rem($max-size);
+
+  // Convert intercept to rem
+  $intercept-rem: rem($intercept);
+
+  // slope expressed as vw percentage
+  $slope-vw: $slope * 100vw;
+
+  @return clamp(#{$min-rem}, calc(#{$intercept-rem} + #{$slope-vw}), #{$max-rem});
+}
+
+// ── z() ───────────────────────────────────────────────────────────────────────
+// Retrieve a z-index value from the $z-index map.
+// Throws a compile error if the level does not exist.
+// Usage: z-index: z('modal');
+@function z($level) {
+  @if not map.has-key(t.$z-index, $level) {
+    @error "z-index level '#{$level}' not found in $z-index map. "
+         + "Available levels: #{map.keys(t.$z-index)}";
+  }
+  @return map.get(t.$z-index, $level);
+}
+
+// ── strip-unit() ──────────────────────────────────────────────────────────────
+// Removes the unit from a number.
+// Usage: strip-unit(16px) → 16
+@function strip-unit($number) {
+  @return math.div($number, ($number * 0 + 1));
+}

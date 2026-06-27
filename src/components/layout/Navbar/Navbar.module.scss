@@ -1,0 +1,237 @@
+@use 'styles/abstracts' as *;
+
+// Nav heights — consistent across scroll + mobile menu positioning
+$nav-height-mobile:  64px;
+$nav-height-desktop: 72px;
+
+// ── Root nav ──────────────────────────────────────────────────────────────────
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: z('sticky');
+  transition:
+    background-color var(--duration-normal) var(--ease-out-smooth),
+    border-color     var(--duration-normal) var(--ease-out-smooth),
+    backdrop-filter  var(--duration-normal) var(--ease-out-smooth);
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background-color: rgba(10, 10, 11, 0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom-color: var(--color-border-subtle);
+
+  [data-theme='light'] & {
+    background-color: rgba(255, 255, 255, 0.88);
+  }
+}
+
+// ── Inner row ─────────────────────────────────────────────────────────────────
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $nav-height-mobile;
+  gap: var(--space-4);
+
+  @include respond-to('lg') {
+    height: $nav-height-desktop;
+    gap: var(--space-6);
+  }
+}
+
+// ── Logo ──────────────────────────────────────────────────────────────────────
+.logo {
+  @include type-scale('heading-md');
+  @include focus-ring;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  letter-spacing: var(--tracking-tight);
+  flex-shrink: 0;
+  transition: opacity var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover { opacity: 0.8; }
+  }
+
+  span { color: var(--color-interactive-primary); }
+}
+
+// ── Desktop nav links ─────────────────────────────────────────────────────────
+.links {
+  display: none;
+  list-style: none;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+  justify-content: center;
+
+  @include respond-to('lg') { display: flex; }
+}
+
+.link {
+  @include type-scale('label-lg');
+  @include focus-ring;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-6);
+  transition:
+    color            var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-text-primary);
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  &.active {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+// ── Right side (desktop only) ─────────────────────────────────────────────────
+.desktopActions {
+  display: none;
+  flex-shrink: 0;
+
+  @include respond-to('lg') {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+}
+
+// ── Tablet CTA (md → lg only) ─────────────────────────────────────────────────
+// Shows a single primary CTA on tablets so the nav isn't completely empty
+.tabletCta {
+  display: none;
+  flex-shrink: 0;
+
+  @include respond-to('md') { display: flex; }
+  @include respond-to('lg') { display: none; }
+}
+
+// ── Hamburger button ──────────────────────────────────────────────────────────
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-8);
+  flex-shrink: 0;
+  transition: background-color var(--duration-fast) ease;
+
+  @include focus-ring;
+
+  @media (hover: hover) {
+    &:hover { background-color: rgba(255, 255, 255, 0.07); }
+  }
+
+  @include respond-to('lg') { display: none; }
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition:
+    transform var(--duration-normal) var(--ease-out-smooth),
+    opacity   var(--duration-normal) var(--ease-out-smooth),
+    width     var(--duration-normal) var(--ease-out-smooth);
+  transform-origin: center;
+}
+
+// Hamburger → X  (bar gap 6px + bar height 2px = 8px between centers)
+.hamburger[aria-expanded='true'] {
+  .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .bar:nth-child(2) { opacity: 0; width: 0; }
+  .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+
+// ── Mobile menu overlay ───────────────────────────────────────────────────────
+.mobileMenu {
+  position: fixed;
+  top: $nav-height-mobile;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-bg-canvas);
+  border-top: 1px solid var(--color-border-subtle);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  z-index: z('overlay');
+  padding: var(--space-4) 0 var(--space-16);
+
+  @include respond-to('md') {
+    padding: var(--space-6) 0 var(--space-16);
+  }
+
+  @include respond-to('lg') { display: none; }
+}
+
+.mobileNav {
+  padding: 0 var(--space-6);
+
+  @include respond-to('md') {
+    padding: 0 var(--space-10);
+  }
+}
+
+.mobileLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-8);
+}
+
+.mobileLink {
+  @include type-scale('heading-sm');
+  @include focus-ring;
+  display: block;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: color var(--duration-fast) ease;
+
+  &:last-child { border-bottom: none; }
+
+  @media (hover: hover) {
+    &:hover { color: var(--color-interactive-primary); }
+  }
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+// ── Spacer — pushes page content below fixed navbar ───────────────────────────
+// Use <div className={styles.navSpacer} /> directly after <Navbar /> in layout
+.navSpacer {
+  height: $nav-height-mobile;
+
+  @include respond-to('lg') {
+    height: $nav-height-desktop;
+  }
+}

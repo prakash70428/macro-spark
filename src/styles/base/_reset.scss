@@ -1,0 +1,137 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — BASE: RESET
+// Modern CSS reset. Normalises browser defaults without over-resetting.
+// Based on Andy Bell's modern reset, extended for a content platform.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Box model ─────────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ── Document ──────────────────────────────────────────────────────────────────
+html {
+  // Prevent font size inflation on mobile after orientation change
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  // Smooth anchor scrolling — respects prefers-reduced-motion via JS
+  scroll-behavior: smooth;
+  // Consistent tab size for code blocks
+  tab-size: 2;
+}
+
+// ── Body ──────────────────────────────────────────────────────────────────────
+body {
+  min-height: 100dvh;
+  line-height: var(--line-height-relaxed);
+  font-family: var(--font-sans);
+  font-size: var(--ts-body-md-size);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// ── Typography ────────────────────────────────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-editorial);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+// ── Lists ─────────────────────────────────────────────────────────────────────
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+// ── Links ─────────────────────────────────────────────────────────────────────
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// ── Media ─────────────────────────────────────────────────────────────────────
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// ── Form elements ─────────────────────────────────────────────────────────────
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+// ── Tables ────────────────────────────────────────────────────────────────────
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// ── Code ──────────────────────────────────────────────────────────────────────
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+// ── Misc ──────────────────────────────────────────────────────────────────────
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border-default);
+}
+
+// Remove animations for users who prefer reduced motion
+// Framer Motion also checks this via useReducedMotion()
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

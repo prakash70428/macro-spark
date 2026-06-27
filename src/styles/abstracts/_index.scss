@@ -1,0 +1,13 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — ABSTRACTS: BARREL
+// Forwards all abstracts so component SCSS modules can use a single import:
+//   @use 'styles/abstracts' as *;
+//
+// Order matters — tokens must be forwarded before functions and mixins
+// because functions.scss and mixins.scss @use tokens internally.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@forward 'tokens';
+@forward 'functions';
+@forward 'breakpoints';
+@forward 'mixins';

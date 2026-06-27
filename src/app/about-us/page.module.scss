@@ -1,0 +1,116 @@
+@use 'styles/abstracts' as *;
+
+.page { padding-block: var(--space-12) var(--space-24); }
+
+// ── Hero ─────────────────────────────────────────────────────────────────────
+.hero {
+  max-width: 760px;
+  margin-bottom: var(--space-20);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+.heading {
+  @include type-scale('display-md');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-tight);
+}
+.accent { color: var(--color-interactive-primary); }
+.sub {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+}
+
+// ── Section title ─────────────────────────────────────────────────────────────
+.sectionTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// ── Mission ───────────────────────────────────────────────────────────────────
+.missionBlock {
+  max-width: 680px;
+  margin-bottom: var(--space-16);
+}
+.missionText {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+  &:last-child { margin-bottom: 0; }
+}
+
+// ── What we cover ─────────────────────────────────────────────────────────────
+.coversBlock {
+  margin-bottom: var(--space-16);
+}
+.coversList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+}
+.coversItem {
+  @include type-scale('body-md');
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+.bullet {
+  color: var(--color-interactive-primary);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+// ── Values grid ───────────────────────────────────────────────────────────────
+.valuesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-16);
+
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+}
+.valueCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-7) var(--space-6);
+}
+.valueTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+.valueBody {
+  @include type-scale('body-md');
+  color: var(--color-text-secondary);
+}
+
+// ── Editorial ─────────────────────────────────────────────────────────────────
+.editorialBlock {
+  max-width: 680px;
+  padding: var(--space-8) var(--space-8);
+  border-left: 2px solid var(--color-border-accent);
+  background: var(--color-bg-surface);
+  border-radius: 0 var(--radius-8) var(--radius-8) 0;
+}
+.editorialText {
+  @include type-scale('body-sm');
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-4);
+  &:last-child { margin-bottom: 0; }
+}

@@ -1,0 +1,79 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — ABSTRACTS: BREAKPOINTS
+// Mobile-first breakpoint mixin. Single source of truth for all media queries.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'sass:map';
+@use 'tokens' as t;
+
+// ── respond-to() ──────────────────────────────────────────────────────────────
+// Wraps content in a min-width media query using the $breakpoints map.
+// Mobile-first: styles inside apply AT and ABOVE the breakpoint.
+//
+// Usage:
+//   .component {
+//     padding: 1rem;
+//
+//     @include respond-to('md') {
+//       padding: 2rem;
+//     }
+//   }
+//
+// Available breakpoints: sm (480px), md (768px), lg (1024px), xl (1280px), 2xl (1440px)
+@mixin respond-to($bp) {
+  @if not map.has-key(t.$breakpoints, $bp) {
+    @error "Breakpoint '#{$bp}' not found in $breakpoints map. "
+         + "Available: #{map.keys(t.$breakpoints)}";
+  }
+
+  $value: map.get(t.$breakpoints, $bp);
+
+  @media (min-width: #{$value}) {
+    @content;
+  }
+}
+
+// ── respond-below() ───────────────────────────────────────────────────────────
+// Max-width media query — use sparingly. Prefer mobile-first (respond-to).
+// Useful for hiding elements on large screens or specific overrides.
+//
+// Usage:
+//   .mobile-only {
+//     @include respond-below('md') { display: block; }
+//   }
+@mixin respond-below($bp) {
+  @if not map.has-key(t.$breakpoints, $bp) {
+    @error "Breakpoint '#{$bp}' not found in $breakpoints map.";
+  }
+
+  $value: map.get(t.$breakpoints, $bp);
+  // Subtract 0.02px to avoid overlap with min-width queries
+  $max-value: $value - 0.02px;
+
+  @media (max-width: #{$max-value}) {
+    @content;
+  }
+}
+
+// ── respond-between() ─────────────────────────────────────────────────────────
+// Range media query — styles apply between two breakpoints.
+//
+// Usage:
+//   .tablet-layout {
+//     @include respond-between('md', 'lg') { ... }
+//   }
+@mixin respond-between($bp-min, $bp-max) {
+  @if not map.has-key(t.$breakpoints, $bp-min) {
+    @error "Breakpoint '#{$bp-min}' not found.";
+  }
+  @if not map.has-key(t.$breakpoints, $bp-max) {
+    @error "Breakpoint '#{$bp-max}' not found.";
+  }
+
+  $min: map.get(t.$breakpoints, $bp-min);
+  $max: map.get(t.$breakpoints, $bp-max) - 0.02px;
+
+  @media (min-width: #{$min}) and (max-width: #{$max}) {
+    @content;
+  }
+}

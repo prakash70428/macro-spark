@@ -1,0 +1,81 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — LAYOUT: SECTIONS
+// Vertical rhythm and section spacing for page-level layout blocks.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'styles/abstracts' as *;
+
+// ── Base section ──────────────────────────────────────────────────────────────
+// Standard vertical padding applied to all page sections.
+.section {
+  padding-block: var(--space-content-gap);
+
+  @include respond-to('lg') {
+    padding-block: var(--space-section-gap);
+  }
+}
+
+// ── Section variants ──────────────────────────────────────────────────────────
+.section--sm {
+  padding-block: var(--space-component-gap);
+
+  @include respond-to('lg') {
+    padding-block: var(--space-content-gap);
+  }
+}
+
+.section--lg {
+  padding-block: var(--space-section-gap);
+
+  @include respond-to('lg') {
+    padding-block: calc(var(--space-section-gap) * 1.5);
+  }
+}
+
+// ── Hero section ──────────────────────────────────────────────────────────────
+// Top-of-page hero: taller padding, centered content by default.
+.section--hero {
+  padding-block: var(--space-16) var(--space-12);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @include respond-to('lg') {
+    padding-block: var(--space-24) var(--space-16);
+    min-height: 70vh;
+  }
+}
+
+// ── Surface sections ──────────────────────────────────────────────────────────
+.section--surface {
+  background-color: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.section--elevated {
+  background-color: var(--color-bg-elevated);
+}
+
+// ── Page header ───────────────────────────────────────────────────────────────
+// The top area of an interior page (below main nav).
+.page-header {
+  padding-block: var(--space-8) var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  @include respond-to('lg') {
+    padding-block: var(--space-12) var(--space-8);
+  }
+}
+
+// ── Divider ───────────────────────────────────────────────────────────────────
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border-subtle);
+  margin-block: var(--space-8);
+}
+
+.divider--strong {
+  border-top-color: var(--color-border-default);
+}

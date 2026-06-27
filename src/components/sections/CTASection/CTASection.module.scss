@@ -1,0 +1,214 @@
+@use 'styles/abstracts' as *;
+
+// ── Newsletter CTA ─────────────────────────────────────────────────────────────
+.newsletter {
+  padding-block: var(--space-20);
+  background-color: var(--color-bg-surface);
+  border-top:    1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  @include respond-to('lg') {
+    padding-block: var(--space-24);
+  }
+}
+
+.newsletterInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+  align-items: center;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+.newsletterText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-accent-gold);
+}
+
+.heading {
+  @include type-scale('display-sm');
+  color: var(--color-text-primary);
+}
+
+.body {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+}
+
+.perks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.perk {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.perkCheck {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-status-success-muted);
+  border: 1px solid var(--color-status-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--color-status-success);
+  flex-shrink: 0;
+}
+
+.perkText {
+  @include type-scale('body-sm');
+  color: var(--color-text-secondary);
+}
+
+// Form side
+.newsletterForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.formLabel {
+  @include type-scale('label-md');
+  color: var(--color-text-secondary);
+}
+
+.input {
+  @include type-scale('body-md');
+  @include focus-ring;
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  color: var(--color-text-primary);
+  transition: border-color var(--duration-fast) ease;
+
+  &::placeholder { color: var(--color-text-tertiary); }
+
+  &:focus-visible {
+    border-color: var(--color-interactive-primary);
+    outline: none;
+  }
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.privacy {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+
+.successBox {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  border-color: var(--color-status-success);
+}
+
+.successIcon {
+  font-size: 2rem;
+}
+
+.successHeading {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+}
+
+.successBody {
+  @include type-scale('body-sm');
+  color: var(--color-text-secondary);
+}
+
+// ── Trial CTA ─────────────────────────────────────────────────────────────────
+.trial {
+  padding-block: var(--space-20);
+  position: relative;
+  overflow: hidden;
+
+  @include respond-to('lg') {
+    padding-block: var(--space-24);
+  }
+}
+
+// Background accent
+.trialBg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(201, 169, 74, 0.04) 0%, transparent 50%);
+}
+
+.trialInner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.trialHeading {
+  @include type-scale('display-md');
+  color: var(--color-text-primary);
+  max-width: 18ch;
+
+  @include respond-to('lg') {
+    @include type-scale('display-lg');
+  }
+}
+
+.trialBody {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  max-width: 48ch;
+}
+
+.trialCtas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trialNote {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}

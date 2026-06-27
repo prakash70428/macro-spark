@@ -1,0 +1,116 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — BASE: ACCESSIBILITY
+// Global accessibility styles: skip links, focus management, screen reader utils.
+// These styles ensure WCAG 2.1 AA compliance as a baseline.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'styles/abstracts' as *;
+
+// ── Skip navigation link ──────────────────────────────────────────────────────
+// Positioned off-screen until focused via keyboard Tab.
+// Must be the first focusable element in the DOM.
+.skip-to-content {
+  @include visually-hidden;
+  @include type-scale('label-lg');
+
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 9999;
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-interactive-primary);
+  color: var(--color-text-on-primary);
+  border-radius: var(--radius-6);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:focus-visible {
+    // Override visually-hidden when focused
+    position: fixed;
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: visible;
+    white-space: nowrap;
+    outline: 3px solid var(--color-text-on-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ── Global focus ring ─────────────────────────────────────────────────────────
+// Default focus for any interactive element not handled by component-level
+// @include focus-ring. Prevents invisible focus states.
+:focus-visible {
+  outline: 2px solid var(--color-interactive-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+// Remove default outline only where :focus-visible is supported.
+// Older browsers that don't support :focus-visible will still show :focus.
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// ── Reduced motion ────────────────────────────────────────────────────────────
+// Disable CSS-based transitions for users who opt out of motion.
+// Framer Motion's useReducedMotion() hook handles JS animation suppression.
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+// ── Screen reader only ────────────────────────────────────────────────────────
+// Utility class version of the visually-hidden mixin.
+// Used in JSX as className="sr-only".
+.sr-only {
+  @include visually-hidden;
+}
+
+// Reveal sr-only content when focused (for skip links and focus indicators)
+.sr-only-focusable {
+  @include visually-hidden;
+
+  &:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// ── High contrast mode support ────────────────────────────────────────────────
+// Ensure borders and indicators are visible in Windows High Contrast Mode.
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 3px solid ButtonText;
+  }
+
+  // Preserve semantic color on interactive elements
+  a {
+    forced-color-adjust: auto;
+  }
+
+  button {
+    forced-color-adjust: auto;
+  }
+}
+
+// ── aria-busy indicator ───────────────────────────────────────────────────────
+// Subtle opacity shift for elements marked aria-busy while loading.
+[aria-busy='true'] {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+// ── aria-disabled ─────────────────────────────────────────────────────────────
+[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}

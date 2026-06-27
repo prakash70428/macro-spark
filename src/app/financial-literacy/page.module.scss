@@ -1,0 +1,120 @@
+@use 'styles/abstracts' as *;
+
+.page { padding-block: var(--space-12) var(--space-20); }
+
+.pageHeader {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.heading {
+  @include type-scale('display-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+.sub {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  max-width: 55ch;
+}
+
+// ── Level tabs ────────────────────────────────────────────────────────────────
+.levels {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
+}
+.level {
+  @include type-scale('label-sm');
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  text-decoration: none;
+  transition: all var(--duration-fast) ease;
+  &.beginner  { &.active, &:hover { background: #10b981; border-color: #10b981; color: #fff; } }
+  &.intermediate { &.active, &:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; } }
+  &.advanced  { &.active, &:hover { background: #8b5cf6; border-color: #8b5cf6; color: #fff; } }
+}
+
+// ── Track grid ────────────────────────────────────────────────────────────────
+.sectionTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-14);
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('lg') { grid-template-columns: repeat(3, 1fr); }
+}
+.track {
+  @include surface(1);
+  border-radius: var(--radius-16);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  text-decoration: none;
+  transition: transform var(--duration-fast) ease;
+  &:hover { transform: translateY(-2px); }
+}
+.trackIcon { font-size: 2rem; }
+.trackLevel {
+  @include type-scale('label-sm');
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  width: fit-content;
+  &.beginner    { background: rgba(16,185,129,.15); color: #10b981; }
+  &.intermediate { background: rgba(59,130,246,.15); color: #3b82f6; }
+  &.advanced    { background: rgba(139,92,246,.15);  color: #8b5cf6; }
+}
+.trackTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+}
+.trackDesc {
+  @include type-scale('body-sm');
+  color: var(--color-text-secondary);
+}
+.trackMeta {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+  margin-top: auto;
+  display: flex;
+  gap: var(--space-3);
+}
+
+// ── Glossary strip ────────────────────────────────────────────────────────────
+.glossaryBanner {
+  @include surface(2);
+  border-radius: var(--radius-16);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  @include respond-to('md') { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.glossaryText { display: flex; flex-direction: column; gap: var(--space-2); }
+.glossaryTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+}
+.glossaryDesc {
+  @include type-scale('body-sm');
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,71 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — UTILITIES: DISPLAY
+// Layout and visibility utilities. Used sparingly — prefer component SCSS.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'styles/abstracts' as *;
+
+// ── Display ───────────────────────────────────────────────────────────────────
+.d-block        { display: block; }
+.d-inline       { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-flex         { display: flex; }
+.d-grid         { display: grid; }
+.d-none         { display: none; }
+
+// ── Flex shortcuts ────────────────────────────────────────────────────────────
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-start   { display: flex; align-items: center; justify-content: flex-start; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-wrap    { flex-wrap: wrap; }
+
+.items-center  { align-items: center; }
+.items-start   { align-items: flex-start; }
+.items-end     { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end     { justify-content: flex-end; }
+
+.flex-1    { flex: 1; }
+.flex-none { flex: none; }
+.flex-shrink-0 { flex-shrink: 0; }
+
+// ── Responsive visibility ─────────────────────────────────────────────────────
+// Hide below a breakpoint
+.hide-below-md {
+  @include respond-below('md') {
+    display: none !important;
+  }
+}
+
+.hide-below-lg {
+  @include respond-below('lg') {
+    display: none !important;
+  }
+}
+
+// Show only on mobile
+.mobile-only {
+  @include respond-to('md') {
+    display: none !important;
+  }
+}
+
+// ── Overflow ──────────────────────────────────────────────────────────────────
+.overflow-hidden { overflow: hidden; }
+.overflow-auto   { overflow: auto; }
+.overflow-x-auto { overflow-x: auto; }
+
+// ── Position ──────────────────────────────────────────────────────────────────
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky   { position: sticky; }
+.inset-0  { inset: 0; }
+
+// ── Width / height shortcuts ──────────────────────────────────────────────────
+.w-full  { width: 100%; }
+.h-full  { height: 100%; }
+.min-h-screen { min-height: 100dvh; }

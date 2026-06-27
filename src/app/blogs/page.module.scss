@@ -1,0 +1,138 @@
+@use 'styles/abstracts' as *;
+
+.page { padding-block: var(--space-12) var(--space-24); }
+
+.pageHeader {
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.heading {
+  @include type-scale('display-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+.sub {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  max-width: 55ch;
+}
+
+// ── Category chips ────────────────────────────────────────────────────────────
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-10);
+}
+.chip {
+  @include type-scale('label-sm');
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease, background var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-interactive-primary);
+      color: var(--color-text-primary);
+    }
+  }
+}
+.chipActive {
+  border-color: var(--color-interactive-primary);
+  color: var(--color-interactive-primary);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+// ── Grid ─────────────────────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('xl') { grid-template-columns: repeat(3, 1fr); }
+}
+
+// ── Card ─────────────────────────────────────────────────────────────────────
+.card {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: transform var(--duration-fast) ease, border-color var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-border-strong);
+    }
+  }
+}
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.category {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-interactive-primary);
+}
+.readTime {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+.cardTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.cardExcerpt {
+  @include type-scale('body-sm');
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+}
+.date {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+.readMore {
+  @include type-scale('label-sm');
+  color: var(--color-interactive-primary);
+}
+
+// ── Empty state ───────────────────────────────────────────────────────────────
+.empty {
+  padding-block: var(--space-20);
+  text-align: center;
+
+  p {
+    @include type-scale('body-lg');
+    color: var(--color-text-tertiary);
+  }
+}

@@ -1,0 +1,13 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — BASE: BARREL
+// Order is strict:
+//   1. reset — clears browser defaults first
+//   2. root  — defines all CSS custom properties
+//   3. typography — uses the custom properties from root
+//   4. accessibility — uses custom properties + mixins from abstracts
+// ─────────────────────────────────────────────────────────────────────────────
+
+@forward 'reset';
+@forward 'root';
+@forward 'typography';
+@forward 'accessibility';

@@ -1,0 +1,188 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — BASE: TYPOGRAPHY
+// Global typographic styles applied to bare HTML elements.
+// These are baseline defaults — components override via type-scale() mixin.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'styles/abstracts' as *;
+
+// ── Headings ──────────────────────────────────────────────────────────────────
+h1 { @include type-scale('display-lg'); }
+h2 { @include type-scale('heading-xl'); }
+h3 { @include type-scale('heading-lg'); }
+h4 { @include type-scale('heading-md'); }
+h5 { @include type-scale('heading-sm'); }
+h6 { @include type-scale('label-lg'); letter-spacing: var(--tracking-wide); }
+
+// ── Body text ─────────────────────────────────────────────────────────────────
+p {
+  @include type-scale('body-md');
+  max-width: 75ch;
+
+  + p {
+    margin-top: var(--space-4);
+  }
+}
+
+// ── Article / editorial prose ─────────────────────────────────────────────────
+// Applied when an ancestor has [data-prose] attribute.
+// Keeps body text readable at the 740px article max-width.
+[data-prose] {
+  p,
+  li {
+    @include type-scale('body-lg');
+    color: var(--color-text-primary);
+  }
+
+  p + p {
+    margin-top: var(--space-6);
+  }
+
+  h2 {
+    @include type-scale('heading-xl');
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+  }
+
+  h3 {
+    @include type-scale('heading-lg');
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+
+  h4 {
+    @include type-scale('heading-md');
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+
+  ul,
+  ol {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+
+    li + li {
+      margin-top: var(--space-2);
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--color-interactive-primary);
+    padding-left: var(--space-6);
+    margin: var(--space-8) 0;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    @include type-scale('body-xl');
+  }
+
+  strong {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+
+  em {
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  a {
+    color: var(--color-interactive-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color var(--duration-fast) ease;
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-interactive-primary-hover);
+      }
+    }
+  }
+
+  code {
+    @include type-scale('mono-md');
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-accent);
+    border-radius: var(--radius-4);
+    padding: 0.15em 0.4em;
+  }
+
+  pre {
+    @include type-scale('mono-md');
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-8);
+    padding: var(--space-6);
+    margin: var(--space-8) 0;
+    overflow-x: auto;
+
+    code {
+      background: none;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  hr {
+    margin: var(--space-12) 0;
+    border-top-color: var(--color-border-default);
+  }
+
+  // Data tables in editorial context
+  table {
+    width: 100%;
+    margin: var(--space-8) 0;
+    border-radius: var(--radius-8);
+    overflow: hidden;
+    border: 1px solid var(--color-border-default);
+
+    th {
+      @include type-scale('label-md');
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      padding: var(--space-3) var(--space-4);
+      background-color: var(--color-bg-surface);
+      color: var(--color-text-secondary);
+      text-align: left;
+    }
+
+    td {
+      @include type-scale('mono-md');
+      padding: var(--space-3) var(--space-4);
+      border-top: 1px solid var(--color-border-subtle);
+      color: var(--color-text-primary);
+    }
+
+    tr:hover td {
+      background-color: var(--color-bg-surface);
+    }
+  }
+}
+
+// ── Inline elements ───────────────────────────────────────────────────────────
+small {
+  @include type-scale('body-sm');
+}
+
+// ── Eyebrow / overline labels ─────────────────────────────────────────────────
+[data-eyebrow] {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+// ── Data / metric display ─────────────────────────────────────────────────────
+[data-metric] {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1, 'lnum' 1; // tabular, lining figures
+  letter-spacing: var(--tracking-tight);
+}

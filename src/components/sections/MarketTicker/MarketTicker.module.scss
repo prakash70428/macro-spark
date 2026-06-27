@@ -1,0 +1,125 @@
+@use 'styles/abstracts' as *;
+
+.wrapper {
+  border-top:    1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-surface);
+  overflow: hidden;
+  position: relative;
+  padding-block: var(--space-4);
+}
+
+// Fade edges
+.wrapper::before,
+.wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-surface), transparent);
+}
+
+.wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-surface), transparent);
+}
+
+// ── Track ─────────────────────────────────────────────────────────────────────
+.track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: ticker 40s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+// ── Item ──────────────────────────────────────────────────────────────────────
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-inline: var(--space-8);
+  border-right: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.symbol {
+  @include type-scale('label-lg');
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.value {
+  @include type-scale('mono-md');
+  color: var(--color-text-primary);
+  font-feature-settings: 'tnum' 1;
+}
+
+.change {
+  @include type-scale('label-md');
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+
+  &.positive { color: var(--color-market-positive); }
+  &.negative { color: var(--color-market-negative); }
+  &.neutral  { color: var(--color-market-neutral); }
+}
+
+.arrow {
+  font-size: 0.6em;
+}
+
+// ── Live badge ────────────────────────────────────────────────────────────────
+.liveBadge {
+  position: absolute;
+  left: var(--space-6);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: none;
+
+  @include respond-to('lg') {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-status-success);
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+.liveLabel {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}

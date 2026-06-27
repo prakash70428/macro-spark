@@ -1,0 +1,150 @@
+@use 'styles/abstracts' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  @include respond-to('md') {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+}
+
+// ── Filter group ──────────────────────────────────────────────────────────────
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.groupLabel {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+
+  @include respond-to('md') {
+    display: none; // label hidden on desktop — visible via placeholder
+  }
+}
+
+// ── Chip filters (category row) ───────────────────────────────────────────────
+.chips {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.chip {
+  @include type-scale('label-md');
+  @include focus-ring(2px);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color     var(--duration-fast) ease,
+    color            var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover:not(.active) {
+      background-color: var(--color-interactive-primary-muted);
+      color: var(--color-interactive-primary);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  &.active {
+    background-color: var(--color-interactive-primary);
+    border-color: var(--color-interactive-primary);
+    color: var(--color-text-on-primary);
+  }
+}
+
+// ── Select dropdowns ──────────────────────────────────────────────────────────
+.select {
+  @include type-scale('label-lg');
+  @include focus-ring(2px);
+  padding: var(--space-2) var(--space-4);
+  padding-right: var(--space-8);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238888a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  transition: border-color var(--duration-fast) ease;
+
+  &:focus-visible {
+    border-color: var(--color-interactive-primary);
+    outline: none;
+  }
+}
+
+// ── Divider + result count ────────────────────────────────────────────────────
+.resultCount {
+  @include type-scale('label-md');
+  color: var(--color-text-tertiary);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+// ── Active filters summary ────────────────────────────────────────────────────
+.activeFilters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.activeTag {
+  @include type-scale('label-sm');
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--color-interactive-primary-muted);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--color-interactive-primary);
+}
+
+.activeTagRemove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  font-size: 0.7em;
+  padding: 0;
+  opacity: 0.7;
+
+  &:hover { opacity: 1; }
+}
+
+.clearAll {
+  @include type-scale('label-sm');
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-tertiary);
+  text-decoration: underline;
+  padding: 0;
+  transition: color var(--duration-fast) ease;
+
+  @include focus-ring(2px);
+
+  &:hover { color: var(--color-text-primary); }
+}

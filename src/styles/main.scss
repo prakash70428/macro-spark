@@ -1,0 +1,28 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — MAIN SCSS ENTRY POINT
+//
+// ITCSS layer order (low specificity → high specificity):
+//   1. abstracts  — no CSS output: SCSS maps, functions, mixins
+//   2. base       — bare HTML element styles: reset, root tokens, typography
+//   3. layout     — page structure: grid, containers, sections
+//   4. themes     — color token definitions: dark (:root), light ([data-theme])
+//   5. utilities  — single-purpose utility classes (highest specificity)
+//
+// Imported in src/app/layout.jsx via:
+//   import '@/styles/main.scss'
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Layer 1: Abstracts (no CSS output)
+@use 'abstracts';
+
+// Layer 2: Base
+@use 'base';
+
+// Layer 3: Layout
+@use 'layout';
+
+// Layer 4: Themes (colors only — dark default + light override)
+@use 'themes';
+
+// Layer 5: Utilities
+@use 'utilities';

@@ -1,0 +1,181 @@
+@use 'styles/abstracts' as *;
+
+.page { padding-block: var(--space-12) var(--space-20); }
+
+// ── Page header ───────────────────────────────────────────────────────────────
+.pageHeader {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.eyebrow {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.heading {
+  @include type-scale('display-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+.sub {
+  @include type-scale('body-lg');
+  color: var(--color-text-secondary);
+  max-width: 55ch;
+}
+
+// ── Summary strip ─────────────────────────────────────────────────────────────
+.strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+
+  @include respond-to('md') { grid-template-columns: repeat(4, 1fr); }
+}
+.stripCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-5) var(--space-6);
+}
+.stripLabel {
+  @include type-scale('label-sm');
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+.stripValue {
+  @include type-scale('heading-md');
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  display: block;
+}
+.stripChange {
+  @include type-scale('label-sm');
+  display: block;
+  margin-top: var(--space-1);
+  &.positive { color: var(--color-market-positive); }
+  &.negative { color: var(--color-market-negative); }
+}
+
+// ── Section headings ──────────────────────────────────────────────────────────
+.sectionTitle {
+  @include type-scale('heading-sm');
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+// ── Table ─────────────────────────────────────────────────────────────────────
+.tableSection { margin-bottom: var(--space-14); }
+
+.tableScroll {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-8);
+
+  // Always-visible thin scrollbar so user knows it's scrollable
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+
+  &::-webkit-scrollbar        { height: 4px; }
+  &::-webkit-scrollbar-track  { background: transparent; }
+  &::-webkit-scrollbar-thumb  {
+    background-color: var(--color-border-strong);
+    border-radius: 4px;
+  }
+}
+
+// "Scroll →" pill — shows only on mobile below the table
+.tableScrollHint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+
+  @include respond-to('md') { display: none; }
+
+  &::after {
+    content: '→';
+    font-size: 12px;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px; // prevents columns squishing on narrow screens
+}
+.thead th {
+  @include type-scale('label-sm');
+  text-align: left;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+  &:not(:first-child) { text-align: right; }
+}
+.row {
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background var(--duration-fast) ease;
+  &:hover { background: var(--color-bg-surface); }
+}
+.cell {
+  @include type-scale('body-sm');
+  color: var(--color-text-primary);
+  padding: var(--space-4);
+  &.right { text-align: right; }
+  &.positive { color: var(--color-market-positive); text-align: right; }
+  &.negative { color: var(--color-market-negative); text-align: right; }
+}
+.ticker {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-interactive-primary);
+}
+
+// ── News grid ─────────────────────────────────────────────────────────────────
+.newsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to('lg') { grid-template-columns: repeat(3, 1fr); }
+}
+.newsCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  &:hover { transform: translateY(-2px); }
+}
+.newsTag {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-interactive-primary);
+}
+.newsHeadline {
+  @include type-scale('body-md');
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+.newsMeta {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+  margin-top: auto;
+}

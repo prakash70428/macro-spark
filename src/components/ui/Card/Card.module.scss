@@ -1,0 +1,182 @@
+@use 'styles/abstracts' as *;
+
+// ── Base card ─────────────────────────────────────────────────────────────────
+.card {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-card-padding);
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color var(--duration-normal) var(--ease-out-smooth),
+    transform    var(--duration-normal) var(--ease-out-smooth);
+
+  &.interactive {
+    cursor: pointer;
+    @include hover-lift;
+    @include focus-ring;
+
+    &:focus-visible {
+      outline-offset: 4px;
+    }
+  }
+}
+
+.card.flat {
+  border: none;
+  background-color: transparent;
+}
+
+.card.elevated {
+  @include surface(2);
+}
+
+// ── Article card ──────────────────────────────────────────────────────────────
+.articleCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.articleCard .thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-8);
+  overflow: hidden;
+  background-color: var(--color-bg-elevated);
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-editorial);
+  }
+}
+
+.articleCard.interactive:hover .thumbnail img {
+  @media (hover: hover) {
+    transform: scale(1.04);
+  }
+}
+
+.articleCard .meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.articleCard .tag {
+  @include type-scale('eyebrow');
+  text-transform: uppercase;
+  color: var(--color-interactive-primary);
+  letter-spacing: var(--tracking-widest);
+}
+
+.articleCard .readTime {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+
+  &::before {
+    content: '·';
+    margin-right: var(--space-2);
+  }
+}
+
+.articleCard .headline {
+  @include type-scale('heading-md');
+  color: var(--color-text-primary);
+  transition: color var(--duration-fast) ease;
+}
+
+.articleCard.interactive:hover .headline {
+  @media (hover: hover) {
+    color: var(--color-interactive-primary);
+  }
+}
+
+.articleCard .excerpt {
+  @include type-scale('body-sm');
+  color: var(--color-text-secondary);
+  @include truncate-multiline(2);
+}
+
+.articleCard .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.articleCard .author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.articleCard .authorAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-elevated);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.articleCard .authorName {
+  @include type-scale('label-md');
+  color: var(--color-text-secondary);
+}
+
+.articleCard .date {
+  @include type-scale('caption');
+  color: var(--color-text-tertiary);
+}
+
+// ── Data / metric card ─────────────────────────────────────────────────────────
+.dataCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-card-padding-sm);
+
+  @include respond-to('md') {
+    padding: var(--space-card-padding);
+  }
+}
+
+.dataCard .label {
+  @include type-scale('label-sm');
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-tertiary);
+}
+
+.dataCard .value {
+  @include type-scale('display-sm');
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.dataCard .change {
+  @include type-scale('label-lg');
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.changePositive { color: var(--color-market-positive); }
+.changeNegative { color: var(--color-market-negative); }
+.changeNeutral  { color: var(--color-market-neutral); }
+
+.dataCard .sparkline {
+  height: 48px;
+  margin-top: auto;
+}

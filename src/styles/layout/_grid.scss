@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MACROSPARK — LAYOUT: GRID
+// 12-column CSS Grid system. All content layout uses this grid.
+// Components span columns via @include grid-column() or direct grid-column rules.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'styles/abstracts' as *;
+
+// ── Grid container ────────────────────────────────────────────────────────────
+// The outer page grid. Content width capped at --max-width-content.
+// All direct children become grid items.
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter-sm);
+  width: 100%;
+
+  @include respond-to('md') {
+    gap: var(--grid-gutter);
+  }
+}
+
+// ── Column span helpers ───────────────────────────────────────────────────────
+// Utility classes for spanning n of 12 columns.
+// Component-specific spans live in component SCSS modules.
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+// Responsive column spans — override from md breakpoint up
+@include respond-to('md') {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+@include respond-to('lg') {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+// ── Article grid ──────────────────────────────────────────────────────────────
+// Asymmetric layout: content column (left) + sidebar (right).
+// On mobile both take full width.
+.grid--article {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, var(--max-width-article)) minmax(0, 280px);
+    gap: var(--space-12);
+  }
+}
+
+// ── Dashboard grid ────────────────────────────────────────────────────────────
+// Data panels and widgets: 1 → 2 → 3 columns.
+.grid--dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// ── Card grid ─────────────────────────────────────────────────────────────────
+// Auto-fill cards with a minimum card width.
+.grid--cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
