@@ -37,6 +37,9 @@ export const ROUTES = /** @type {const} */ ({
   // ── Dynamic builders ──────────────────────────────────────────────────────
   /** @param {string} ticker */
   MARKET_DETAIL: (ticker) => `/markets/${ticker.toLowerCase()}`,
+
+  /** @param {string} slug */
+  ARTICLE: (slug) => `/articles/${slug}`,
 })
 
 /** Routes accessible without authentication */

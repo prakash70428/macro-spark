@@ -56,6 +56,18 @@
   &:focus-visible { border-color: var(--color-interactive-primary); outline: none; }
 }
 .textarea { resize: vertical; min-height: 140px; }
+.fieldError {
+  @include type-scale('caption');
+  color: var(--color-error, #e05c5c);
+}
+.errorBanner {
+  @include type-scale('body-sm');
+  color: var(--color-error, #e05c5c);
+  background: color-mix(in srgb, var(--color-error, #e05c5c) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-error, #e05c5c) 30%, transparent);
+  border-radius: var(--radius-8);
+  padding: var(--space-3) var(--space-4);
+}
 .success {
   @include surface(1);
   border-radius: var(--radius-12);

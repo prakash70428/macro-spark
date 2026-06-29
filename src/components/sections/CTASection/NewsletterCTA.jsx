@@ -67,7 +67,7 @@ export default function NewsletterCTA() {
                     id="nl-name"
                     type="text"
                     className={styles.input}
-                    placeholder="Alex"
+                    placeholder="Arnav"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -79,7 +79,7 @@ export default function NewsletterCTA() {
                     id="nl-email"
                     type="email"
                     className={styles.input}
-                    placeholder="alex@company.com"
+                    placeholder="arnav@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

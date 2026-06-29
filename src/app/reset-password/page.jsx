@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
 import FadeIn from '@/components/animation/FadeIn'
 import ResetPasswordForm from './ResetPasswordForm'
@@ -23,7 +24,9 @@ export default function ResetPasswordPage() {
             Choose a strong password for your account.
           </p>
 
-          <ResetPasswordForm />
+          <Suspense fallback={null}>
+            <ResetPasswordForm />
+          </Suspense>
         </div>
       </FadeIn>
     </div>

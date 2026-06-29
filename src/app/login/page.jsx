@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
 import FadeIn from '@/components/animation/FadeIn'
 import LoginForm from './LoginForm'
@@ -21,7 +22,9 @@ export default function LoginPage() {
           <h1 className={styles.heading}>Welcome back</h1>
           <p className={styles.sub}>Sign in to your MacroSpark account</p>
 
-          <LoginForm />
+          <Suspense fallback={null}>
+            <LoginForm />
+          </Suspense>
 
           <p className={styles.footer}>
             Don&apos;t have an account?{' '}
