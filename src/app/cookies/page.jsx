@@ -8,10 +8,30 @@ export const metadata = {
 }
 
 const COOKIES = [
-  { name: 'session_token',   type: 'Strictly necessary', purpose: 'Keeps you signed in between page loads',       duration: 'Session' },
-  { name: 'refresh_token',   type: 'Strictly necessary', purpose: 'Securely renews your access without re-login',  duration: '7 days' },
-  { name: 'theme_preference', type: 'Functional',        purpose: 'Remembers your dark/light mode preference',     duration: '1 year' },
-  { name: 'consent_given',   type: 'Functional',         purpose: 'Records that you have accepted this policy',    duration: '1 year' },
+  {
+    name: 'session_token',
+    type: 'Strictly necessary',
+    purpose: 'Keeps you signed in between page loads',
+    duration: 'Session',
+  },
+  {
+    name: 'refresh_token',
+    type: 'Strictly necessary',
+    purpose: 'Securely renews your access without re-login',
+    duration: '7 days',
+  },
+  {
+    name: 'theme_preference',
+    type: 'Functional',
+    purpose: 'Remembers your dark/light mode preference',
+    duration: '1 year',
+  },
+  {
+    name: 'consent_given',
+    type: 'Functional',
+    purpose: 'Records that you have accepted this policy',
+    duration: '1 year',
+  },
 ]
 
 export default function CookiesPage() {
@@ -26,7 +46,11 @@ export default function CookiesPage() {
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>What Are Cookies</h2>
             <div className={styles.body}>
-              <p>Cookies are small text files stored on your device when you visit a website. They allow the site to remember your preferences and keep you signed in. MacroSpark uses only the cookies listed below — no advertising or third-party tracking cookies.</p>
+              <p>
+                Cookies are small text files stored on your device when you visit a website. They
+                allow the site to remember your preferences and keep you signed in. MacroSpark uses
+                only the cookies listed below — no advertising or third-party tracking cookies.
+              </p>
             </div>
           </div>
 
@@ -37,7 +61,17 @@ export default function CookiesPage() {
                 <thead>
                   <tr style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>
                     {['Cookie', 'Type', 'Purpose', 'Duration'].map((h) => (
-                      <th key={h} style={{ textAlign: 'left', padding: '0.75rem 1rem', color: 'var(--color-text-tertiary)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      <th
+                        key={h}
+                        style={{
+                          textAlign: 'left',
+                          padding: '0.75rem 1rem',
+                          color: 'var(--color-text-tertiary)',
+                          fontSize: '0.75rem',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                        }}
+                      >
                         {h}
                       </th>
                     ))}
@@ -45,11 +79,47 @@ export default function CookiesPage() {
                 </thead>
                 <tbody>
                   {COOKIES.map((c) => (
-                    <tr key={c.name} style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>
-                      <td style={{ padding: '0.875rem 1rem', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--color-interactive-primary)' }}>{c.name}</td>
-                      <td style={{ padding: '0.875rem 1rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{c.type}</td>
-                      <td style={{ padding: '0.875rem 1rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{c.purpose}</td>
-                      <td style={{ padding: '0.875rem 1rem', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{c.duration}</td>
+                    <tr
+                      key={c.name}
+                      style={{ borderBottom: '1px solid var(--color-border-subtle)' }}
+                    >
+                      <td
+                        style={{
+                          padding: '0.875rem 1rem',
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '0.8rem',
+                          color: 'var(--color-interactive-primary)',
+                        }}
+                      >
+                        {c.name}
+                      </td>
+                      <td
+                        style={{
+                          padding: '0.875rem 1rem',
+                          fontSize: '0.875rem',
+                          color: 'var(--color-text-secondary)',
+                        }}
+                      >
+                        {c.type}
+                      </td>
+                      <td
+                        style={{
+                          padding: '0.875rem 1rem',
+                          fontSize: '0.875rem',
+                          color: 'var(--color-text-secondary)',
+                        }}
+                      >
+                        {c.purpose}
+                      </td>
+                      <td
+                        style={{
+                          padding: '0.875rem 1rem',
+                          fontSize: '0.875rem',
+                          color: 'var(--color-text-secondary)',
+                        }}
+                      >
+                        {c.duration}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -60,7 +130,11 @@ export default function CookiesPage() {
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>Managing Cookies</h2>
             <div className={styles.body}>
-              <p>You can delete cookies at any time via your browser settings. Note that disabling strictly necessary cookies will prevent you from staying signed in. We do not use any opt-out mechanisms because we do not use advertising or tracking cookies.</p>
+              <p>
+                You can delete cookies at any time via your browser settings. Note that disabling
+                strictly necessary cookies will prevent you from staying signed in. We do not use
+                any opt-out mechanisms because we do not use advertising or tracking cookies.
+              </p>
             </div>
           </div>
         </div>

@@ -34,11 +34,11 @@ export default function FadeIn({
   const { shouldAnimate, transition } = useAnimationConfig()
 
   const offsetMap = {
-    up:    { y: distance },
-    down:  { y: -distance },
-    left:  { x: distance },
+    up: { y: distance },
+    down: { y: -distance },
+    left: { x: distance },
     right: { x: -distance },
-    none:  {},
+    none: {},
   }
 
   return (

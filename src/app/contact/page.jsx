@@ -6,14 +6,31 @@ import styles from './page.module.scss'
 
 export const metadata = {
   title: 'Contact MacroSpark',
-  description: 'Get in touch with the MacroSpark team for press enquiries, research questions, or partnership opportunities.',
+  description:
+    'Get in touch with the MacroSpark team for press enquiries, research questions, or partnership opportunities.',
 }
 
 const CONTACTS = [
-  { title: 'Editorial',      desc: 'Research questions, corrections, or pitching a story',  email: 'editorial@macrospark.com' },
-  { title: 'Press & Media',  desc: 'Interviews, quotes, and media kit requests',             email: 'press@macrospark.com' },
-  { title: 'Partnerships',   desc: 'Data licensing, API access, and institutional enquiries', email: 'partners@macrospark.com' },
-  { title: 'General',        desc: 'Feedback, subscriptions, and account support',            email: 'hello@macrospark.com' },
+  {
+    title: 'Editorial',
+    desc: 'Research questions, corrections, or pitching a story',
+    email: 'editorial@macrospark.com',
+  },
+  {
+    title: 'Press & Media',
+    desc: 'Interviews, quotes, and media kit requests',
+    email: 'press@macrospark.com',
+  },
+  {
+    title: 'Partnerships',
+    desc: 'Data licensing, API access, and institutional enquiries',
+    email: 'partners@macrospark.com',
+  },
+  {
+    title: 'General',
+    desc: 'Feedback, subscriptions, and account support',
+    email: 'hello@macrospark.com',
+  },
 ]
 
 export default function ContactPage() {
@@ -47,7 +64,9 @@ export default function ContactPage() {
                     <div key={c.title} className={styles.widgetItem}>
                       <span className={styles.widgetItemTitle}>{c.title}</span>
                       <span className={styles.widgetItemDesc}>{c.desc}</span>
-                      <a href={`mailto:${c.email}`} className={styles.widgetLink}>{c.email}</a>
+                      <a href={`mailto:${c.email}`} className={styles.widgetLink}>
+                        {c.email}
+                      </a>
                     </div>
                   ))}
                 </div>

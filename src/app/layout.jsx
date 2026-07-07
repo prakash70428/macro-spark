@@ -41,9 +41,7 @@ export const metadata = {
   description:
     'Professional intelligence platform for finance, economics, and global markets. ' +
     'In-depth analysis, real-time data, and expert commentary.',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://macrospark.com'
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://macrospark.com'),
   openGraph: {
     type: 'website',
     siteName: 'MacroSpark',
@@ -71,19 +69,12 @@ export default function RootLayout({ children }) {
   ].join(' ')
 
   return (
-    <html
-      lang="en"
-      data-theme="dark"
-      className={fontClasses}
-      suppressHydrationWarning
-    >
+    <html lang="en" data-theme="dark" className={fontClasses} suppressHydrationWarning>
       <body>
         <a href="#main-content" className="skip-to-content">
           Skip to content
         </a>
-        <Providers>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

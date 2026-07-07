@@ -14,7 +14,7 @@ import { logoutUser } from '@/lib/authService'
 import styles from './Navbar.module.scss'
 
 const menuVariants = {
-  hidden:  { opacity: 0, y: -6 },
+  hidden: { opacity: 0, y: -6 },
   visible: {
     opacity: 1,
     y: 0,
@@ -28,29 +28,35 @@ const menuVariants = {
 }
 
 const linkVariants = {
-  hidden:  { opacity: 0, x: -10 },
+  hidden: { opacity: 0, x: -10 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function Navbar() {
-  const pathname    = usePathname()
-  const router      = useRouter()
+  const pathname = usePathname()
+  const router = useRouter()
 
-  const user        = useAuthStore((s) => s.user)
-  const authStatus  = useAuthStore((s) => s.authStatus)
+  const user = useAuthStore((s) => s.user)
+  const authStatus = useAuthStore((s) => s.authStatus)
   const storeLogout = useAuthStore((s) => s.logout)
 
-  const [isOpen,     setIsOpen]     = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   async function handleLogout() {
-    try { await logoutUser() } catch { /* clear store regardless */ }
+    try {
+      await logoutUser()
+    } catch {
+      /* clear store regardless */
+    }
     storeLogout()
     router.push(ROUTES.HOME)
   }
 
   // Close on route change
-  useEffect(() => { setIsOpen(false) }, [pathname])
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
 
   // Scroll glass effect
   useEffect(() => {
@@ -64,20 +70,20 @@ export default function Navbar() {
     if (isOpen) {
       const scrollY = window.scrollY
       document.body.style.position = 'fixed'
-      document.body.style.top      = `-${scrollY}px`
-      document.body.style.width    = '100%'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
     } else {
       const savedTop = document.body.style.top
       document.body.style.position = ''
-      document.body.style.top      = ''
-      document.body.style.width    = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
       if (savedTop) window.scrollTo(0, -parseInt(savedTop, 10))
     }
     return () => {
       const savedTop = document.body.style.top
       document.body.style.position = ''
-      document.body.style.top      = ''
-      document.body.style.width    = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
       if (savedTop) window.scrollTo(0, -parseInt(savedTop, 10))
     }
   }, [isOpen])
@@ -88,7 +94,6 @@ export default function Navbar() {
     <header className={clsx(styles.nav, isScrolled && styles.scrolled)} role="banner">
       <Container>
         <div className={styles.inner}>
-
           {/* Logo */}
           <Link href={ROUTES.HOME} className={styles.logo} aria-label="MacroSpark — home">
             Macro<span>Spark</span>
@@ -162,7 +167,6 @@ export default function Navbar() {
             <span className={styles.bar} />
             <span className={styles.bar} />
           </button>
-
         </div>
       </Container>
 

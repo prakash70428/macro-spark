@@ -30,7 +30,10 @@ export default function ArticleCard({
   className,
 }) {
   return (
-    <Link href={href} className={clsx(styles.card, styles.articleCard, styles.interactive, className)}>
+    <Link
+      href={href}
+      className={clsx(styles.card, styles.articleCard, styles.interactive, className)}
+    >
       {thumbnail && (
         <div className={styles.thumbnail}>
           <Image src={thumbnail} alt={title} fill sizes="(max-width: 768px) 100vw, 400px" />
@@ -58,7 +61,11 @@ export default function ArticleCard({
               <span className={styles.authorName}>{author.name}</span>
             </div>
           )}
-          {date && <time className={styles.date} dateTime={date}>{date}</time>}
+          {date && (
+            <time className={styles.date} dateTime={date}>
+              {date}
+            </time>
+          )}
         </div>
       )}
     </Link>

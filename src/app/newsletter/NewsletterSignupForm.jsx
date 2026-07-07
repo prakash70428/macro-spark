@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button/Button'
 import styles from './page.module.scss'
 
 export default function NewsletterSignupForm() {
-  const [email, setEmail]   = useState('')
+  const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle')
 
   async function handleSubmit(e) {

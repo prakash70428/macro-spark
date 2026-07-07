@@ -1,15 +1,18 @@
 'use strict'
 
 const express = require('express')
-const helmet  = require('helmet')
-const cors    = require('cors')
-const morgan  = require('morgan')
+const helmet = require('helmet')
+const cors = require('cors')
+const morgan = require('morgan')
 const compression = require('compression')
 
 const env = require('./config/env')
 const logger = require('./config/logger')
 const routes = require('./routes/index')
-const { mongoSanitizeMiddleware, xssSanitizeMiddleware } = require('./middlewares/sanitize.middleware')
+const {
+  mongoSanitizeMiddleware,
+  xssSanitizeMiddleware,
+} = require('./middlewares/sanitize.middleware')
 const requestIdMiddleware = require('./middlewares/requestId.middleware')
 const { globalLimiter } = require('./middlewares/rateLimiter.middleware')
 const errorHandler = require('./middlewares/errorHandler.middleware')

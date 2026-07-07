@@ -1,11 +1,11 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
@@ -21,12 +21,12 @@
 }
 
 .groupLabel {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     display: none; // label hidden on desktop — visible via placeholder
   }
 }
@@ -40,7 +40,7 @@
 }
 
 .chip {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   @include focus-ring(2px);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
@@ -51,8 +51,8 @@
   white-space: nowrap;
   transition:
     background-color var(--duration-fast) ease,
-    border-color     var(--duration-fast) ease,
-    color            var(--duration-fast) ease;
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
 
   @media (hover: hover) {
     &:hover:not(.active) {
@@ -71,7 +71,7 @@
 
 // ── Select dropdowns ──────────────────────────────────────────────────────────
 .select {
-  @include type-scale('label-lg');
+  @include type-scale("label-lg");
   @include focus-ring(2px);
   padding: var(--space-2) var(--space-4);
   padding-right: var(--space-8);
@@ -94,7 +94,7 @@
 
 // ── Divider + result count ────────────────────────────────────────────────────
 .resultCount {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-tertiary);
   margin-left: auto;
   white-space: nowrap;
@@ -109,7 +109,7 @@
 }
 
 .activeTag {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -131,11 +131,13 @@
   padding: 0;
   opacity: 0.7;
 
-  &:hover { opacity: 1; }
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .clearAll {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   background: none;
   border: none;
   cursor: pointer;
@@ -146,5 +148,7 @@
 
   @include focus-ring(2px);
 
-  &:hover { color: var(--color-text-primary); }
+  &:hover {
+    color: var(--color-text-primary);
+  }
 }

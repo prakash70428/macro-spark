@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .page {
   min-height: 60vh;
@@ -12,7 +12,7 @@
 }
 
 .code {
-  @include type-scale('display-2xl');
+  @include type-scale("display-2xl");
   color: var(--color-border-default);
   font-family: var(--font-mono);
   line-height: 1;
@@ -20,12 +20,12 @@
 }
 
 .heading {
-  @include type-scale('heading-xl');
+  @include type-scale("heading-xl");
   color: var(--color-text-primary);
 }
 
 .sub {
-  @include type-scale('body-lg');
+  @include type-scale("body-lg");
   color: var(--color-text-secondary);
   max-width: 44ch;
 }

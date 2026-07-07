@@ -5,8 +5,8 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import styles from './ResearchSearch.module.scss'
 
 export default function ResearchSearch({ defaultValue = '' }) {
-  const router       = useRouter()
-  const pathname     = usePathname()
+  const router = useRouter()
+  const pathname = usePathname()
   const searchParams = useSearchParams()
   const [, startTransition] = useTransition()
 
@@ -47,7 +47,9 @@ export default function ResearchSearch({ defaultValue = '' }) {
 
   return (
     <div className={styles.wrapper}>
-      <span className={styles.icon} aria-hidden="true">⌕</span>
+      <span className={styles.icon} aria-hidden="true">
+        ⌕
+      </span>
       <input
         ref={inputRef}
         id="research-search"

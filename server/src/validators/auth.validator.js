@@ -10,14 +10,14 @@ const passwordRule = z
   .regex(/[0-9]/, 'Must contain a number')
 
 const registerSchema = z.object({
-  email:     z.string().email('Invalid email').toLowerCase().trim(),
-  password:  passwordRule,
+  email: z.string().email('Invalid email').toLowerCase().trim(),
+  password: passwordRule,
   firstName: z.string().trim().min(1).max(50).optional(),
-  lastName:  z.string().trim().min(1).max(50).optional(),
+  lastName: z.string().trim().min(1).max(50).optional(),
 })
 
 const loginSchema = z.object({
-  email:    z.string().email('Invalid email').toLowerCase().trim(),
+  email: z.string().email('Invalid email').toLowerCase().trim(),
   password: z.string().min(1, 'Password is required'),
 })
 

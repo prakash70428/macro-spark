@@ -10,14 +10,14 @@ import { ApiError } from '@/lib/apiClient'
 import styles from '../login/page.module.scss'
 
 export default function ResetPasswordForm() {
-  const router       = useRouter()
+  const router = useRouter()
   const searchParams = useSearchParams()
-  const token        = searchParams.get('token') ?? ''
+  const token = searchParams.get('token') ?? ''
 
-  const [password, setPassword]   = useState('')
-  const [confirm, setConfirm]     = useState('')
-  const [status, setStatus]       = useState('idle')
-  const [error, setError]         = useState('')
+  const [password, setPassword] = useState('')
+  const [confirm, setConfirm] = useState('')
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
 
   // Validate token presence on mount
   if (!token) {
@@ -75,7 +75,10 @@ export default function ResetPasswordForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}
+    >
       {error && (
         <div role="alert" className={styles.errorBanner}>
           {error}
@@ -95,7 +98,10 @@ export default function ResetPasswordForm() {
           className={styles.input}
           placeholder="••••••••"
           value={password}
-          onChange={(e) => { setPassword(e.target.value); setError('') }}
+          onChange={(e) => {
+            setPassword(e.target.value)
+            setError('')
+          }}
           required
           minLength={8}
           autoComplete="new-password"
@@ -103,14 +109,19 @@ export default function ResetPasswordForm() {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="confirm" className={styles.label}>Confirm new password</label>
+        <label htmlFor="confirm" className={styles.label}>
+          Confirm new password
+        </label>
         <input
           id="confirm"
           type="password"
           className={styles.input}
           placeholder="••••••••"
           value={confirm}
-          onChange={(e) => { setConfirm(e.target.value); setError('') }}
+          onChange={(e) => {
+            setConfirm(e.target.value)
+            setError('')
+          }}
           required
           autoComplete="new-password"
         />
@@ -121,7 +132,9 @@ export default function ResetPasswordForm() {
       </Button>
 
       <p className={styles.footer}>
-        <Link href={ROUTES.LOGIN} className={styles.footerLink}>← Back to sign in</Link>
+        <Link href={ROUTES.LOGIN} className={styles.footerLink}>
+          ← Back to sign in
+        </Link>
       </p>
     </form>
   )

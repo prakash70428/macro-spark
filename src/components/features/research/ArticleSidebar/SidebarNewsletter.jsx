@@ -16,11 +16,18 @@ export default function SidebarNewsletter() {
   }
 
   if (status === 'success') {
-    return <p style={{ color: 'var(--color-status-success)', fontSize: '0.875rem' }}>✓ You&apos;re subscribed!</p>
+    return (
+      <p style={{ color: 'var(--color-status-success)', fontSize: '0.875rem' }}>
+        ✓ You&apos;re subscribed!
+      </p>
+    )
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}
+    >
       <input
         type="email"
         className={styles.nlInput}

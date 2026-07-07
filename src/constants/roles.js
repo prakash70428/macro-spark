@@ -4,11 +4,11 @@
  */
 
 export const ROLES = /** @type {const} */ ({
-  ADMIN:      'admin',
-  EDITOR:     'editor',
-  ANALYST:    'analyst',
+  ADMIN: 'admin',
+  EDITOR: 'editor',
+  ANALYST: 'analyst',
   SUBSCRIBER: 'subscriber',
-  GUEST:      'guest',
+  GUEST: 'guest',
 })
 
 /** @type {Array<keyof typeof ROLES>} */

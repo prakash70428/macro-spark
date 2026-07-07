@@ -19,22 +19,38 @@ export default function TermsPage() {
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>1. Acceptance</h2>
             <div className={styles.body}>
-              <p>By accessing MacroSpark you agree to be bound by these Terms. If you do not agree, do not use the platform. These Terms apply to all visitors, subscribers, and users.</p>
+              <p>
+                By accessing MacroSpark you agree to be bound by these Terms. If you do not agree,
+                do not use the platform. These Terms apply to all visitors, subscribers, and users.
+              </p>
             </div>
           </div>
 
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>2. Content & Intellectual Property</h2>
             <div className={styles.body}>
-              <p>All content on MacroSpark — including articles, data, charts, and commentary — is the intellectual property of MacroSpark Ltd or its contributors. You may not reproduce, distribute, or commercially exploit any content without express written permission.</p>
-              <p>Personal, non-commercial use (reading, sharing links) is permitted. Reproduction in whole or in part for commercial purposes requires a licensing agreement.</p>
+              <p>
+                All content on MacroSpark — including articles, data, charts, and commentary — is
+                the intellectual property of MacroSpark Ltd or its contributors. You may not
+                reproduce, distribute, or commercially exploit any content without express written
+                permission.
+              </p>
+              <p>
+                Personal, non-commercial use (reading, sharing links) is permitted. Reproduction in
+                whole or in part for commercial purposes requires a licensing agreement.
+              </p>
             </div>
           </div>
 
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>3. Not Financial Advice</h2>
             <div className={styles.body}>
-              <p>MacroSpark content is for informational and educational purposes only. Nothing on this platform constitutes financial advice, investment advice, or a recommendation to buy or sell any security. Always consult a qualified financial adviser before making investment decisions.</p>
+              <p>
+                MacroSpark content is for informational and educational purposes only. Nothing on
+                this platform constitutes financial advice, investment advice, or a recommendation
+                to buy or sell any security. Always consult a qualified financial adviser before
+                making investment decisions.
+              </p>
             </div>
           </div>
 
@@ -52,14 +68,21 @@ export default function TermsPage() {
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>5. Limitation of Liability</h2>
             <div className={styles.body}>
-              <p>MacroSpark Ltd is not liable for any direct, indirect, incidental, or consequential damages arising from your use of the platform or reliance on any content published on it. The platform is provided &ldquo;as is&rdquo; without warranties of any kind.</p>
+              <p>
+                MacroSpark Ltd is not liable for any direct, indirect, incidental, or consequential
+                damages arising from your use of the platform or reliance on any content published
+                on it. The platform is provided &ldquo;as is&rdquo; without warranties of any kind.
+              </p>
             </div>
           </div>
 
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>6. Governing Law</h2>
             <div className={styles.body}>
-              <p>These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+              <p>
+                These Terms are governed by the laws of England and Wales. Any disputes shall be
+                subject to the exclusive jurisdiction of the courts of England and Wales.
+              </p>
             </div>
           </div>
         </div>

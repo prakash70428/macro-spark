@@ -9,39 +9,81 @@ $_space-keys: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32);
 
 // Direction map
 $_directions: (
-  't': 'top',
-  'r': 'right',
-  'b': 'bottom',
-  'l': 'left',
-  'x': ('left', 'right'),
-  'y': ('top', 'bottom'),
+  "t": "top",
+  "r": "right",
+  "b": "bottom",
+  "l": "left",
+  "x": (
+    "left",
+    "right",
+  ),
+  "y": (
+    "top",
+    "bottom",
+  ),
 );
 
 // Generate .mt-{n}, .mb-{n}, .mx-{n}, etc.
 @each $key in $_space-keys {
-  .m-#{$key}  { margin: var(--space-#{$key}); }
-  .mt-#{$key} { margin-top: var(--space-#{$key}); }
-  .mr-#{$key} { margin-right: var(--space-#{$key}); }
-  .mb-#{$key} { margin-bottom: var(--space-#{$key}); }
-  .ml-#{$key} { margin-left: var(--space-#{$key}); }
-  .mx-#{$key} { margin-inline: var(--space-#{$key}); }
-  .my-#{$key} { margin-block: var(--space-#{$key}); }
+  .m-#{$key} {
+    margin: var(--space-#{$key});
+  }
+  .mt-#{$key} {
+    margin-top: var(--space-#{$key});
+  }
+  .mr-#{$key} {
+    margin-right: var(--space-#{$key});
+  }
+  .mb-#{$key} {
+    margin-bottom: var(--space-#{$key});
+  }
+  .ml-#{$key} {
+    margin-left: var(--space-#{$key});
+  }
+  .mx-#{$key} {
+    margin-inline: var(--space-#{$key});
+  }
+  .my-#{$key} {
+    margin-block: var(--space-#{$key});
+  }
 
-  .p-#{$key}  { padding: var(--space-#{$key}); }
-  .pt-#{$key} { padding-top: var(--space-#{$key}); }
-  .pr-#{$key} { padding-right: var(--space-#{$key}); }
-  .pb-#{$key} { padding-bottom: var(--space-#{$key}); }
-  .pl-#{$key} { padding-left: var(--space-#{$key}); }
-  .px-#{$key} { padding-inline: var(--space-#{$key}); }
-  .py-#{$key} { padding-block: var(--space-#{$key}); }
+  .p-#{$key} {
+    padding: var(--space-#{$key});
+  }
+  .pt-#{$key} {
+    padding-top: var(--space-#{$key});
+  }
+  .pr-#{$key} {
+    padding-right: var(--space-#{$key});
+  }
+  .pb-#{$key} {
+    padding-bottom: var(--space-#{$key});
+  }
+  .pl-#{$key} {
+    padding-left: var(--space-#{$key});
+  }
+  .px-#{$key} {
+    padding-inline: var(--space-#{$key});
+  }
+  .py-#{$key} {
+    padding-block: var(--space-#{$key});
+  }
 }
 
 // Auto margins for centering
-.mx-auto { margin-inline: auto; }
-.ml-auto { margin-left: auto; }
-.mr-auto { margin-right: auto; }
+.mx-auto {
+  margin-inline: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
 
 // Gap utilities for flex/grid children
 @each $key in $_space-keys {
-  .gap-#{$key} { gap: var(--space-#{$key}); }
+  .gap-#{$key} {
+    gap: var(--space-#{$key});
+  }
 }

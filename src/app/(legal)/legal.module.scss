@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .page {
   padding-block: var(--space-12) var(--space-20);
@@ -6,7 +6,7 @@
   margin: 0 auto;
 }
 .eyebrow {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
@@ -14,32 +14,36 @@
   margin-bottom: var(--space-3);
 }
 .heading {
-  @include type-scale('display-xs');
+  @include type-scale("display-xs");
   color: var(--color-text-primary);
   margin-bottom: var(--space-3);
 }
 .updated {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
   margin-bottom: var(--space-10);
   display: block;
   padding-bottom: var(--space-8);
   border-bottom: 1px solid var(--color-border-subtle);
 }
-.section { margin-bottom: var(--space-10); }
+.section {
+  margin-bottom: var(--space-10);
+}
 .sectionHeading {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   color: var(--color-text-primary);
   margin-bottom: var(--space-4);
 }
 .body {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   color: var(--color-text-secondary);
   line-height: var(--ts-body-md-line-height);
-  p + p { margin-top: var(--space-4); }
+  p + p {
+    margin-top: var(--space-4);
+  }
 }
 .list {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   color: var(--color-text-secondary);
   padding-left: var(--space-6);
   display: flex;

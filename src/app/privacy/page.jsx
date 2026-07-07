@@ -19,8 +19,15 @@ export default function PrivacyPage() {
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>1. Information We Collect</h2>
             <div className={styles.body}>
-              <p>We collect information you provide directly to us, including your name, email address, and password when you create an account. We also collect usage data — the pages you visit, articles you read, and features you use — to improve the platform.</p>
-              <p>We do not sell your personal data to third parties. We do not show advertising. Our business model is subscriptions.</p>
+              <p>
+                We collect information you provide directly to us, including your name, email
+                address, and password when you create an account. We also collect usage data — the
+                pages you visit, articles you read, and features you use — to improve the platform.
+              </p>
+              <p>
+                We do not sell your personal data to third parties. We do not show advertising. Our
+                business model is subscriptions.
+              </p>
             </div>
           </div>
 
@@ -38,14 +45,23 @@ export default function PrivacyPage() {
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>3. Data Retention</h2>
             <div className={styles.body}>
-              <p>We retain your account data for as long as your account is active. You may delete your account at any time from Settings — this will permanently remove your personal data within 30 days, except where retention is required by law.</p>
+              <p>
+                We retain your account data for as long as your account is active. You may delete
+                your account at any time from Settings — this will permanently remove your personal
+                data within 30 days, except where retention is required by law.
+              </p>
             </div>
           </div>
 
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>4. Cookies</h2>
             <div className={styles.body}>
-              <p>We use strictly necessary cookies for authentication (session tokens) and functional cookies to remember your preferences such as dark/light mode. We do not use third-party tracking cookies or advertising cookies. See our <a href="/cookies">Cookies Policy</a> for full details.</p>
+              <p>
+                We use strictly necessary cookies for authentication (session tokens) and functional
+                cookies to remember your preferences such as dark/light mode. We do not use
+                third-party tracking cookies or advertising cookies. See our{' '}
+                <a href="/cookies">Cookies Policy</a> for full details.
+              </p>
             </div>
           </div>
 
@@ -59,14 +75,20 @@ export default function PrivacyPage() {
               <li>Object to processing for marketing purposes</li>
             </ul>
             <div className={styles.body} style={{ marginTop: '1rem' }}>
-              <p>To exercise any of these rights, contact us at <a href="mailto:privacy@macrospark.com">privacy@macrospark.com</a>.</p>
+              <p>
+                To exercise any of these rights, contact us at{' '}
+                <a href="mailto:privacy@macrospark.com">privacy@macrospark.com</a>.
+              </p>
             </div>
           </div>
 
           <div className={styles.section}>
             <h2 className={styles.sectionHeading}>6. Contact</h2>
             <div className={styles.body}>
-              <p>MacroSpark Ltd, Data Controller. For privacy enquiries: <a href="mailto:privacy@macrospark.com">privacy@macrospark.com</a>.</p>
+              <p>
+                MacroSpark Ltd, Data Controller. For privacy enquiries:{' '}
+                <a href="mailto:privacy@macrospark.com">privacy@macrospark.com</a>.
+              </p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@
 // Components span columns via @include grid-column() or direct grid-column rules.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Grid container ────────────────────────────────────────────────────────────
 // The outer page grid. Content width capped at --max-width-content.
@@ -15,7 +15,7 @@
   gap: var(--grid-gutter-sm);
   width: 100%;
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     gap: var(--grid-gutter);
   }
 }
@@ -31,7 +31,7 @@
 }
 
 // Responsive column spans — override from md breakpoint up
-@include respond-to('md') {
+@include respond-to("md") {
   @for $i from 1 through 12 {
     .col-md-#{$i} {
       grid-column: span #{$i};
@@ -39,7 +39,7 @@
   }
 }
 
-@include respond-to('lg') {
+@include respond-to("lg") {
   @for $i from 1 through 12 {
     .col-lg-#{$i} {
       grid-column: span #{$i};
@@ -55,7 +55,7 @@
   grid-template-columns: 1fr;
   gap: var(--space-8);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     grid-template-columns: minmax(0, var(--max-width-article)) minmax(0, 280px);
     gap: var(--space-12);
   }
@@ -68,11 +68,11 @@
   grid-template-columns: 1fr;
   gap: var(--space-6);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include respond-to('xl') {
+  @include respond-to("xl") {
     grid-template-columns: repeat(3, 1fr);
   }
 }

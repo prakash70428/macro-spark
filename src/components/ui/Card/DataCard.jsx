@@ -24,7 +24,7 @@ export default function DataCard({
   const changeClass = {
     positive: styles.changePositive,
     negative: styles.changeNegative,
-    neutral:  styles.changeNeutral,
+    neutral: styles.changeNeutral,
   }[changeDirection]
 
   const arrow = changeDirection === 'positive' ? '▲' : changeDirection === 'negative' ? '▼' : '–'

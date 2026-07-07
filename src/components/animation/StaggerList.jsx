@@ -11,14 +11,14 @@ const containerVariants = {
 }
 
 const childVariants = {
-  hidden:  { opacity: 0, y: 14 },
+  hidden: { opacity: 0, y: 14 },
   visible: { opacity: 1, y: 0 },
 }
 
 // Pre-built motion tags — avoids dynamic m[as] lookup
 const MotionDiv = m.div
-const MotionUl  = m.ul
-const MotionOl  = m.ol
+const MotionUl = m.ul
+const MotionOl = m.ol
 
 const TAG_MAP = { div: MotionDiv, ul: MotionUl, ol: MotionOl }
 
@@ -43,7 +43,13 @@ const TAG_MAP = { div: MotionDiv, ul: MotionUl, ol: MotionOl }
  *   ))}
  * </StaggerList>
  */
-export default function StaggerList({ as = 'div', stagger = 0.07, once = true, className, children }) {
+export default function StaggerList({
+  as = 'div',
+  stagger = 0.07,
+  once = true,
+  className,
+  children,
+}) {
   const { shouldAnimate } = useAnimationConfig()
   const Tag = TAG_MAP[as] ?? MotionDiv
 
@@ -67,11 +73,7 @@ export default function StaggerList({ as = 'div', stagger = 0.07, once = true, c
 export function StaggerItem({ className, children }) {
   const { transition } = useAnimationConfig()
   return (
-    <m.div
-      className={className}
-      variants={childVariants}
-      transition={transition.normal}
-    >
+    <m.div className={className} variants={childVariants} transition={transition.normal}>
       {children}
     </m.div>
   )

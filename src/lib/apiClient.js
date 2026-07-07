@@ -42,9 +42,9 @@ export class ApiError extends Error {
    */
   constructor(message, status, code, details = []) {
     super(message)
-    this.name    = 'ApiError'
-    this.status  = status
-    this.code    = code
+    this.name = 'ApiError'
+    this.status = status
+    this.code = code
     this.details = details
   }
 }
@@ -53,9 +53,9 @@ export class ApiError extends Error {
 
 async function silentRefresh() {
   const res = await fetch(`${BASE_URL}/auth/refresh`, {
-    method:      'POST',
+    method: 'POST',
     credentials: 'include', // sends HttpOnly refreshToken cookie
-    headers:     { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
   })
 
   if (!res.ok) {
@@ -165,7 +165,7 @@ export async function apiFetch(path, options = {}) {
   throw new ApiError(
     body?.message ?? 'Request failed',
     res.status,
-    body?.code    ?? 'UNKNOWN_ERROR',
+    body?.code ?? 'UNKNOWN_ERROR',
     body?.details ?? []
   )
 }
@@ -174,14 +174,16 @@ export async function apiFetch(path, options = {}) {
 
 export const api = {
   /** @param {string} path @param {RequestInit} [opts] */
-  get: (path, opts)  => apiFetch(path, { method: 'GET',    ...opts }),
+  get: (path, opts) => apiFetch(path, { method: 'GET', ...opts }),
 
   /** @param {string} path @param {unknown} body @param {RequestInit} [opts] */
-  post: (path, body, opts)  => apiFetch(path, { method: 'POST',   body: JSON.stringify(body), ...opts }),
+  post: (path, body, opts) =>
+    apiFetch(path, { method: 'POST', body: JSON.stringify(body), ...opts }),
 
   /** @param {string} path @param {unknown} body @param {RequestInit} [opts] */
-  patch: (path, body, opts) => apiFetch(path, { method: 'PATCH',  body: JSON.stringify(body), ...opts }),
+  patch: (path, body, opts) =>
+    apiFetch(path, { method: 'PATCH', body: JSON.stringify(body), ...opts }),
 
   /** @param {string} path @param {RequestInit} [opts] */
-  delete: (path, opts)      => apiFetch(path, { method: 'DELETE', ...opts }),
+  delete: (path, opts) => apiFetch(path, { method: 'DELETE', ...opts }),
 }

@@ -33,9 +33,7 @@ export default function ArticleSidebar({ related }) {
       {/* Newsletter */}
       <div className={`${styles.widget} ${styles.newsletterWidget}`}>
         <h2 className={styles.nlHeading}>Get the weekly briefing</h2>
-        <p className={styles.nlBody}>
-          Join 40,000+ readers. Every Sunday — signal over noise.
-        </p>
+        <p className={styles.nlBody}>Join 40,000+ readers. Every Sunday — signal over noise.</p>
         <SidebarNewsletter />
       </div>
     </aside>

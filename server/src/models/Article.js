@@ -5,21 +5,21 @@ const { createSchema } = require('./base')
 
 const ArticleSchema = createSchema({
   title: {
-    type:     String,
+    type: String,
     required: true,
-    trim:     true,
+    trim: true,
     maxlength: 200,
   },
   slug: {
-    type:     String,
+    type: String,
     required: true,
-    unique:   true,
+    unique: true,
     lowercase: true,
-    trim:     true,
-    index:    true,
+    trim: true,
+    index: true,
   },
   excerpt: {
-    type:     String,
+    type: String,
     required: true,
     maxlength: 400,
   },
@@ -28,15 +28,25 @@ const ArticleSchema = createSchema({
 
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:  'User',
+    ref: 'User',
     required: true,
     index: true,
   },
 
   category: {
-    type:  String,
+    type: String,
     // Aligned with frontend CATEGORIES in src/lib/research.js
-    enum:  ['monetary-policy', 'markets', 'economics', 'fixed-income', 'equities', 'commodities', 'fx', 'crypto', 'emerging-markets'],
+    enum: [
+      'monetary-policy',
+      'markets',
+      'economics',
+      'fixed-income',
+      'equities',
+      'commodities',
+      'fx',
+      'crypto',
+      'emerging-markets',
+    ],
     index: true,
   },
   contentType: {
@@ -44,18 +54,18 @@ const ArticleSchema = createSchema({
     enum: ['analysis', 'data-story', 'interview', 'opinion', 'brief'],
     index: true,
   },
-  tag:      { type: String, trim: true },
+  tag: { type: String, trim: true },
   readTime: { type: Number, default: 5 }, // minutes
 
   status: {
-    type:    String,
-    enum:    ['draft', 'review', 'published', 'archived'],
+    type: String,
+    enum: ['draft', 'review', 'published', 'archived'],
     default: 'draft',
-    index:   true,
+    index: true,
   },
-  publishedAt:   { type: Date, index: true },
+  publishedAt: { type: Date, index: true },
   featuredImage: { type: String }, // URL
-  isPremium:     { type: Boolean, default: false, index: true },
+  isPremium: { type: Boolean, default: false, index: true },
 })
 
 // Text index for search

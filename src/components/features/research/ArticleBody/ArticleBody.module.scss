@@ -1,19 +1,23 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // All prose styles live here — applied via [data-prose] on a wrapper div.
 // This re-uses the base/_typography.scss [data-prose] block but adds
 // article-specific overrides.
 
 .body {
-  @include type-scale('body-lg');
+  @include type-scale("body-lg");
   color: var(--color-text-primary);
 
   // Editorial paragraph spacing
-  p { margin-bottom: var(--space-6); }
-  p:last-child { margin-bottom: 0; }
+  p {
+    margin-bottom: var(--space-6);
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
 
   h2 {
-    @include type-scale('heading-xl');
+    @include type-scale("heading-xl");
     margin-top: var(--space-12);
     margin-bottom: var(--space-4);
     padding-bottom: var(--space-3);
@@ -21,7 +25,7 @@
   }
 
   h3 {
-    @include type-scale('heading-lg');
+    @include type-scale("heading-lg");
     margin-top: var(--space-8);
     margin-bottom: var(--space-3);
   }
@@ -35,7 +39,7 @@
     border-radius: 0 var(--radius-8) var(--radius-8) 0;
 
     p {
-      @include type-scale('body-xl');
+      @include type-scale("body-xl");
       font-style: italic;
       color: var(--color-text-secondary);
       margin: 0;
@@ -51,7 +55,7 @@
     border-left: 3px solid var(--color-accent-gold);
 
     strong {
-      @include type-scale('label-lg');
+      @include type-scale("label-lg");
       text-transform: uppercase;
       letter-spacing: var(--tracking-wider);
       color: var(--color-accent-gold);
@@ -60,7 +64,8 @@
     }
   }
 
-  ul, ol {
+  ul,
+  ol {
     padding-left: var(--space-6);
     margin-bottom: var(--space-6);
 
@@ -70,10 +75,17 @@
     }
   }
 
-  ul { list-style: disc; }
-  ol { list-style: decimal; }
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
 
-  strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+  strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
 
   a {
     color: var(--color-text-link);
@@ -83,7 +95,9 @@
     transition: color var(--duration-fast) ease;
 
     @media (hover: hover) {
-      &:hover { color: var(--color-interactive-primary-hover); }
+      &:hover {
+        color: var(--color-interactive-primary-hover);
+      }
     }
   }
 
@@ -115,15 +129,15 @@
 }
 
 .statValue {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   font-family: var(--font-mono);
-  font-feature-settings: 'tnum' 1;
+  font-feature-settings: "tnum" 1;
   color: var(--color-text-primary);
   letter-spacing: var(--tracking-tight);
 }
 
 .statLabel {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-tertiary);

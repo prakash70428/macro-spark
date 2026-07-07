@@ -5,33 +5,33 @@
 
 export const ROUTES = /** @type {const} */ ({
   // ── Public ────────────────────────────────────────────────────────────────
-  HOME:               '/',
-  ABOUT_US:           '/about-us',
-  BLOGS:              '/blogs',
-  ARTICLES:           '/articles',
-  RESEARCH:           '/research',
-  QUANT_PROJECTS:     '/quant-projects',
+  HOME: '/',
+  ABOUT_US: '/about-us',
+  BLOGS: '/blogs',
+  ARTICLES: '/articles',
+  RESEARCH: '/research',
+  QUANT_PROJECTS: '/quant-projects',
   FINANCIAL_LITERACY: '/financial-literacy',
-  NEWSLETTER:         '/newsletter',
+  NEWSLETTER: '/newsletter',
   // legacy — kept only for backward-compat dynamic builders below
-  MARKETS:            '/markets',
+  MARKETS: '/markets',
 
   // ── Company ───────────────────────────────────────────────────────────────
-  ABOUT:   '/about',
+  ABOUT: '/about',
   CONTACT: '/contact',
   PRIVACY: '/privacy',
-  TERMS:   '/terms',
+  TERMS: '/terms',
   COOKIES: '/cookies',
 
   // ── Auth ──────────────────────────────────────────────────────────────────
-  LOGIN:           '/login',
-  REGISTER:        '/register',
+  LOGIN: '/login',
+  REGISTER: '/register',
   FORGOT_PASSWORD: '/forgot-password',
-  RESET_PASSWORD:  '/reset-password',
+  RESET_PASSWORD: '/reset-password',
 
   // ── Protected ─────────────────────────────────────────────────────────────
   DASHBOARD: '/dashboard',
-  SETTINGS:  '/settings',
+  SETTINGS: '/settings',
   BOOKMARKS: '/bookmarks',
 
   // ── Dynamic builders ──────────────────────────────────────────────────────

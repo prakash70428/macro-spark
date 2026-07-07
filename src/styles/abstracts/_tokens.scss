@@ -10,52 +10,52 @@
 // Used by the respond-to() mixin in _mixins.scss.
 // Never use these values directly — always use respond-to().
 $breakpoints: (
-  'sm': 480px,
-  'md': 768px,
-  'lg': 1024px,
-  'xl': 1280px,
-  '2xl': 1440px,
+  "sm": 480px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1440px,
 ) !default;
 
 // ── Z-Index scale ─────────────────────────────────────────────────────────────
 // Named z-index levels — never use raw integers in components.
 // Usage: z-index: z('modal');  — via the z() function in _functions.scss
 $z-index: (
-  'below': -1,
-  'base': 0,
-  'raised': 10,
-  'dropdown': 100,
-  'sticky': 200,
-  'overlay': 300,
-  'modal': 400,
-  'toast': 500,
-  'tooltip': 600,
+  "below": -1,
+  "base": 0,
+  "raised": 10,
+  "dropdown": 100,
+  "sticky": 200,
+  "overlay": 300,
+  "modal": 400,
+  "toast": 500,
+  "tooltip": 600,
 ) !default;
 
 // ── Type scale keys ───────────────────────────────────────────────────────────
 // Used by the type-scale() mixin to validate level names at compile time.
 // Values (font-size, weight, etc.) are CSS custom properties in _root.scss.
 $type-scale-keys: (
-  'display-2xl',
-  'display-xl',
-  'display-lg',
-  'display-md',
-  'display-sm',
-  'display-xs',
-  'heading-xl',
-  'heading-lg',
-  'heading-md',
-  'heading-sm',
-  'body-xl',
-  'body-lg',
-  'body-md',
-  'body-sm',
-  'label-lg',
-  'label-md',
-  'label-sm',
-  'mono-lg',
-  'mono-md',
-  'mono-sm',
-  'caption',
-  'eyebrow',
+  "display-2xl",
+  "display-xl",
+  "display-lg",
+  "display-md",
+  "display-sm",
+  "display-xs",
+  "heading-xl",
+  "heading-lg",
+  "heading-md",
+  "heading-sm",
+  "body-xl",
+  "body-lg",
+  "body-md",
+  "body-sm",
+  "label-lg",
+  "label-md",
+  "label-sm",
+  "mono-lg",
+  "mono-md",
+  "mono-sm",
+  "caption",
+  "eyebrow"
 ) !default;

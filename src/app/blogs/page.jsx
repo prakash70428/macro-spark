@@ -11,23 +11,20 @@ import styles from './page.module.scss'
 export default function BlogsPage() {
   const [active, setActive] = useState('All')
 
-  const filtered = active === 'All'
-    ? BLOGS
-    : BLOGS.filter((b) => b.category === active)
+  const filtered = active === 'All' ? BLOGS : BLOGS.filter((b) => b.category === active)
 
   return (
     <PageLayout>
       <div className={styles.page}>
         <Container>
-
           {/* Header */}
           <FadeIn direction="up">
             <div className={styles.pageHeader}>
               <span className={styles.eyebrow}>MacroSpark Blogs</span>
               <h1 className={styles.heading}>Market Commentary &amp; Opinion</h1>
               <p className={styles.sub}>
-                Macro perspectives, market commentary, and opinion pieces — written with data
-                and without an agenda.
+                Macro perspectives, market commentary, and opinion pieces — written with data and
+                without an agenda.
               </p>
             </div>
           </FadeIn>
@@ -72,7 +69,6 @@ export default function BlogsPage() {
               <p>No blogs in this category yet.</p>
             </div>
           )}
-
         </Container>
       </div>
     </PageLayout>

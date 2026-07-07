@@ -42,9 +42,9 @@ import { create } from 'zustand'
 /** @type {import('zustand').StoreApi<AuthState>} */
 const useAuthStore = create((set) => ({
   // ── State ──────────────────────────────────────────────────────────────────
-  user:        null,
+  user: null,
   accessToken: null,
-  authStatus:  'loading',
+  authStatus: 'loading',
 
   // ── Actions ────────────────────────────────────────────────────────────────
 
@@ -53,15 +53,13 @@ const useAuthStore = create((set) => ({
    * @param {AuthUser} user
    * @param {string} token - RS256 access token (in-memory only)
    */
-  login: (user, token) =>
-    set({ user, accessToken: token, authStatus: 'authenticated' }),
+  login: (user, token) => set({ user, accessToken: token, authStatus: 'authenticated' }),
 
   /**
    * Called after logout API call completes.
    * Clears all auth state — HttpOnly cookie is cleared by the server.
    */
-  logout: () =>
-    set({ user: null, accessToken: null, authStatus: 'unauthenticated' }),
+  logout: () => set({ user: null, accessToken: null, authStatus: 'unauthenticated' }),
 
   /**
    * Called by the apiClient interceptor after a silent token refresh.

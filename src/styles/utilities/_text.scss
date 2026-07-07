@@ -3,82 +3,187 @@
 // Text alignment, color, truncation, and typographic utility classes.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Alignment ─────────────────────────────────────────────────────────────────
-.text-left   { text-align: left; }
-.text-center { text-align: center; }
-.text-right  { text-align: right; }
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
 
 // ── Color ─────────────────────────────────────────────────────────────────────
-.text-primary   { color: var(--color-text-primary); }
-.text-secondary { color: var(--color-text-secondary); }
-.text-tertiary  { color: var(--color-text-tertiary); }
-.text-accent    { color: var(--color-text-accent); }
-.text-inverse   { color: var(--color-text-inverse); }
-.text-link      { color: var(--color-text-link); }
+.text-primary {
+  color: var(--color-text-primary);
+}
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+.text-accent {
+  color: var(--color-text-accent);
+}
+.text-inverse {
+  color: var(--color-text-inverse);
+}
+.text-link {
+  color: var(--color-text-link);
+}
 
 // ── Market status colors ──────────────────────────────────────────────────────
-.text-positive { color: var(--color-market-positive); }
-.text-negative { color: var(--color-market-negative); }
-.text-neutral  { color: var(--color-market-neutral); }
+.text-positive {
+  color: var(--color-market-positive);
+}
+.text-negative {
+  color: var(--color-market-negative);
+}
+.text-neutral {
+  color: var(--color-market-neutral);
+}
 
 // ── Status ────────────────────────────────────────────────────────────────────
-.text-success { color: var(--color-status-success); }
-.text-error   { color: var(--color-status-error); }
-.text-warning { color: var(--color-status-warning); }
-.text-info    { color: var(--color-status-info); }
+.text-success {
+  color: var(--color-status-success);
+}
+.text-error {
+  color: var(--color-status-error);
+}
+.text-warning {
+  color: var(--color-status-warning);
+}
+.text-info {
+  color: var(--color-status-info);
+}
 
 // ── Transform ─────────────────────────────────────────────────────────────────
-.uppercase  { text-transform: uppercase; }
-.lowercase  { text-transform: lowercase; }
-.capitalize { text-transform: capitalize; }
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
 
 // ── Decoration ───────────────────────────────────────────────────────────────
-.underline     { text-decoration: underline; }
-.no-underline  { text-decoration: none; }
-.line-through  { text-decoration: line-through; }
-.italic        { font-style: italic; }
-.not-italic    { font-style: normal; }
+.underline {
+  text-decoration: underline;
+}
+.no-underline {
+  text-decoration: none;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.italic {
+  font-style: italic;
+}
+.not-italic {
+  font-style: normal;
+}
 
 // ── Weight ────────────────────────────────────────────────────────────────────
-.font-regular  { font-weight: var(--font-weight-regular); }
-.font-medium   { font-weight: var(--font-weight-medium); }
-.font-semibold { font-weight: var(--font-weight-semibold); }
-.font-bold     { font-weight: var(--font-weight-bold); }
+.font-regular {
+  font-weight: var(--font-weight-regular);
+}
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
 
 // ── Truncation ────────────────────────────────────────────────────────────────
-.truncate   { @include truncate; }
-.truncate-2 { @include truncate-multiline(2); }
-.truncate-3 { @include truncate-multiline(3); }
+.truncate {
+  @include truncate;
+}
+.truncate-2 {
+  @include truncate-multiline(2);
+}
+.truncate-3 {
+  @include truncate-multiline(3);
+}
 
 // ── Type scale utilities ──────────────────────────────────────────────────────
 // Shorthand classes for applying type-scale levels directly in JSX.
-.text-display-2xl { @include type-scale('display-2xl'); }
-.text-display-xl  { @include type-scale('display-xl'); }
-.text-display-lg  { @include type-scale('display-lg'); }
-.text-display-md  { @include type-scale('display-md'); }
-.text-display-sm  { @include type-scale('display-sm'); }
-.text-heading-xl  { @include type-scale('heading-xl'); }
-.text-heading-lg  { @include type-scale('heading-lg'); }
-.text-heading-md  { @include type-scale('heading-md'); }
-.text-heading-sm  { @include type-scale('heading-sm'); }
-.text-body-xl     { @include type-scale('body-xl'); }
-.text-body-lg     { @include type-scale('body-lg'); }
-.text-body-md     { @include type-scale('body-md'); }
-.text-body-sm     { @include type-scale('body-sm'); }
-.text-label-lg    { @include type-scale('label-lg'); }
-.text-label-md    { @include type-scale('label-md'); }
-.text-label-sm    { @include type-scale('label-sm'); }
-.text-mono-lg     { @include type-scale('mono-lg'); }
-.text-mono-md     { @include type-scale('mono-md'); }
-.text-mono-sm     { @include type-scale('mono-sm'); }
-.text-caption     { @include type-scale('caption'); }
-.text-eyebrow     { @include type-scale('eyebrow'); text-transform: uppercase; }
+.text-display-2xl {
+  @include type-scale("display-2xl");
+}
+.text-display-xl {
+  @include type-scale("display-xl");
+}
+.text-display-lg {
+  @include type-scale("display-lg");
+}
+.text-display-md {
+  @include type-scale("display-md");
+}
+.text-display-sm {
+  @include type-scale("display-sm");
+}
+.text-heading-xl {
+  @include type-scale("heading-xl");
+}
+.text-heading-lg {
+  @include type-scale("heading-lg");
+}
+.text-heading-md {
+  @include type-scale("heading-md");
+}
+.text-heading-sm {
+  @include type-scale("heading-sm");
+}
+.text-body-xl {
+  @include type-scale("body-xl");
+}
+.text-body-lg {
+  @include type-scale("body-lg");
+}
+.text-body-md {
+  @include type-scale("body-md");
+}
+.text-body-sm {
+  @include type-scale("body-sm");
+}
+.text-label-lg {
+  @include type-scale("label-lg");
+}
+.text-label-md {
+  @include type-scale("label-md");
+}
+.text-label-sm {
+  @include type-scale("label-sm");
+}
+.text-mono-lg {
+  @include type-scale("mono-lg");
+}
+.text-mono-md {
+  @include type-scale("mono-md");
+}
+.text-mono-sm {
+  @include type-scale("mono-sm");
+}
+.text-caption {
+  @include type-scale("caption");
+}
+.text-eyebrow {
+  @include type-scale("eyebrow");
+  text-transform: uppercase;
+}
 
 // ── Tabular figures ───────────────────────────────────────────────────────────
 // Use for price tables, data grids — prevents column-width jitter on tick updates
 .tabular-nums {
   font-variant-numeric: tabular-nums;
-  font-feature-settings: 'tnum' 1;
+  font-feature-settings: "tnum" 1;
 }

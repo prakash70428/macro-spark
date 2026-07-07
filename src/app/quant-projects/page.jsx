@@ -27,23 +27,20 @@ function PythonIcon() {
 export default function QuantProjectsPage() {
   const [active, setActive] = useState('All')
 
-  const filtered = active === 'All'
-    ? PROJECTS
-    : PROJECTS.filter((p) => p.category === active)
+  const filtered = active === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === active)
 
   return (
     <PageLayout>
       <div className={styles.page}>
         <Container>
-
           {/* Header */}
           <FadeIn direction="up">
             <div className={styles.pageHeader}>
               <span className={styles.eyebrow}>MacroSpark</span>
               <h1 className={styles.heading}>Quant Finance Projects</h1>
               <p className={styles.sub}>
-                Quantitative finance projects built in Python. Each project includes
-                full source code available for download.
+                Quantitative finance projects built in Python. Each project includes full source
+                code available for download.
               </p>
             </div>
           </FadeIn>
@@ -70,7 +67,6 @@ export default function QuantProjectsPage() {
             <div className={styles.grid}>
               {filtered.map((project) => (
                 <div key={project.id} className={styles.card}>
-
                   <div className={styles.cardHeader}>
                     <div className={styles.iconWrap}>
                       <PythonIcon />
@@ -83,7 +79,9 @@ export default function QuantProjectsPage() {
                     {project.tags.length > 0 && (
                       <div className={styles.tags}>
                         {project.tags.map((tag) => (
-                          <span key={tag} className={styles.tag}>{tag}</span>
+                          <span key={tag} className={styles.tag}>
+                            {tag}
+                          </span>
                         ))}
                       </div>
                     )}
@@ -92,9 +90,17 @@ export default function QuantProjectsPage() {
 
                   <div className={styles.cardFooter}>
                     <div className={styles.fileInfo}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                        <polyline points="13 2 13 9 20 9"/>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                        <polyline points="13 2 13 9 20 9" />
                       </svg>
                       <span className={styles.fileName}>{project.fileName}</span>
                     </div>
@@ -104,15 +110,22 @@ export default function QuantProjectsPage() {
                       className={styles.btnDownload}
                       aria-label={`Download ${project.fileName}`}
                     >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7 10 12 15 17 10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
                       </svg>
                       Download .py
                     </a>
                   </div>
-
                 </div>
               ))}
             </div>
@@ -121,7 +134,6 @@ export default function QuantProjectsPage() {
               <p>No projects in this category yet.</p>
             </div>
           )}
-
         </Container>
       </div>
     </PageLayout>

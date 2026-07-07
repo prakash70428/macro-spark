@@ -9,9 +9,9 @@ import useAuthStore from '@/store/authStore'
 // Reset store state between tests
 beforeEach(() => {
   useAuthStore.setState({
-    user:        null,
+    user: null,
     accessToken: null,
-    authStatus:  'loading',
+    authStatus: 'loading',
   })
 })
 

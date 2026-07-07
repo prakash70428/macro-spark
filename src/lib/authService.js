@@ -30,7 +30,7 @@ export async function registerUser(data) {
 export async function refreshSession() {
   // Get new access token from refresh cookie
   const tokenData = await apiFetch('/auth/refresh', {
-    method:   'POST',
+    method: 'POST',
     skipAuth: true,
     credentials: 'include',
   })
@@ -50,8 +50,8 @@ export async function refreshSession() {
  */
 export async function logoutUser() {
   return apiFetch('/auth/logout', {
-    method:      'POST',
-    skipAuth:    true,
+    method: 'POST',
+    skipAuth: true,
     credentials: 'include',
   })
 }

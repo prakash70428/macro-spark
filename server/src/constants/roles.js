@@ -2,11 +2,11 @@
 
 // Must stay in sync with src/constants/roles.js on the frontend
 const ROLES = Object.freeze({
-  ADMIN:      'admin',
-  EDITOR:     'editor',
-  ANALYST:    'analyst',
+  ADMIN: 'admin',
+  EDITOR: 'editor',
+  ANALYST: 'analyst',
   SUBSCRIBER: 'subscriber',
-  GUEST:      'guest',
+  GUEST: 'guest',
 })
 
 const ALL_ROLES = Object.values(ROLES)

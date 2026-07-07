@@ -27,7 +27,9 @@ export default function ArticleHeader({ article }) {
         <div className={styles.metaDivider} aria-hidden="true" />
         <div className={styles.metaGroup}>
           <span className={styles.metaLabel}>Published</span>
-          <time className={styles.metaValue} dateTime={article.date}>{article.date}</time>
+          <time className={styles.metaValue} dateTime={article.date}>
+            {article.date}
+          </time>
         </div>
         <div className={styles.metaDivider} aria-hidden="true" />
         <div className={styles.metaGroup}>

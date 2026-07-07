@@ -1,40 +1,38 @@
 'use strict'
 
-const jwt          = require('jsonwebtoken')
-const User         = require('../models/User')
-const AppError     = require('../utils/AppError')
+const jwt = require('jsonwebtoken')
+const User = require('../models/User')
+const AppError = require('../utils/AppError')
 const asyncHandler = require('../utils/asyncHandler')
 const { formatSuccess } = require('../utils/formatResponse')
 const { getPrivateKey, getPublicKey } = require('../config/keys')
-const env          = require('../config/env')
-const { HTTP }     = require('../constants/statusCodes')
+const env = require('../config/env')
+const { HTTP } = require('../constants/statusCodes')
 const { ERROR_CODES } = require('../constants/errorCodes')
 
 // ── Token helpers ─────────────────────────────────────────────────────────────
 
 function signAccessToken(user) {
-  return jwt.sign(
-    { sub: user.id, email: user.email, role: user.role },
-    getPrivateKey(),
-    { algorithm: 'RS256', expiresIn: env.JWT_ACCESS_EXPIRY }
-  )
+  return jwt.sign({ sub: user.id, email: user.email, role: user.role }, getPrivateKey(), {
+    algorithm: 'RS256',
+    expiresIn: env.JWT_ACCESS_EXPIRY,
+  })
 }
 
 function signRefreshToken(user) {
-  return jwt.sign(
-    { sub: user.id },
-    getPrivateKey(),
-    { algorithm: 'RS256', expiresIn: env.JWT_REFRESH_EXPIRY }
-  )
+  return jwt.sign({ sub: user.id }, getPrivateKey(), {
+    algorithm: 'RS256',
+    expiresIn: env.JWT_REFRESH_EXPIRY,
+  })
 }
 
 function cookieOpts(maxAgeMs) {
   return {
     httpOnly: true,
-    secure:   env.NODE_ENV === 'production',
+    secure: env.NODE_ENV === 'production',
     sameSite: 'strict',
-    maxAge:   maxAgeMs,
-    path:     '/',
+    maxAge: maxAgeMs,
+    path: '/',
   }
 }
 
@@ -54,7 +52,7 @@ const register = asyncHandler(async (req, res) => {
 
   const user = await User.create({ email, password, firstName, lastName })
 
-  const accessToken  = signAccessToken(user)
+  const accessToken = signAccessToken(user)
   const refreshToken = signRefreshToken(user)
 
   // Persist refresh token on user doc
@@ -62,12 +60,17 @@ const register = asyncHandler(async (req, res) => {
 
   res.cookie('refreshToken', refreshToken, cookieOpts(REFRESH_MAX_AGE_MS))
 
-  res.status(HTTP.CREATED).json(
-    formatSuccess(
-      { accessToken, user: { id: user.id, email: user.email, role: user.role, firstName, lastName } },
-      'Account created successfully'
+  res
+    .status(HTTP.CREATED)
+    .json(
+      formatSuccess(
+        {
+          accessToken,
+          user: { id: user.id, email: user.email, role: user.role, firstName, lastName },
+        },
+        'Account created successfully'
+      )
     )
-  )
 })
 
 /**
@@ -77,11 +80,18 @@ const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
   // +password to override select:false
-  const user = await User.findOne({ email }).select('+password +loginAttempts +lockUntil +refreshTokens')
-  if (!user) throw AppError.unauthorized('Invalid email or password', ERROR_CODES.INVALID_CREDENTIALS)
+  const user = await User.findOne({ email }).select(
+    '+password +loginAttempts +lockUntil +refreshTokens'
+  )
+  if (!user)
+    throw AppError.unauthorized('Invalid email or password', ERROR_CODES.INVALID_CREDENTIALS)
 
   if (user.isLocked()) {
-    throw new AppError('Account locked. Try again in 30 minutes.', HTTP.UNAUTHORIZED, ERROR_CODES.ACCOUNT_LOCKED)
+    throw new AppError(
+      'Account locked. Try again in 30 minutes.',
+      HTTP.UNAUTHORIZED,
+      ERROR_CODES.ACCOUNT_LOCKED
+    )
   }
 
   const valid = await user.comparePassword(password)
@@ -97,7 +107,7 @@ const login = asyncHandler(async (req, res) => {
     })
   }
 
-  const accessToken  = signAccessToken(user)
+  const accessToken = signAccessToken(user)
   const refreshToken = signRefreshToken(user)
   await User.findByIdAndUpdate(user._id, { $push: { refreshTokens: refreshToken } })
 
@@ -106,7 +116,13 @@ const login = asyncHandler(async (req, res) => {
   res.json(
     formatSuccess({
       accessToken,
-      user: { id: user.id, email: user.email, role: user.role, firstName: user.firstName, lastName: user.lastName },
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
     })
   )
 })
@@ -118,7 +134,8 @@ const login = asyncHandler(async (req, res) => {
  */
 const refresh = asyncHandler(async (req, res) => {
   const token = req.cookies?.refreshToken || req.body?.refreshToken
-  if (!token) throw AppError.unauthorized('Refresh token required', ERROR_CODES.REFRESH_TOKEN_INVALID)
+  if (!token)
+    throw AppError.unauthorized('Refresh token required', ERROR_CODES.REFRESH_TOKEN_INVALID)
 
   let payload
   try {
@@ -154,10 +171,7 @@ const logout = asyncHandler(async (req, res) => {
   const token = req.cookies?.refreshToken || req.body?.refreshToken
   if (token) {
     // Remove this specific refresh token
-    await User.findOneAndUpdate(
-      { refreshTokens: token },
-      { $pull: { refreshTokens: token } }
-    )
+    await User.findOneAndUpdate({ refreshTokens: token }, { $pull: { refreshTokens: token } })
   }
 
   res.clearCookie('refreshToken', cookieOpts(0))
@@ -186,11 +200,10 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   if (user) {
     // Generate a short-lived signed token (15 minutes)
-    const resetToken = jwt.sign(
-      { sub: user.id, purpose: 'password-reset' },
-      getPrivateKey(),
-      { algorithm: 'RS256', expiresIn: '15m' }
-    )
+    const resetToken = jwt.sign({ sub: user.id, purpose: 'password-reset' }, getPrivateKey(), {
+      algorithm: 'RS256',
+      expiresIn: '15m',
+    })
 
     // In production: send email via Resend/SendGrid
     // For now: log the token (Sprint 7 placeholder)
@@ -234,7 +247,11 @@ const resetPassword = asyncHandler(async (req, res) => {
   // Revoke all refresh tokens — force re-login on all devices
   await User.findByIdAndUpdate(user._id, { $set: { refreshTokens: [] } })
 
-  res.clearCookie('refreshToken', { httpOnly: true, secure: env.NODE_ENV === 'production', sameSite: 'strict' })
+  res.clearCookie('refreshToken', {
+    httpOnly: true,
+    secure: env.NODE_ENV === 'production',
+    sameSite: 'strict',
+  })
   res.json(formatSuccess(null, 'Password updated successfully.'))
 })
 

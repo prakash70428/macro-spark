@@ -16,8 +16,8 @@ export default function ResearchFilters({ total }) {
   const [, startTransition] = useTransition()
 
   const activeCategory = searchParams.get('category') || 'all'
-  const activeType     = searchParams.get('type')     || 'all'
-  const activeSort     = searchParams.get('sort')     || 'latest'
+  const activeType = searchParams.get('type') || 'all'
+  const activeSort = searchParams.get('sort') || 'latest'
 
   const updateParam = useCallback(
     (key, value) => {
@@ -63,7 +63,9 @@ export default function ResearchFilters({ total }) {
       {/* Type select + sort + count */}
       <div className={styles.wrapper} style={{ marginTop: 'var(--space-4)' }}>
         <div className={styles.group}>
-          <label htmlFor="filter-type" className={styles.groupLabel}>Type</label>
+          <label htmlFor="filter-type" className={styles.groupLabel}>
+            Type
+          </label>
           <select
             id="filter-type"
             className={styles.select}
@@ -72,13 +74,17 @@ export default function ResearchFilters({ total }) {
             aria-label="Filter by content type"
           >
             {CONTENT_TYPES.map((t) => (
-              <option key={t.value} value={t.value}>{t.label}</option>
+              <option key={t.value} value={t.value}>
+                {t.label}
+              </option>
             ))}
           </select>
         </div>
 
         <div className={styles.group}>
-          <label htmlFor="filter-sort" className={styles.groupLabel}>Sort</label>
+          <label htmlFor="filter-sort" className={styles.groupLabel}>
+            Sort
+          </label>
           <select
             id="filter-sort"
             className={styles.select}
@@ -87,7 +93,9 @@ export default function ResearchFilters({ total }) {
             aria-label="Sort articles"
           >
             {SORT_OPTIONS.map((s) => (
-              <option key={s.value} value={s.value}>{s.label}</option>
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
             ))}
           </select>
         </div>

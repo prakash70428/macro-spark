@@ -16,7 +16,7 @@ import useAuthStore from '@/store/authStore'
 import { refreshSession } from '@/lib/authService'
 
 export default function AuthInitializer() {
-  const login     = useAuthStore((s) => s.login)
+  const login = useAuthStore((s) => s.login)
   const setStatus = useAuthStore((s) => s.setStatus)
 
   useEffect(() => {
@@ -34,7 +34,9 @@ export default function AuthInitializer() {
 
     init()
 
-    return () => { cancelled = true }
+    return () => {
+      cancelled = true
+    }
   }, [login, setStatus])
 
   // Renders nothing — pure side-effect component

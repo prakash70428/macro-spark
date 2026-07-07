@@ -3,14 +3,14 @@
 // Vertical rhythm and section spacing for page-level layout blocks.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Base section ──────────────────────────────────────────────────────────────
 // Standard vertical padding applied to all page sections.
 .section {
   padding-block: var(--space-content-gap);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-section-gap);
   }
 }
@@ -19,7 +19,7 @@
 .section--sm {
   padding-block: var(--space-component-gap);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-content-gap);
   }
 }
@@ -27,7 +27,7 @@
 .section--lg {
   padding-block: var(--space-section-gap);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: calc(var(--space-section-gap) * 1.5);
   }
 }
@@ -41,7 +41,7 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-24) var(--space-16);
     min-height: 70vh;
   }
@@ -64,7 +64,7 @@
   padding-block: var(--space-8) var(--space-6);
   border-bottom: 1px solid var(--color-border-subtle);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-12) var(--space-8);
   }
 }

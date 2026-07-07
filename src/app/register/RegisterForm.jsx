@@ -11,17 +11,17 @@ import { ApiError } from '@/lib/apiClient'
 import styles from './page.module.scss'
 
 export default function RegisterForm() {
-  const router     = useRouter()
+  const router = useRouter()
   const storeLogin = useAuthStore((s) => s.login)
 
-  const [form, setForm]     = useState({ firstName: '', email: '', password: '' })
+  const [form, setForm] = useState({ firstName: '', email: '', password: '' })
   const [status, setStatus] = useState('idle')
-  const [error, setError]   = useState('')
+  const [error, setError] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
 
   function update(field) {
     return (e) => {
-      setForm((p)       => ({ ...p, [field]: e.target.value }))
+      setForm((p) => ({ ...p, [field]: e.target.value }))
       setFieldErrors((p) => ({ ...p, [field]: '' }))
       setError('')
     }
@@ -35,8 +35,8 @@ export default function RegisterForm() {
 
     try {
       const data = await registerUser({
-        email:     form.email,
-        password:  form.password,
+        email: form.email,
+        password: form.password,
         firstName: form.firstName || undefined,
       })
 
@@ -48,7 +48,9 @@ export default function RegisterForm() {
       if (err instanceof ApiError) {
         if (err.status === 422 && err.details?.length) {
           const errs = {}
-          err.details.forEach(({ field, message }) => { errs[field] = message })
+          err.details.forEach(({ field, message }) => {
+            errs[field] = message
+          })
           setFieldErrors(errs)
         } else if (err.code === 'ALREADY_EXISTS') {
           setFieldErrors({ email: 'An account with this email already exists.' })
@@ -70,7 +72,9 @@ export default function RegisterForm() {
       )}
 
       <div className={styles.field}>
-        <label htmlFor="firstName" className={styles.label}>First name</label>
+        <label htmlFor="firstName" className={styles.label}>
+          First name
+        </label>
         <input
           id="firstName"
           type="text"
@@ -82,12 +86,16 @@ export default function RegisterForm() {
           aria-invalid={!!fieldErrors.firstName}
         />
         {fieldErrors.firstName && (
-          <span className={styles.fieldError} role="alert">{fieldErrors.firstName}</span>
+          <span className={styles.fieldError} role="alert">
+            {fieldErrors.firstName}
+          </span>
         )}
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="email" className={styles.label}>Work email</label>
+        <label htmlFor="email" className={styles.label}>
+          Work email
+        </label>
         <input
           id="email"
           type="email"
@@ -146,9 +154,14 @@ export default function RegisterForm() {
 
       <p className={styles.terms}>
         By registering you agree to our{' '}
-        <Link href={ROUTES.TERMS} className={styles.termsLink}>Terms of Service</Link>
-        {' '}and{' '}
-        <Link href={ROUTES.PRIVACY} className={styles.termsLink}>Privacy Policy</Link>.
+        <Link href={ROUTES.TERMS} className={styles.termsLink}>
+          Terms of Service
+        </Link>{' '}
+        and{' '}
+        <Link href={ROUTES.PRIVACY} className={styles.termsLink}>
+          Privacy Policy
+        </Link>
+        .
       </p>
     </form>
   )

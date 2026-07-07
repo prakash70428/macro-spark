@@ -6,16 +6,16 @@ Finance and economics intelligence platform — long-form research, market analy
 
 ## Tech Stack
 
-| Layer | Technology | Why |
-|---|---|---|
-| Framework | Next.js 14 (App Router) | RSC for static content sections, no TS overhead for this phase |
-| Styling | SCSS Modules + ITCSS | Predictable specificity, zero runtime cost, design token system via CSS custom props |
-| Animation | Framer Motion v11 — `LazyMotion` + `domAnimation` | Tree-shakeable animation bundle; `m.div` not `motion.div` everywhere |
-| State | Zustand (auth) · SWR (server data) · URL params (filters) | Right tool per concern — no single global store |
-| Auth | RS256 JWT + HttpOnly cookies | Access token in RAM only (XSS-safe); refresh token in HttpOnly cookie (JS-unreachable) |
-| Backend | Express 4 + MongoDB Atlas + Mongoose 8 | In `server/` — separate from frontend |
-| Validation | Zod | Frontend env + backend request schemas — single schema = single source of truth |
-| Logging | Winston (JSON) + Morgan | Structured logs, parseable by any log aggregator |
+| Layer      | Technology                                                | Why                                                                                    |
+| ---------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Framework  | Next.js 14 (App Router)                                   | RSC for static content sections, no TS overhead for this phase                         |
+| Styling    | SCSS Modules + ITCSS                                      | Predictable specificity, zero runtime cost, design token system via CSS custom props   |
+| Animation  | Framer Motion v11 — `LazyMotion` + `domAnimation`         | Tree-shakeable animation bundle; `m.div` not `motion.div` everywhere                   |
+| State      | Zustand (auth) · SWR (server data) · URL params (filters) | Right tool per concern — no single global store                                        |
+| Auth       | RS256 JWT + HttpOnly cookies                              | Access token in RAM only (XSS-safe); refresh token in HttpOnly cookie (JS-unreachable) |
+| Backend    | Express 4 + MongoDB Atlas + Mongoose 8                    | In `server/` — separate from frontend                                                  |
+| Validation | Zod                                                       | Frontend env + backend request schemas — single schema = single source of truth        |
+| Logging    | Winston (JSON) + Morgan                                   | Structured logs, parseable by any log aggregator                                       |
 
 ---
 
@@ -59,6 +59,7 @@ macro_spark/
 ## Local Setup
 
 ### Prerequisites
+
 - Node.js 18+
 - MongoDB Atlas URI (or local MongoDB)
 - Redis (optional in dev — falls back to in-memory rate limiter)
@@ -196,14 +197,14 @@ chore:    tooling, config, dependencies
 
 ## Sprint Status
 
-| Sprint | What | Status |
-|---|---|---|
-| 1–2 | Setup, SCSS design system, routing | ✓ |
-| 3 | Home, Research, Markets, About, Contact pages | ✓ |
-| 4 | Analysis detail, Newsletter, Legal, 404 | ✓ |
-| 5 | Express + MongoDB + auth endpoints | ✓ |
-| 6 | QA — 3C + 6H + 6M + 4L bugs fixed | ✓ |
-| 7 | Auth flow, Zustand, apiClient, middleware, tests | ✓ |
-| 8 | Resend email, Sanity CMS, Playwright E2E, mobile menu focus trap | todo |
+| Sprint | What                                                             | Status |
+| ------ | ---------------------------------------------------------------- | ------ |
+| 1–2    | Setup, SCSS design system, routing                               | ✓      |
+| 3      | Home, Research, Markets, About, Contact pages                    | ✓      |
+| 4      | Analysis detail, Newsletter, Legal, 404                          | ✓      |
+| 5      | Express + MongoDB + auth endpoints                               | ✓      |
+| 6      | QA — 3C + 6H + 6M + 4L bugs fixed                                | ✓      |
+| 7      | Auth flow, Zustand, apiClient, middleware, tests                 | ✓      |
+| 8      | Resend email, Sanity CMS, Playwright E2E, mobile menu focus trap | todo   |
 
 Production readiness: **82/100**

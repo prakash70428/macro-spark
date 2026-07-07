@@ -21,7 +21,7 @@ function validate(schema, source = 'body') {
 
     if (!result.success) {
       const details = result.error.issues.map((issue) => ({
-        field:   issue.path.join('.'),
+        field: issue.path.join('.'),
         message: issue.message,
       }))
 

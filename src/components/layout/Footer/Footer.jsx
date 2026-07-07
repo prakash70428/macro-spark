@@ -63,13 +63,23 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className={styles.bottom}>
-          <p className={styles.copyright}>
-            © {YEAR} MacroSpark. All rights reserved.
-          </p>
+          <p className={styles.copyright}>© {YEAR} MacroSpark. All rights reserved.</p>
           <ul className={styles.legalLinks} role="list">
-            <li><Link href={ROUTES.PRIVACY} className={styles.legalLink}>Privacy Policy</Link></li>
-            <li><Link href={ROUTES.TERMS} className={styles.legalLink}>Terms of Service</Link></li>
-            <li><Link href={ROUTES.COOKIES} className={styles.legalLink}>Cookies</Link></li>
+            <li>
+              <Link href={ROUTES.PRIVACY} className={styles.legalLink}>
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href={ROUTES.TERMS} className={styles.legalLink}>
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link href={ROUTES.COOKIES} className={styles.legalLink}>
+                Cookies
+              </Link>
+            </li>
           </ul>
         </div>
       </Container>

@@ -4,14 +4,14 @@
 // These styles ensure WCAG 2.1 AA compliance as a baseline.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Skip navigation link ──────────────────────────────────────────────────────
 // Positioned off-screen until focused via keyboard Tab.
 // Must be the first focusable element in the DOM.
 .skip-to-content {
   @include visually-hidden;
-  @include type-scale('label-lg');
+  @include type-scale("label-lg");
 
   position: fixed;
   top: var(--space-4);
@@ -103,13 +103,13 @@
 
 // ── aria-busy indicator ───────────────────────────────────────────────────────
 // Subtle opacity shift for elements marked aria-busy while loading.
-[aria-busy='true'] {
+[aria-busy="true"] {
   cursor: wait;
   opacity: 0.7;
 }
 
 // ── aria-disabled ─────────────────────────────────────────────────────────────
-[aria-disabled='true'] {
+[aria-disabled="true"] {
   cursor: not-allowed;
   opacity: 0.5;
   pointer-events: none;

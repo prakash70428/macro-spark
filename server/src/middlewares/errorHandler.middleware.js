@@ -65,19 +65,19 @@ function errorHandler(err, req, res, _next) {
   const normalised = normaliseError(err)
 
   const statusCode = normalised.statusCode ?? HTTP.INTERNAL_SERVER_ERROR
-  const code       = normalised.code       ?? ERROR_CODES.INTERNAL_ERROR
-  const message    = normalised.message    ?? 'Internal server error'
+  const code = normalised.code ?? ERROR_CODES.INTERNAL_ERROR
+  const message = normalised.message ?? 'Internal server error'
   const isOperational = normalised.isOperational === true
 
   // Log non-operational errors (bugs) with full stack
   if (!isOperational) {
     logger.error('Unhandled error', {
-      error:     message,
-      stack:     err.stack,
+      error: message,
+      stack: err.stack,
       requestId: req.id,
-      method:    req.method,
-      path:      req.path,
-      ip:        req.ip,
+      method: req.method,
+      path: req.path,
+      ip: req.ip,
     })
   }
 

@@ -13,16 +13,16 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Layer 1: Abstracts (no CSS output)
-@use 'abstracts';
+@use "abstracts";
 
 // Layer 2: Base
-@use 'base';
+@use "base";
 
 // Layer 3: Layout
-@use 'layout';
+@use "layout";
 
 // Layer 4: Themes (colors only — dark default + light override)
-@use 'themes';
+@use "themes";
 
 // Layer 5: Utilities
-@use 'utilities';
+@use "utilities";

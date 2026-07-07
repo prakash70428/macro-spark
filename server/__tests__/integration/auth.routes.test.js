@@ -16,18 +16,16 @@ const User = require('../../src/models/User')
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const TEST_USER = {
-  email:     'test@macrospark.com',
-  password:  'TestPass123',
+  email: 'test@macrospark.com',
+  password: 'TestPass123',
   firstName: 'Jane',
 }
 
 async function registerAndLogin() {
-  const registerRes = await request(app)
-    .post('/api/auth/register')
-    .send(TEST_USER)
+  const registerRes = await request(app).post('/api/auth/register').send(TEST_USER)
 
   return {
-    accessToken:  registerRes.body.data.accessToken,
+    accessToken: registerRes.body.data.accessToken,
     refreshCookie: registerRes.headers['set-cookie'],
   }
 }
@@ -36,9 +34,7 @@ async function registerAndLogin() {
 
 describe('POST /api/auth/register', () => {
   test('201: creates user and returns accessToken', async () => {
-    const res = await request(app)
-      .post('/api/auth/register')
-      .send(TEST_USER)
+    const res = await request(app).post('/api/auth/register').send(TEST_USER)
 
     expect(res.status).toBe(201)
     expect(res.body.success).toBe(true)
@@ -136,9 +132,7 @@ describe('POST /api/auth/refresh', () => {
   test('200: valid refresh cookie returns new accessToken', async () => {
     const { refreshCookie } = await registerAndLogin()
 
-    const res = await request(app)
-      .post('/api/auth/refresh')
-      .set('Cookie', refreshCookie)
+    const res = await request(app).post('/api/auth/refresh').set('Cookie', refreshCookie)
 
     expect(res.status).toBe(200)
     expect(res.body.data.accessToken).toBeDefined()
@@ -156,15 +150,11 @@ describe('POST /api/auth/refresh', () => {
     const { refreshCookie } = await registerAndLogin()
 
     // First use — valid
-    const firstRefresh = await request(app)
-      .post('/api/auth/refresh')
-      .set('Cookie', refreshCookie)
+    const firstRefresh = await request(app).post('/api/auth/refresh').set('Cookie', refreshCookie)
     expect(firstRefresh.status).toBe(200)
 
     // Second use of SAME old token — reuse detected
-    const reuseAttempt = await request(app)
-      .post('/api/auth/refresh')
-      .set('Cookie', refreshCookie)
+    const reuseAttempt = await request(app).post('/api/auth/refresh').set('Cookie', refreshCookie)
 
     expect(reuseAttempt.status).toBe(401)
     expect(reuseAttempt.body.code).toBe('TOKEN_REVOKED')
@@ -175,9 +165,7 @@ describe('POST /api/auth/logout', () => {
   test('200: logout clears cookie and returns success', async () => {
     const { refreshCookie } = await registerAndLogin()
 
-    const res = await request(app)
-      .post('/api/auth/logout')
-      .set('Cookie', refreshCookie)
+    const res = await request(app).post('/api/auth/logout').set('Cookie', refreshCookie)
 
     expect(res.status).toBe(200)
     // Cookie should be cleared (maxAge=0 or expires in past)
@@ -190,9 +178,7 @@ describe('GET /api/auth/me', () => {
   test('200: valid token returns user profile', async () => {
     const { accessToken } = await registerAndLogin()
 
-    const res = await request(app)
-      .get('/api/auth/me')
-      .set('Authorization', `Bearer ${accessToken}`)
+    const res = await request(app).get('/api/auth/me').set('Authorization', `Bearer ${accessToken}`)
 
     expect(res.status).toBe(200)
     expect(res.body.data.email).toBe(TEST_USER.email)

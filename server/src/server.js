@@ -18,9 +18,9 @@ async function startServer() {
 
   const server = app.listen(env.PORT, () => {
     logger.info(`MacroSpark API listening`, {
-      port:    env.PORT,
-      env:     env.NODE_ENV,
-      pid:     process.pid,
+      port: env.PORT,
+      env: env.NODE_ENV,
+      pid: process.pid,
     })
   })
 
@@ -55,7 +55,7 @@ async function startServer() {
   }
 
   process.on('SIGTERM', () => shutdown('SIGTERM'))
-  process.on('SIGINT',  () => shutdown('SIGINT'))
+  process.on('SIGINT', () => shutdown('SIGINT'))
 
   // Unhandled rejections are logged; exceptions exit via Winston rejectionHandlers
   process.on('unhandledRejection', (reason) => {

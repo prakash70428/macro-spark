@@ -1,10 +1,10 @@
 'use strict'
 
-const Subscriber   = require('../models/Subscriber')
-const AppError     = require('../utils/AppError')
+const Subscriber = require('../models/Subscriber')
+const AppError = require('../utils/AppError')
 const asyncHandler = require('../utils/asyncHandler')
 const { formatSuccess } = require('../utils/formatResponse')
-const logger       = require('../config/logger')
+const logger = require('../config/logger')
 
 /**
  * POST /newsletter/subscribe
@@ -20,8 +20,8 @@ const subscribe = asyncHandler(async (req, res) => {
       return res.json(formatSuccess({ email }, 'Already subscribed'))
     }
     // Re-subscribe
-    existing.status         = 'active'
-    existing.subscribedAt   = new Date()
+    existing.status = 'active'
+    existing.subscribedAt = new Date()
     existing.unsubscribedAt = null
     if (firstName) existing.firstName = firstName
     await existing.save()
@@ -46,7 +46,7 @@ const unsubscribe = asyncHandler(async (req, res) => {
     return res.json(formatSuccess(null, 'Already unsubscribed or not found'))
   }
 
-  subscriber.status         = 'unsubscribed'
+  subscriber.status = 'unsubscribed'
   subscriber.unsubscribedAt = new Date()
   await subscriber.save()
 
@@ -59,9 +59,9 @@ const unsubscribe = asyncHandler(async (req, res) => {
  * GET /newsletter/subscribers  [admin only]
  */
 const listSubscribers = asyncHandler(async (req, res) => {
-  const page  = Number(req.query.page)  || 1
+  const page = Number(req.query.page) || 1
   const limit = Number(req.query.limit) || 50
-  const skip  = (page - 1) * limit
+  const skip = (page - 1) * limit
 
   const [items, total] = await Promise.all([
     Subscriber.find({ status: 'active' }).sort({ subscribedAt: -1 }).skip(skip).limit(limit).lean(),

@@ -6,16 +6,12 @@ import { ROUTES } from '@/constants/routes'
 import styles from './Hero.module.scss'
 
 const FLOATING_PILLS = [
-  { label: 'S&P 500',     value: '5,482.32', change: '+0.82%', positive: true  },
-  { label: '10Y US Yield', value: '4.312%',   change: '−3bp',   positive: false },
-  { label: 'Gold',         value: '$2,341',   change: '+0.54%', positive: true  },
+  { label: 'S&P 500', value: '5,482.32', change: '+0.82%', positive: true },
+  { label: '10Y US Yield', value: '4.312%', change: '−3bp', positive: false },
+  { label: 'Gold', value: '$2,341', change: '+0.54%', positive: true },
 ]
 
-const TRUST_ITEMS = [
-  'Real-time data',
-  '500+ analysts',
-  'No paywalled noise',
-]
+const TRUST_ITEMS = ['Real-time data', '500+ analysts', 'No paywalled noise']
 
 export default function Hero() {
   return (
@@ -30,7 +26,9 @@ export default function Hero() {
           <div key={p.label} className={styles.pill}>
             <span className={styles.pillLabel}>{p.label}</span>
             <span className={styles.pillValue}>{p.value}</span>
-            <span className={`${styles.pillChange} ${p.positive ? styles.positive : styles.negative}`}>
+            <span
+              className={`${styles.pillChange} ${p.positive ? styles.positive : styles.negative}`}
+            >
               {p.change}
             </span>
           </div>
@@ -45,15 +43,14 @@ export default function Hero() {
 
           <FadeIn direction="up" delay={0.2} duration="slow">
             <h1 className={styles.heading}>
-              Finance &amp; Markets,{' '}
-              <em>Understood.</em>
+              Finance &amp; Markets, <em>Understood.</em>
             </h1>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.3} duration="slow">
             <p className={styles.sub}>
-              In-depth research, real-time data, and expert commentary for professionals
-              who need clarity in a noisy world.
+              In-depth research, real-time data, and expert commentary for professionals who need
+              clarity in a noisy world.
             </p>
           </FadeIn>
 

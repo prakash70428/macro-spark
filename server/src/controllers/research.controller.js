@@ -1,7 +1,7 @@
 'use strict'
 
-const Article      = require('../models/Article')
-const AppError     = require('../utils/AppError')
+const Article = require('../models/Article')
+const AppError = require('../utils/AppError')
 const asyncHandler = require('../utils/asyncHandler')
 const { formatSuccess, formatPaginated } = require('../utils/formatResponse')
 
@@ -9,8 +9,8 @@ const { formatSuccess, formatPaginated } = require('../utils/formatResponse')
 
 function buildArticleQuery({ q, category, type, status = 'published' }) {
   const filter = { status }
-  if (category && category !== 'all') filter.category    = category
-  if (type     && type     !== 'all') filter.contentType = type
+  if (category && category !== 'all') filter.category = category
+  if (type && type !== 'all') filter.contentType = type
   if (q) filter.$text = { $search: q }
   return filter
 }
@@ -30,7 +30,7 @@ const listArticles = asyncHandler(async (req, res) => {
   const { q, category, type, sort, page, limit } = req.query
 
   const filter = buildArticleQuery({ q, category, type })
-  const skip   = (page - 1) * limit
+  const skip = (page - 1) * limit
 
   const [items, total] = await Promise.all([
     Article.find(filter)
@@ -59,8 +59,8 @@ const getArticle = asyncHandler(async (req, res) => {
   // Related — same category, exclude self
   const related = await Article.find({
     category: article.category,
-    status:   'published',
-    _id:      { $ne: article._id },
+    status: 'published',
+    _id: { $ne: article._id },
   })
     .sort({ publishedAt: -1 })
     .limit(4)
@@ -85,11 +85,10 @@ const createArticle = asyncHandler(async (req, res) => {
  * PATCH /research/:slug  [admin, editor, analyst]
  */
 const updateArticle = asyncHandler(async (req, res) => {
-  const article = await Article.findOneAndUpdate(
-    { slug: req.params.slug },
-    req.body,
-    { new: true, runValidators: true }
-  )
+  const article = await Article.findOneAndUpdate({ slug: req.params.slug }, req.body, {
+    new: true,
+    runValidators: true,
+  })
   if (!article) throw AppError.notFound('Article')
   res.json(formatSuccess(article, 'Article updated'))
 })

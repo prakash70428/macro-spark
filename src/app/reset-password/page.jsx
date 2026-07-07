@@ -20,9 +20,7 @@ export default function ResetPasswordPage() {
           </Link>
 
           <h1 className={styles.heading}>Set a new password</h1>
-          <p className={styles.sub}>
-            Choose a strong password for your account.
-          </p>
+          <p className={styles.sub}>Choose a strong password for your account.</p>
 
           <Suspense fallback={null}>
             <ResetPasswordForm />

@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .wrapper {
   display: flex;
@@ -11,7 +11,7 @@
   // Offset for fixed navbar height
   padding-top: 64px;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-top: 72px;
   }
 }

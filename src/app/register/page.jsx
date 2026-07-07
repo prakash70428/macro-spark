@@ -30,7 +30,9 @@ export default function RegisterPage() {
 
           <ul className={styles.perks} role="list">
             {PERKS.map((p) => (
-              <li key={p} className={styles.perk}>{p}</li>
+              <li key={p} className={styles.perk}>
+                {p}
+              </li>
             ))}
           </ul>
 
@@ -38,7 +40,9 @@ export default function RegisterPage() {
 
           <p className={styles.footer}>
             Already have an account?{' '}
-            <Link href={ROUTES.LOGIN} className={styles.footerLink}>Sign in</Link>
+            <Link href={ROUTES.LOGIN} className={styles.footerLink}>
+              Sign in
+            </Link>
           </p>
         </div>
       </FadeIn>

@@ -10,23 +10,20 @@ import styles from './page.module.scss'
 export default function ArticlesPage() {
   const [active, setActive] = useState('All')
 
-  const filtered = active === 'All'
-    ? ARTICLES
-    : ARTICLES.filter((a) => a.category === active)
+  const filtered = active === 'All' ? ARTICLES : ARTICLES.filter((a) => a.category === active)
 
   return (
     <PageLayout>
       <div className={styles.page}>
         <Container>
-
           {/* Header */}
           <FadeIn direction="up">
             <div className={styles.pageHeader}>
               <span className={styles.eyebrow}>MacroSpark Articles</span>
               <h1 className={styles.heading}>In-Depth Articles</h1>
               <p className={styles.sub}>
-                Long-form articles on finance and economics. Each piece is available
-                to read and download as a PDF.
+                Long-form articles on finance and economics. Each piece is available to read and
+                download as a PDF.
               </p>
             </div>
           </FadeIn>
@@ -72,10 +69,18 @@ export default function ArticlesPage() {
                       className={styles.btnPdf}
                       aria-label={`Download PDF: ${article.title}`}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7 10 12 15 17 10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
                       </svg>
                       Download PDF
                     </a>
@@ -88,7 +93,6 @@ export default function ArticlesPage() {
               <p>No articles in this category yet.</p>
             </div>
           )}
-
         </Container>
       </div>
     </PageLayout>

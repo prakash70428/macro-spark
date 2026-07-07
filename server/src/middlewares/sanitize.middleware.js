@@ -1,7 +1,7 @@
 'use strict'
 
 const mongoSanitize = require('express-mongo-sanitize')
-const xss    = require('xss')
+const xss = require('xss')
 const logger = require('../config/logger')
 
 /**
@@ -46,8 +46,8 @@ function sanitizeValue(value) {
  * @type {import('express').RequestHandler}
  */
 function xssSanitizeMiddleware(req, _res, next) {
-  if (req.body)   req.body   = sanitizeValue(req.body)
-  if (req.query)  req.query  = sanitizeValue(req.query)
+  if (req.body) req.body = sanitizeValue(req.body)
+  if (req.query) req.query = sanitizeValue(req.query)
   if (req.params) req.params = sanitizeValue(req.params)
   next()
 }

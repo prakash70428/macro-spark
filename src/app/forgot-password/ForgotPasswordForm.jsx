@@ -8,9 +8,9 @@ import { requestPasswordReset } from '@/lib/authService'
 import styles from '../login/page.module.scss'
 
 export default function ForgotPasswordForm() {
-  const [email, setEmail]   = useState('')
+  const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle')
-  const [error, setError]   = useState('')
+  const [error, setError] = useState('')
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -47,14 +47,24 @@ export default function ForgotPasswordForm() {
           {error}
         </div>
       )}
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+      >
         <div className={styles.field}>
-          <label htmlFor="email" className={styles.label}>Email address</label>
+          <label htmlFor="email" className={styles.label}>
+            Email address
+          </label>
           <input
-            id="email" type="email" className={styles.input}
+            id="email"
+            type="email"
+            className={styles.input}
             placeholder="jane@example.com"
             value={email}
-            onChange={(e) => { setEmail(e.target.value); setError('') }}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              setError('')
+            }}
             required
             autoComplete="email"
           />
@@ -64,7 +74,9 @@ export default function ForgotPasswordForm() {
         </Button>
       </form>
       <p className={styles.footer}>
-        <Link href={ROUTES.LOGIN} className={styles.footerLink}>← Back to sign in</Link>
+        <Link href={ROUTES.LOGIN} className={styles.footerLink}>
+          ← Back to sign in
+        </Link>
       </p>
     </>
   )

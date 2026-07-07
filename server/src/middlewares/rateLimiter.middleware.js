@@ -36,18 +36,20 @@ function createRateLimiter({ windowMs, max, keyPrefix = 'rl' }) {
     handler: (_req, res) => {
       res
         .status(HTTP.TOO_MANY_REQUESTS)
-        .json(formatError('Too many requests', ERROR_CODES.RATE_LIMIT_EXCEEDED, HTTP.TOO_MANY_REQUESTS))
+        .json(
+          formatError('Too many requests', ERROR_CODES.RATE_LIMIT_EXCEEDED, HTTP.TOO_MANY_REQUESTS)
+        )
     },
     skip: (req) => req.ip === '127.0.0.1' && process.env.NODE_ENV === 'test',
   })
 }
 
 // Pre-built limiters — imported in app.js and route files
-const globalLimiter  = createRateLimiter({ ...LIMITS.GLOBAL_RATE,         keyPrefix: 'global' })
-const authLimiter    = createRateLimiter({ ...LIMITS.AUTH_RATE,            keyPrefix: 'auth' })
+const globalLimiter = createRateLimiter({ ...LIMITS.GLOBAL_RATE, keyPrefix: 'global' })
+const authLimiter = createRateLimiter({ ...LIMITS.AUTH_RATE, keyPrefix: 'auth' })
 const passwordLimiter = createRateLimiter({ ...LIMITS.PASSWORD_RESET_RATE, keyPrefix: 'pwd' })
-const newsletterLimiter = createRateLimiter({ ...LIMITS.NEWSLETTER_RATE,   keyPrefix: 'nl' })
-const contactLimiter = createRateLimiter({ ...LIMITS.CONTACT_RATE,         keyPrefix: 'contact' })
+const newsletterLimiter = createRateLimiter({ ...LIMITS.NEWSLETTER_RATE, keyPrefix: 'nl' })
+const contactLimiter = createRateLimiter({ ...LIMITS.CONTACT_RATE, keyPrefix: 'contact' })
 
 module.exports = {
   createRateLimiter,

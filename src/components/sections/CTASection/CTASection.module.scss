@@ -1,13 +1,13 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Newsletter CTA ─────────────────────────────────────────────────────────────
 .newsletter {
   padding-block: var(--space-20);
   background-color: var(--color-bg-surface);
-  border-top:    1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--color-border-subtle);
   border-bottom: 1px solid var(--color-border-subtle);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-24);
   }
 }
@@ -18,7 +18,7 @@
   gap: var(--space-10);
   align-items: center;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-16);
   }
@@ -31,19 +31,19 @@
 }
 
 .eyebrow {
-  @include type-scale('eyebrow');
+  @include type-scale("eyebrow");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-accent-gold);
 }
 
 .heading {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   color: var(--color-text-primary);
 }
 
 .body {
-  @include type-scale('body-lg');
+  @include type-scale("body-lg");
   color: var(--color-text-secondary);
 }
 
@@ -75,7 +75,7 @@
 }
 
 .perkText {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   color: var(--color-text-secondary);
 }
 
@@ -93,12 +93,12 @@
 }
 
 .formLabel {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-secondary);
 }
 
 .input {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   @include focus-ring;
   width: 100%;
   padding: var(--space-4) var(--space-5);
@@ -108,7 +108,9 @@
   color: var(--color-text-primary);
   transition: border-color var(--duration-fast) ease;
 
-  &::placeholder { color: var(--color-text-tertiary); }
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
 
   &:focus-visible {
     border-color: var(--color-interactive-primary);
@@ -124,7 +126,7 @@
 }
 
 .privacy {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -145,12 +147,12 @@
 }
 
 .successHeading {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   color: var(--color-text-primary);
 }
 
 .successBody {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   color: var(--color-text-secondary);
 }
 
@@ -160,7 +162,7 @@
   position: relative;
   overflow: hidden;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-24);
   }
 }
@@ -185,17 +187,17 @@
 }
 
 .trialHeading {
-  @include type-scale('display-md');
+  @include type-scale("display-md");
   color: var(--color-text-primary);
   max-width: 18ch;
 
-  @include respond-to('lg') {
-    @include type-scale('display-lg');
+  @include respond-to("lg") {
+    @include type-scale("display-lg");
   }
 }
 
 .trialBody {
-  @include type-scale('body-lg');
+  @include type-scale("body-lg");
   color: var(--color-text-secondary);
   max-width: 48ch;
 }
@@ -209,6 +211,6 @@
 }
 
 .trialNote {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }

@@ -7,7 +7,7 @@
 // because functions.scss and mixins.scss @use tokens internally.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@forward 'tokens';
-@forward 'functions';
-@forward 'breakpoints';
-@forward 'mixins';
+@forward "tokens";
+@forward "functions";
+@forward "breakpoints";
+@forward "mixins";

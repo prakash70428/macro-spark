@@ -17,10 +17,10 @@ export default function SlideIn({ from = 'right', className, children }) {
   const { shouldAnimate, transition } = useAnimationConfig()
 
   const initial = {
-    left:   { x: '-100%', opacity: 0 },
-    right:  { x: '100%',  opacity: 0 },
-    top:    { y: '-100%', opacity: 0 },
-    bottom: { y: '100%',  opacity: 0 },
+    left: { x: '-100%', opacity: 0 },
+    right: { x: '100%', opacity: 0 },
+    top: { y: '-100%', opacity: 0 },
+    bottom: { y: '100%', opacity: 0 },
   }[from]
 
   return (

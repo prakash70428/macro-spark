@@ -5,58 +5,58 @@ const { createSchema } = require('./base')
 
 const ReportSchema = createSchema({
   title: {
-    type:      String,
-    required:  true,
-    trim:      true,
+    type: String,
+    required: true,
+    trim: true,
     maxlength: 200,
   },
   slug: {
-    type:      String,
-    required:  true,
-    unique:    true,
+    type: String,
+    required: true,
+    unique: true,
     lowercase: true,
-    trim:      true,
-    index:     true,
+    trim: true,
+    index: true,
   },
   excerpt: {
-    type:      String,
-    required:  true,
+    type: String,
+    required: true,
     maxlength: 500,
   },
   body: { type: mongoose.Schema.Types.Mixed },
 
   author: {
-    type:     mongoose.Schema.Types.ObjectId,
-    ref:      'User',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
-    index:    true,
+    index: true,
   },
 
   category: {
-    type:  String,
-    enum:  ['macro', 'equity', 'credit', 'fx', 'commodities', 'alternatives', 'thematic'],
+    type: String,
+    enum: ['macro', 'equity', 'credit', 'fx', 'commodities', 'alternatives', 'thematic'],
     index: true,
   },
 
   // Access tiers
   accessLevel: {
-    type:    String,
-    enum:    ['free', 'subscriber', 'premium'],
+    type: String,
+    enum: ['free', 'subscriber', 'premium'],
     default: 'subscriber',
-    index:   true,
+    index: true,
   },
 
   status: {
-    type:    String,
-    enum:    ['draft', 'review', 'published', 'archived'],
+    type: String,
+    enum: ['draft', 'review', 'published', 'archived'],
     default: 'draft',
-    index:   true,
+    index: true,
   },
-  publishedAt:   { type: Date, index: true },
+  publishedAt: { type: Date, index: true },
   featuredImage: { type: String },
-  pdfUrl:        { type: String }, // downloadable PDF for premium
-  pageCount:     { type: Number },
-  tags:          [{ type: String }],
+  pdfUrl: { type: String }, // downloadable PDF for premium
+  pageCount: { type: Number },
+  tags: [{ type: String }],
 })
 
 ReportSchema.index({ title: 'text', excerpt: 'text' })

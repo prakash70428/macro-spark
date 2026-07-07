@@ -13,26 +13,35 @@ export const metadata = {
 }
 
 const STATS = [
-  { value: '40,000+', label: 'Weekly readers'   },
-  { value: '500+',    label: 'Research reports'  },
-  { value: '214',     label: 'Podcast episodes'  },
-  { value: '12',      label: 'Countries covered' },
+  { value: '40,000+', label: 'Weekly readers' },
+  { value: '500+', label: 'Research reports' },
+  { value: '214', label: 'Podcast episodes' },
+  { value: '12', label: 'Countries covered' },
 ]
 
 const TEAM = [
-  { name: 'Sarah Chen',    role: 'Senior Economist, Fed & Macro',   emoji: '👩‍💼' },
-  { name: 'James Okafor',  role: 'Head of EM Research',              emoji: '👨‍💼' },
-  { name: 'Priya Sharma',  role: 'Fixed Income Strategist',          emoji: '👩‍💻' },
-  { name: 'Marco Rossi',   role: 'Commodities & FX Analyst',         emoji: '👨‍🔬' },
-  { name: 'Aiko Tanaka',   role: 'Japan & Asia Pacific Macro',       emoji: '👩‍🏫' },
-  { name: 'Reza Ahmadi',   role: 'Energy & ESG Research',            emoji: '👨‍🏭' },
+  { name: 'Sarah Chen', role: 'Senior Economist, Fed & Macro', emoji: '👩‍💼' },
+  { name: 'James Okafor', role: 'Head of EM Research', emoji: '👨‍💼' },
+  { name: 'Priya Sharma', role: 'Fixed Income Strategist', emoji: '👩‍💻' },
+  { name: 'Marco Rossi', role: 'Commodities & FX Analyst', emoji: '👨‍🔬' },
+  { name: 'Aiko Tanaka', role: 'Japan & Asia Pacific Macro', emoji: '👩‍🏫' },
+  { name: 'Reza Ahmadi', role: 'Energy & ESG Research', emoji: '👨‍🏭' },
 ]
 
 const VALUES = [
-  { title: 'Depth over volume',    desc: 'We publish less and research more. Quality is non-negotiable.' },
-  { title: 'No conflicts of interest', desc: 'MacroSpark takes no advertising from financial institutions. Our analysis is independent.' },
-  { title: 'Accessible to all',   desc: 'Complex topics explained clearly — without sacrificing rigour.' },
-  { title: 'Data-driven',         desc: 'Every claim is sourced. We show our work so you can verify it.' },
+  {
+    title: 'Depth over volume',
+    desc: 'We publish less and research more. Quality is non-negotiable.',
+  },
+  {
+    title: 'No conflicts of interest',
+    desc: 'MacroSpark takes no advertising from financial institutions. Our analysis is independent.',
+  },
+  {
+    title: 'Accessible to all',
+    desc: 'Complex topics explained clearly — without sacrificing rigour.',
+  },
+  { title: 'Data-driven', desc: 'Every claim is sourced. We show our work so you can verify it.' },
 ]
 
 export default function AboutPage() {
@@ -45,14 +54,14 @@ export default function AboutPage() {
             <div className={styles.mission}>
               <span className={styles.eyebrow}>Our Mission</span>
               <h1 className={styles.heading}>
-                Professional Intelligence.<br />
+                Professional Intelligence.
+                <br />
                 <em>Without the Noise.</em>
               </h1>
               <p className={styles.sub}>
-                MacroSpark was built for the professional who doesn't have time to wade
-                through noise. We provide rigorous, independent research on finance,
-                economics, and global markets — the kind that was once locked behind
-                six-figure Bloomberg terminals.
+                MacroSpark was built for the professional who doesn't have time to wade through
+                noise. We provide rigorous, independent research on finance, economics, and global
+                markets — the kind that was once locked behind six-figure Bloomberg terminals.
               </p>
             </div>
           </FadeIn>
@@ -106,10 +115,16 @@ export default function AboutPage() {
           <FadeIn direction="up" delay={0.25}>
             <div className={styles.cta}>
               <h2 className={styles.ctaTitle}>Ready to get started?</h2>
-              <p className={styles.ctaDesc}>Join 40,000+ professionals. Free newsletter every Sunday.</p>
+              <p className={styles.ctaDesc}>
+                Join 40,000+ professionals. Free newsletter every Sunday.
+              </p>
               <div className={styles.ctaBtns}>
-                <Button as={Link} href={ROUTES.REGISTER} variant="primary" size="lg">Start for free</Button>
-                <Button as={Link} href={ROUTES.CONTACT}  variant="secondary" size="lg">Get in touch</Button>
+                <Button as={Link} href={ROUTES.REGISTER} variant="primary" size="lg">
+                  Start for free
+                </Button>
+                <Button as={Link} href={ROUTES.CONTACT} variant="secondary" size="lg">
+                  Get in touch
+                </Button>
               </div>
             </div>
           </FadeIn>

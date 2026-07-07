@@ -6,8 +6,8 @@
  */
 
 const { registerSchema, loginSchema } = require('../../src/validators/auth.validator')
-const { listQuerySchema }             = require('../../src/validators/research.validator')
-const { subscribeSchema }             = require('../../src/validators/newsletter.validator')
+const { listQuerySchema } = require('../../src/validators/research.validator')
+const { subscribeSchema } = require('../../src/validators/newsletter.validator')
 
 // ── Auth validators ────────────────────────────────────────────────────────────
 

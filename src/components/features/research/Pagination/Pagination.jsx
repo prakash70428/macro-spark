@@ -30,7 +30,9 @@ export default function Pagination({ page, totalPages, total, searchParams }) {
   function getPageNumbers() {
     if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1)
 
-    const pages = new Set([1, totalPages, page - 1, page, page + 1].filter((p) => p >= 1 && p <= totalPages))
+    const pages = new Set(
+      [1, totalPages, page - 1, page, page + 1].filter((p) => p >= 1 && p <= totalPages)
+    )
     const sorted = [...pages].sort((a, b) => a - b)
 
     const result = []
@@ -52,13 +54,17 @@ export default function Pagination({ page, totalPages, total, searchParams }) {
             ←
           </Link>
         ) : (
-          <span className={clsx(styles.btn, styles.disabled)} aria-hidden="true">←</span>
+          <span className={clsx(styles.btn, styles.disabled)} aria-hidden="true">
+            ←
+          </span>
         )}
 
         {/* Page numbers */}
         {getPageNumbers().map((p, i) =>
           p === '…' ? (
-            <span key={`ellipsis-${i}`} className={styles.ellipsis}>…</span>
+            <span key={`ellipsis-${i}`} className={styles.ellipsis}>
+              …
+            </span>
           ) : (
             <Link
               key={p}
@@ -78,7 +84,9 @@ export default function Pagination({ page, totalPages, total, searchParams }) {
             →
           </Link>
         ) : (
-          <span className={clsx(styles.btn, styles.disabled)} aria-hidden="true">→</span>
+          <span className={clsx(styles.btn, styles.disabled)} aria-hidden="true">
+            →
+          </span>
         )}
       </div>
 

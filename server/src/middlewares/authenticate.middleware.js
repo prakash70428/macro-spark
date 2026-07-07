@@ -1,9 +1,9 @@
 'use strict'
 
-const jwt         = require('jsonwebtoken')
-const AppError    = require('../utils/AppError')
+const jwt = require('jsonwebtoken')
+const AppError = require('../utils/AppError')
 const { getPublicKey } = require('../config/keys')
-const { ERROR_CODES }  = require('../constants/errorCodes')
+const { ERROR_CODES } = require('../constants/errorCodes')
 
 /**
  * Verifies the Bearer access token in `Authorization` header.
@@ -16,7 +16,7 @@ const { ERROR_CODES }  = require('../constants/errorCodes')
 function authenticate({ optional = false } = {}) {
   return (req, _res, next) => {
     const header = req.headers.authorization || ''
-    const token  = header.startsWith('Bearer ') ? header.slice(7) : null
+    const token = header.startsWith('Bearer ') ? header.slice(7) : null
 
     if (!token) {
       if (optional) return next()

@@ -4,12 +4,12 @@
 // defined in base/_root.scss — never raw values or primitives.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'sass:map';
-@use 'sass:list';
-@use 'sass:string';
-@use 'functions' as fn;
-@use 'tokens' as t;
-@forward 'breakpoints'; // Re-export respond-to, respond-below, respond-between
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "functions" as fn;
+@use "tokens" as t;
+@forward "breakpoints"; // Re-export respond-to, respond-below, respond-between
 
 // ── focus-ring() ──────────────────────────────────────────────────────────────
 // Accessible, consistent focus indicator for all interactive elements.
@@ -94,8 +94,8 @@
     @error "Surface level #{$level} not found. Available: 0, 1, 2, 3";
   }
 
-  background-color: map.get($config, 'bg');
-  border: map.get($config, 'border');
+  background-color: map.get($config, "bg");
+  border: map.get($config, "border");
 }
 
 // ── type-scale() ──────────────────────────────────────────────────────────────
@@ -141,8 +141,9 @@
 // Disabled on touch devices — hover states are sticky on touch.
 // Usage: @include hover-lift;
 @mixin hover-lift($y: -2px, $duration: 200ms) {
-  transition: transform #{$duration} var(--ease-out-smooth),
-              border-color #{$duration} ease;
+  transition:
+    transform #{$duration} var(--ease-out-smooth),
+    border-color #{$duration} ease;
 
   @media (hover: hover) {
     &:hover {

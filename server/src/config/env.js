@@ -13,12 +13,12 @@ const envSchema = z.object({
   // Database
   MONGODB_URI: z.string().url(),
   // Optional in development — rate limiter falls back to in-memory store if absent
-  REDIS_URL:   z.string().url().optional(),
+  REDIS_URL: z.string().url().optional(),
 
   // JWT — RS256 keys stored as base64-encoded PEM strings
-  JWT_PRIVATE_KEY:    z.string().min(1),
-  JWT_PUBLIC_KEY:     z.string().min(1),
-  JWT_ACCESS_EXPIRY:  z.string().default('15m'),
+  JWT_PRIVATE_KEY: z.string().min(1),
+  JWT_PUBLIC_KEY: z.string().min(1),
+  JWT_ACCESS_EXPIRY: z.string().default('15m'),
   JWT_REFRESH_EXPIRY: z.string().default('7d'),
 
   // CORS
@@ -28,9 +28,9 @@ const envSchema = z.object({
     .transform((v) => v.split(',').map((s) => s.trim())),
 
   // Third-party (optional in development)
-  RESEND_API_KEY:       z.string().optional(),
-  ALGOLIA_APP_ID:       z.string().optional(),
-  ALGOLIA_ADMIN_KEY:    z.string().optional(),
+  RESEND_API_KEY: z.string().optional(),
+  ALGOLIA_APP_ID: z.string().optional(),
+  ALGOLIA_ADMIN_KEY: z.string().optional(),
   SANITY_WEBHOOK_SECRET: z.string().optional(),
 
   // Security

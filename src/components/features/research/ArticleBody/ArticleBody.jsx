@@ -6,9 +6,9 @@ const PLACEHOLDER_CONTENT = [
     type: 'stats',
     items: [
       { value: '5.25%', label: 'Current Fed Funds Rate' },
-      { value: '4th',   label: 'Consecutive Hold' },
-      { value: '2.9%',  label: 'Core PCE (Latest)' },
-      { value: '3.8%',  label: 'Unemployment Rate' },
+      { value: '4th', label: 'Consecutive Hold' },
+      { value: '2.9%', label: 'Core PCE (Latest)' },
+      { value: '3.8%', label: 'Unemployment Rate' },
     ],
   },
   {
@@ -65,7 +65,12 @@ export default function ArticleBody({ article }) {
           )
         }
         if (block.type === 'h2') return <h2 key={i}>{block.text}</h2>
-        if (block.type === 'blockquote') return <blockquote key={i}><p>{block.text}</p></blockquote>
+        if (block.type === 'blockquote')
+          return (
+            <blockquote key={i}>
+              <p>{block.text}</p>
+            </blockquote>
+          )
         return <p key={i}>{block.text}</p>
       })}
     </div>

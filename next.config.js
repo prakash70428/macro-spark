@@ -26,9 +26,7 @@ const nextConfig = {
 
   // Compiler options — remove console.log in production builds
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production'
-      ? { exclude: ['error', 'warn'] }
-      : false,
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
 
   // Security headers — applied to every response

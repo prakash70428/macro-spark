@@ -6,7 +6,7 @@ const env = require('./env')
 // Decode once at startup and reuse across the process lifetime.
 
 let _privateKey = null
-let _publicKey  = null
+let _publicKey = null
 
 /**
  * Returns the RS256 private key PEM string for signing JWTs.

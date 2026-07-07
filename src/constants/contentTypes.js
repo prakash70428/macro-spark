@@ -4,23 +4,23 @@
  */
 
 export const CONTENT_TYPES = /** @type {const} */ ({
-  ARTICLE:     'article',
-  BRIEF:       'brief',
-  DATA_STORY:  'dataStory',
-  PODCAST:     'podcast',
-  NEWSLETTER:  'newsletter',
-  RESEARCH:    'research',
-  OPINION:     'opinion',
+  ARTICLE: 'article',
+  BRIEF: 'brief',
+  DATA_STORY: 'dataStory',
+  PODCAST: 'podcast',
+  NEWSLETTER: 'newsletter',
+  RESEARCH: 'research',
+  OPINION: 'opinion',
 })
 
 export const CONTENT_TYPE_LABELS = {
-  [CONTENT_TYPES.ARTICLE]:    'Article',
-  [CONTENT_TYPES.BRIEF]:      'Brief',
+  [CONTENT_TYPES.ARTICLE]: 'Article',
+  [CONTENT_TYPES.BRIEF]: 'Brief',
   [CONTENT_TYPES.DATA_STORY]: 'Data Story',
-  [CONTENT_TYPES.PODCAST]:    'Podcast',
+  [CONTENT_TYPES.PODCAST]: 'Podcast',
   [CONTENT_TYPES.NEWSLETTER]: 'Newsletter',
-  [CONTENT_TYPES.RESEARCH]:   'Research',
-  [CONTENT_TYPES.OPINION]:    'Opinion',
+  [CONTENT_TYPES.RESEARCH]: 'Research',
+  [CONTENT_TYPES.OPINION]: 'Opinion',
 }
 
 /** Content types shown on the public homepage feed */

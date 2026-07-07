@@ -21,7 +21,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
-
       {globalError && (
         <div role="alert" className={styles.errorBanner}>
           {globalError}
@@ -30,7 +29,9 @@ export default function ContactForm() {
 
       <div className={styles.row}>
         <div className={styles.field}>
-          <label htmlFor="name" className={styles.label}>Full name</label>
+          <label htmlFor="name" className={styles.label}>
+            Full name
+          </label>
           <input
             id="name"
             type="text"
@@ -51,7 +52,9 @@ export default function ContactForm() {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="email" className={styles.label}>Email address</label>
+          <label htmlFor="email" className={styles.label}>
+            Email address
+          </label>
           <input
             id="email"
             type="email"
@@ -73,7 +76,9 @@ export default function ContactForm() {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="subject" className={styles.label}>Subject</label>
+        <label htmlFor="subject" className={styles.label}>
+          Subject
+        </label>
         <input
           id="subject"
           type="text"
@@ -93,7 +98,9 @@ export default function ContactForm() {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="message" className={styles.label}>Message</label>
+        <label htmlFor="message" className={styles.label}>
+          Message
+        </label>
         <textarea
           id="message"
           className={styles.textarea}

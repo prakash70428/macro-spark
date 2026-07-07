@@ -7,10 +7,10 @@ import StaggerList, { StaggerItem } from '@/components/animation/StaggerList'
 import styles from './MetricsSection.module.scss'
 
 const METRICS = [
-  { value: 500,  suffix: '+', label: 'Research articles',   sub: 'Published this year' },
-  { value: 50,   suffix: '+', label: 'Expert analysts',     sub: 'Across 12 disciplines' },
-  { value: 90,   suffix: '+', label: 'Countries covered',   sub: 'Macro & market data' },
-  { value: 2,    suffix: 'M+', label: 'Data points tracked', sub: 'Updated daily' },
+  { value: 500, suffix: '+', label: 'Research articles', sub: 'Published this year' },
+  { value: 50, suffix: '+', label: 'Expert analysts', sub: 'Across 12 disciplines' },
+  { value: 90, suffix: '+', label: 'Countries covered', sub: 'Macro & market data' },
+  { value: 2, suffix: 'M+', label: 'Data points tracked', sub: 'Updated daily' },
 ]
 
 function AnimatedNumber({ target, suffix }) {
@@ -37,7 +37,8 @@ function AnimatedNumber({ target, suffix }) {
 
   return (
     <span ref={ref} className={styles.value} aria-label={`${target}${suffix}`}>
-      <span>{count}</span>{suffix}
+      <span>{count}</span>
+      {suffix}
     </span>
   )
 }
@@ -69,12 +70,10 @@ export default function MetricsSection() {
       <FadeIn direction="up" delay={0.3}>
         <blockquote className={styles.quote}>
           <p className={styles.quoteText}>
-            &ldquo;MacroSpark is the only platform that combines the editorial depth of
-            a financial newspaper with the data fidelity of a terminal.&rdquo;
+            &ldquo;MacroSpark is the only platform that combines the editorial depth of a financial
+            newspaper with the data fidelity of a terminal.&rdquo;
           </p>
-          <cite className={styles.quoteAuthor}>
-            — Portfolio Manager, Global Macro Fund
-          </cite>
+          <cite className={styles.quoteAuthor}>— Portfolio Manager, Global Macro Fund</cite>
         </blockquote>
       </FadeIn>
     </section>

@@ -21,8 +21,8 @@
 /** @type {import('framer-motion').Variants} */
 export const pageTransition = {
   initial: { opacity: 0, y: 8 },
-  enter:   { opacity: 1, y: 0 },
-  exit:    { opacity: 0, y: -4 },
+  enter: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -4 },
 }
 
 /** @type {import('framer-motion').Transition} */
@@ -35,6 +35,6 @@ export const pageTransitionConfig = {
 /** @type {import('framer-motion').Variants} */
 export const editorialTransition = {
   initial: { opacity: 0 },
-  enter:   { opacity: 1, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
-  exit:    { opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } },
+  enter: { opacity: 1, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  exit: { opacity: 0, transition: { duration: 0.2, ease: 'easeIn' } },
 }

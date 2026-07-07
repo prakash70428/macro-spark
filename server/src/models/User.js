@@ -1,39 +1,39 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const bcrypt   = require('bcryptjs')
-const env      = require('../config/env')
+const bcrypt = require('bcryptjs')
+const env = require('../config/env')
 const { createSchema } = require('./base')
 const { ROLES, ALL_ROLES } = require('../constants/roles')
 
 const UserSchema = createSchema({
   email: {
-    type:      String,
-    required:  true,
-    unique:    true,
+    type: String,
+    required: true,
+    unique: true,
     lowercase: true,
-    trim:      true,
-    index:     true,
+    trim: true,
+    index: true,
   },
   password: {
-    type:     String,
+    type: String,
     required: true,
-    select:   false, // never return password in queries by default
+    select: false, // never return password in queries by default
   },
   role: {
-    type:    String,
-    enum:    ALL_ROLES,
+    type: String,
+    enum: ALL_ROLES,
     default: ROLES.GUEST,
-    index:   true,
+    index: true,
   },
-  firstName:       { type: String, trim: true, maxlength: 50 },
-  lastName:        { type: String, trim: true, maxlength: 50 },
+  firstName: { type: String, trim: true, maxlength: 50 },
+  lastName: { type: String, trim: true, maxlength: 50 },
   isEmailVerified: { type: Boolean, default: false },
-  refreshTokens:   [{ type: String, select: false }],
+  refreshTokens: [{ type: String, select: false }],
 
   // Brute-force protection
-  loginAttempts: { type: Number, default: 0,    select: false },
-  lockUntil:     { type: Date,   default: null,  select: false },
+  loginAttempts: { type: Number, default: 0, select: false },
+  lockUntil: { type: Date, default: null, select: false },
 })
 
 // Virtual: full name

@@ -1,7 +1,7 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // Nav heights — consistent across scroll + mobile menu positioning
-$nav-height-mobile:  64px;
+$nav-height-mobile: 64px;
 $nav-height-desktop: 72px;
 
 // ── Root nav ──────────────────────────────────────────────────────────────────
@@ -10,11 +10,11 @@ $nav-height-desktop: 72px;
   top: 0;
   left: 0;
   right: 0;
-  z-index: z('sticky');
+  z-index: z("sticky");
   transition:
     background-color var(--duration-normal) var(--ease-out-smooth),
-    border-color     var(--duration-normal) var(--ease-out-smooth),
-    backdrop-filter  var(--duration-normal) var(--ease-out-smooth);
+    border-color var(--duration-normal) var(--ease-out-smooth),
+    backdrop-filter var(--duration-normal) var(--ease-out-smooth);
   border-bottom: 1px solid transparent;
 }
 
@@ -24,7 +24,7 @@ $nav-height-desktop: 72px;
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom-color: var(--color-border-subtle);
 
-  [data-theme='light'] & {
+  [data-theme="light"] & {
     background-color: rgba(255, 255, 255, 0.88);
   }
 }
@@ -37,7 +37,7 @@ $nav-height-desktop: 72px;
   height: $nav-height-mobile;
   gap: var(--space-4);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     height: $nav-height-desktop;
     gap: var(--space-6);
   }
@@ -45,7 +45,7 @@ $nav-height-desktop: 72px;
 
 // ── Logo ──────────────────────────────────────────────────────────────────────
 .logo {
-  @include type-scale('heading-md');
+  @include type-scale("heading-md");
   @include focus-ring;
   font-family: var(--font-display);
   font-weight: var(--font-weight-bold);
@@ -56,10 +56,14 @@ $nav-height-desktop: 72px;
   transition: opacity var(--duration-fast) ease;
 
   @media (hover: hover) {
-    &:hover { opacity: 0.8; }
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
-  span { color: var(--color-interactive-primary); }
+  span {
+    color: var(--color-interactive-primary);
+  }
 }
 
 // ── Desktop nav links ─────────────────────────────────────────────────────────
@@ -71,18 +75,20 @@ $nav-height-desktop: 72px;
   flex: 1;
   justify-content: center;
 
-  @include respond-to('lg') { display: flex; }
+  @include respond-to("lg") {
+    display: flex;
+  }
 }
 
 .link {
-  @include type-scale('label-lg');
+  @include type-scale("label-lg");
   @include focus-ring;
   color: var(--color-text-secondary);
   text-decoration: none;
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-6);
   transition:
-    color            var(--duration-fast) ease,
+    color var(--duration-fast) ease,
     background-color var(--duration-fast) ease;
 
   @media (hover: hover) {
@@ -103,7 +109,7 @@ $nav-height-desktop: 72px;
   display: none;
   flex-shrink: 0;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     display: flex;
     align-items: center;
     gap: var(--space-3);
@@ -116,8 +122,12 @@ $nav-height-desktop: 72px;
   display: none;
   flex-shrink: 0;
 
-  @include respond-to('md') { display: flex; }
-  @include respond-to('lg') { display: none; }
+  @include respond-to("md") {
+    display: flex;
+  }
+  @include respond-to("lg") {
+    display: none;
+  }
 }
 
 // ── Hamburger button ──────────────────────────────────────────────────────────
@@ -140,10 +150,14 @@ $nav-height-desktop: 72px;
   @include focus-ring;
 
   @media (hover: hover) {
-    &:hover { background-color: rgba(255, 255, 255, 0.07); }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.07);
+    }
   }
 
-  @include respond-to('lg') { display: none; }
+  @include respond-to("lg") {
+    display: none;
+  }
 }
 
 .bar {
@@ -153,16 +167,23 @@ $nav-height-desktop: 72px;
   border-radius: 2px;
   transition:
     transform var(--duration-normal) var(--ease-out-smooth),
-    opacity   var(--duration-normal) var(--ease-out-smooth),
-    width     var(--duration-normal) var(--ease-out-smooth);
+    opacity var(--duration-normal) var(--ease-out-smooth),
+    width var(--duration-normal) var(--ease-out-smooth);
   transform-origin: center;
 }
 
 // Hamburger → X  (bar gap 6px + bar height 2px = 8px between centers)
-.hamburger[aria-expanded='true'] {
-  .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .bar:nth-child(2) { opacity: 0; width: 0; }
-  .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.hamburger[aria-expanded="true"] {
+  .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .bar:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
 
 // ── Mobile menu overlay ───────────────────────────────────────────────────────
@@ -176,20 +197,22 @@ $nav-height-desktop: 72px;
   border-top: 1px solid var(--color-border-subtle);
   overflow-y: auto;
   overscroll-behavior: contain;
-  z-index: z('overlay');
+  z-index: z("overlay");
   padding: var(--space-4) 0 var(--space-16);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     padding: var(--space-6) 0 var(--space-16);
   }
 
-  @include respond-to('lg') { display: none; }
+  @include respond-to("lg") {
+    display: none;
+  }
 }
 
 .mobileNav {
   padding: 0 var(--space-6);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     padding: 0 var(--space-10);
   }
 }
@@ -202,7 +225,7 @@ $nav-height-desktop: 72px;
 }
 
 .mobileLink {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   @include focus-ring;
   display: block;
   color: var(--color-text-primary);
@@ -211,10 +234,14 @@ $nav-height-desktop: 72px;
   border-bottom: 1px solid var(--color-border-subtle);
   transition: color var(--duration-fast) ease;
 
-  &:last-child { border-bottom: none; }
+  &:last-child {
+    border-bottom: none;
+  }
 
   @media (hover: hover) {
-    &:hover { color: var(--color-interactive-primary); }
+    &:hover {
+      color: var(--color-interactive-primary);
+    }
   }
 }
 
@@ -231,7 +258,7 @@ $nav-height-desktop: 72px;
 .navSpacer {
   height: $nav-height-mobile;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     height: $nav-height-desktop;
   }
 }

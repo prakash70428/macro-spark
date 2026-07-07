@@ -13,9 +13,9 @@ jest.mock('@/lib/apiClient', () => ({
   ApiError: class ApiError extends Error {
     constructor(message, status, code, details = []) {
       super(message)
-      this.name    = 'ApiError'
-      this.status  = status
-      this.code    = code
+      this.name = 'ApiError'
+      this.status = status
+      this.code = code
       this.details = details
     }
   },
@@ -71,7 +71,9 @@ describe('useContactForm — client-side validation', () => {
       result.current.update('name')({ target: { value: 'Jane' } })
       result.current.update('email')({ target: { value: 'not-an-email' } })
       result.current.update('subject')({ target: { value: 'Test' } })
-      result.current.update('message')({ target: { value: 'This is a long enough message to pass validation.' } })
+      result.current.update('message')({
+        target: { value: 'This is a long enough message to pass validation.' },
+      })
     })
 
     await act(async () => {
@@ -93,18 +95,24 @@ describe('useContactForm — successful submission', () => {
       result.current.update('name')({ target: { value: 'Jane Smith' } })
       result.current.update('email')({ target: { value: 'jane@example.com' } })
       result.current.update('subject')({ target: { value: 'Research inquiry' } })
-      result.current.update('message')({ target: { value: 'Interested in your macro analysis reports.' } })
+      result.current.update('message')({
+        target: { value: 'Interested in your macro analysis reports.' },
+      })
     })
 
     await act(async () => {
       await result.current.handleSubmit({ preventDefault: jest.fn() })
     })
 
-    expect(api.post).toHaveBeenCalledWith('/contact', expect.objectContaining({
-      name:    'Jane Smith',
-      email:   'jane@example.com',
-      subject: 'Research inquiry',
-    }), { skipAuth: true })
+    expect(api.post).toHaveBeenCalledWith(
+      '/contact',
+      expect.objectContaining({
+        name: 'Jane Smith',
+        email: 'jane@example.com',
+        subject: 'Research inquiry',
+      }),
+      { skipAuth: true }
+    )
 
     expect(result.current.status).toBe('success')
   })
@@ -121,7 +129,9 @@ describe('useContactForm — server error handling', () => {
       result.current.update('name')({ target: { value: 'Jane' } })
       result.current.update('email')({ target: { value: 'jane@example.com' } })
       result.current.update('subject')({ target: { value: 'Test' } })
-      result.current.update('message')({ target: { value: 'Long enough test message here please.' } })
+      result.current.update('message')({
+        target: { value: 'Long enough test message here please.' },
+      })
     })
 
     await act(async () => {

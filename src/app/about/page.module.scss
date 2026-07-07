@@ -1,13 +1,15 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
-.page { padding-block: var(--space-12) var(--space-20); }
+.page {
+  padding-block: var(--space-12) var(--space-20);
+}
 
 .mission {
   max-width: 720px;
   margin-bottom: var(--space-14);
 }
 .eyebrow {
-  @include type-scale('eyebrow');
+  @include type-scale("eyebrow");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
@@ -15,13 +17,16 @@
   margin-bottom: var(--space-4);
 }
 .heading {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   color: var(--color-text-primary);
   margin-bottom: var(--space-5);
-  em { font-style: italic; color: var(--color-interactive-primary); }
+  em {
+    font-style: italic;
+    color: var(--color-interactive-primary);
+  }
 }
 .sub {
-  @include type-scale('body-lg');
+  @include type-scale("body-lg");
   color: var(--color-text-secondary);
   max-width: 60ch;
 }
@@ -35,23 +40,27 @@
   padding-block: var(--space-10);
   border-top: 1px solid var(--color-border-subtle);
   border-bottom: 1px solid var(--color-border-subtle);
-  @include respond-to('md') { grid-template-columns: repeat(4, 1fr); }
+  @include respond-to("md") {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-.stat { text-align: center; }
+.stat {
+  text-align: center;
+}
 .statValue {
-  @include type-scale('display-xs');
+  @include type-scale("display-xs");
   color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
   display: block;
 }
 .statLabel {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
 // ── Section ───────────────────────────────────────────────────────────────────
 .sectionTitle {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   color: var(--color-text-primary);
   margin-bottom: var(--space-6);
 }
@@ -62,7 +71,9 @@
   grid-template-columns: 1fr;
   gap: var(--space-5);
   margin-bottom: var(--space-14);
-  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .valueCard {
   @include surface(1);
@@ -73,12 +84,12 @@
   gap: var(--space-3);
 }
 .valueTitle {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
 }
 .valueDesc {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   color: var(--color-text-secondary);
 }
 
@@ -88,8 +99,12 @@
   grid-template-columns: 1fr;
   gap: var(--space-4);
   margin-bottom: var(--space-16);
-  @include respond-to('md') { grid-template-columns: repeat(2, 1fr); }
-  @include respond-to('lg') { grid-template-columns: repeat(3, 1fr); }
+  @include respond-to("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .member {
   @include surface(1);
@@ -99,15 +114,17 @@
   align-items: center;
   gap: var(--space-4);
 }
-.memberEmoji { font-size: 2.5rem; }
+.memberEmoji {
+  font-size: 2.5rem;
+}
 .memberName {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   display: block;
 }
 .memberRole {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -123,11 +140,11 @@
   gap: var(--space-4);
 }
 .ctaTitle {
-  @include type-scale('heading-md');
+  @include type-scale("heading-md");
   color: var(--color-text-primary);
 }
 .ctaDesc {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   color: var(--color-text-secondary);
 }
 .ctaBtns {

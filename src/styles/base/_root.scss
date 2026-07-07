@@ -8,232 +8,231 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 :root {
-
   // ── Font families ───────────────────────────────────────────────────────────
   // Actual font-family values are injected by Next.js next/font in layout.jsx
   // as CSS variables on the <html> element. These are the fallback declarations.
-  --font-editorial: var(--font-eb-garamond, 'Georgia', serif);
-  --font-sans:      var(--font-inter, 'Helvetica Neue', sans-serif);
-  --font-display:   var(--font-playfair-display, 'Georgia', serif);
-  --font-mono:      var(--font-jetbrains-mono, 'Courier New', monospace);
+  --font-editorial: var(--font-eb-garamond, "Georgia", serif);
+  --font-sans: var(--font-inter, "Helvetica Neue", sans-serif);
+  --font-display: var(--font-playfair-display, "Georgia", serif);
+  --font-mono: var(--font-jetbrains-mono, "Courier New", monospace);
 
   // ── Font weights ────────────────────────────────────────────────────────────
-  --font-weight-regular:  400;
-  --font-weight-medium:   500;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
   --font-weight-semibold: 600;
-  --font-weight-bold:     700;
+  --font-weight-bold: 700;
 
   // ── Line heights ────────────────────────────────────────────────────────────
-  --line-height-tight:   1.15;
-  --line-height-snug:    1.3;
-  --line-height-normal:  1.5;
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.3;
+  --line-height-normal: 1.5;
   --line-height-relaxed: 1.6;
-  --line-height-loose:   1.8;
+  --line-height-loose: 1.8;
 
   // ── Letter spacing ──────────────────────────────────────────────────────────
-  --tracking-tight:   -0.02em;
-  --tracking-normal:   0em;
-  --tracking-wide:     0.04em;
-  --tracking-wider:    0.08em;
-  --tracking-widest:   0.12em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+  --tracking-widest: 0.12em;
 
   // ── Type scale ──────────────────────────────────────────────────────────────
   // Each level defines: family, size, weight, line-height, tracking.
   // Consumed by the type-scale() mixin in _mixins.scss.
 
-  --ts-display-2xl-family:      var(--font-display);
-  --ts-display-2xl-size:        5rem;        // 80px
-  --ts-display-2xl-weight:      var(--font-weight-bold);
+  --ts-display-2xl-family: var(--font-display);
+  --ts-display-2xl-size: 5rem; // 80px
+  --ts-display-2xl-weight: var(--font-weight-bold);
   --ts-display-2xl-line-height: var(--line-height-tight);
-  --ts-display-2xl-tracking:    var(--tracking-tight);
+  --ts-display-2xl-tracking: var(--tracking-tight);
 
-  --ts-display-xl-family:      var(--font-display);
-  --ts-display-xl-size:        4rem;         // 64px
-  --ts-display-xl-weight:      var(--font-weight-bold);
+  --ts-display-xl-family: var(--font-display);
+  --ts-display-xl-size: 4rem; // 64px
+  --ts-display-xl-weight: var(--font-weight-bold);
   --ts-display-xl-line-height: var(--line-height-tight);
-  --ts-display-xl-tracking:    var(--tracking-tight);
+  --ts-display-xl-tracking: var(--tracking-tight);
 
-  --ts-display-lg-family:      var(--font-display);
-  --ts-display-lg-size:        3rem;         // 48px
-  --ts-display-lg-weight:      var(--font-weight-semibold);
+  --ts-display-lg-family: var(--font-display);
+  --ts-display-lg-size: 3rem; // 48px
+  --ts-display-lg-weight: var(--font-weight-semibold);
   --ts-display-lg-line-height: var(--line-height-tight);
-  --ts-display-lg-tracking:    var(--tracking-tight);
+  --ts-display-lg-tracking: var(--tracking-tight);
 
-  --ts-display-md-family:      var(--font-display);
-  --ts-display-md-size:        2.5rem;       // 40px
-  --ts-display-md-weight:      var(--font-weight-semibold);
+  --ts-display-md-family: var(--font-display);
+  --ts-display-md-size: 2.5rem; // 40px
+  --ts-display-md-weight: var(--font-weight-semibold);
   --ts-display-md-line-height: var(--line-height-snug);
-  --ts-display-md-tracking:    var(--tracking-tight);
+  --ts-display-md-tracking: var(--tracking-tight);
 
-  --ts-display-sm-family:      var(--font-editorial);
-  --ts-display-sm-size:        2rem;         // 32px
-  --ts-display-sm-weight:      var(--font-weight-semibold);
+  --ts-display-sm-family: var(--font-editorial);
+  --ts-display-sm-size: 2rem; // 32px
+  --ts-display-sm-weight: var(--font-weight-semibold);
   --ts-display-sm-line-height: var(--line-height-snug);
-  --ts-display-sm-tracking:    var(--tracking-normal);
+  --ts-display-sm-tracking: var(--tracking-normal);
 
-  --ts-display-xs-family:      var(--font-editorial);
-  --ts-display-xs-size:        1.5rem;       // 24px
-  --ts-display-xs-weight:      var(--font-weight-semibold);
+  --ts-display-xs-family: var(--font-editorial);
+  --ts-display-xs-size: 1.5rem; // 24px
+  --ts-display-xs-weight: var(--font-weight-semibold);
   --ts-display-xs-line-height: var(--line-height-snug);
-  --ts-display-xs-tracking:    var(--tracking-normal);
+  --ts-display-xs-tracking: var(--tracking-normal);
 
-  --ts-heading-xl-family:      var(--font-editorial);
-  --ts-heading-xl-size:        1.75rem;      // 28px
-  --ts-heading-xl-weight:      var(--font-weight-semibold);
+  --ts-heading-xl-family: var(--font-editorial);
+  --ts-heading-xl-size: 1.75rem; // 28px
+  --ts-heading-xl-weight: var(--font-weight-semibold);
   --ts-heading-xl-line-height: var(--line-height-snug);
-  --ts-heading-xl-tracking:    var(--tracking-normal);
+  --ts-heading-xl-tracking: var(--tracking-normal);
 
-  --ts-heading-lg-family:      var(--font-editorial);
-  --ts-heading-lg-size:        1.5rem;       // 24px
-  --ts-heading-lg-weight:      var(--font-weight-semibold);
+  --ts-heading-lg-family: var(--font-editorial);
+  --ts-heading-lg-size: 1.5rem; // 24px
+  --ts-heading-lg-weight: var(--font-weight-semibold);
   --ts-heading-lg-line-height: var(--line-height-snug);
-  --ts-heading-lg-tracking:    var(--tracking-normal);
+  --ts-heading-lg-tracking: var(--tracking-normal);
 
-  --ts-heading-md-family:      var(--font-editorial);
-  --ts-heading-md-size:        1.25rem;      // 20px
-  --ts-heading-md-weight:      var(--font-weight-medium);
+  --ts-heading-md-family: var(--font-editorial);
+  --ts-heading-md-size: 1.25rem; // 20px
+  --ts-heading-md-weight: var(--font-weight-medium);
   --ts-heading-md-line-height: var(--line-height-normal);
-  --ts-heading-md-tracking:    var(--tracking-normal);
+  --ts-heading-md-tracking: var(--tracking-normal);
 
-  --ts-heading-sm-family:      var(--font-editorial);
-  --ts-heading-sm-size:        1.125rem;     // 18px
-  --ts-heading-sm-weight:      var(--font-weight-medium);
+  --ts-heading-sm-family: var(--font-editorial);
+  --ts-heading-sm-size: 1.125rem; // 18px
+  --ts-heading-sm-weight: var(--font-weight-medium);
   --ts-heading-sm-line-height: var(--line-height-normal);
-  --ts-heading-sm-tracking:    var(--tracking-normal);
+  --ts-heading-sm-tracking: var(--tracking-normal);
 
-  --ts-body-xl-family:      var(--font-editorial);
-  --ts-body-xl-size:        1.1875rem;    // 19px
-  --ts-body-xl-weight:      var(--font-weight-regular);
+  --ts-body-xl-family: var(--font-editorial);
+  --ts-body-xl-size: 1.1875rem; // 19px
+  --ts-body-xl-weight: var(--font-weight-regular);
   --ts-body-xl-line-height: var(--line-height-loose);
-  --ts-body-xl-tracking:    var(--tracking-normal);
+  --ts-body-xl-tracking: var(--tracking-normal);
 
-  --ts-body-lg-family:      var(--font-editorial);
-  --ts-body-lg-size:        1.0625rem;    // 17px
-  --ts-body-lg-weight:      var(--font-weight-regular);
+  --ts-body-lg-family: var(--font-editorial);
+  --ts-body-lg-size: 1.0625rem; // 17px
+  --ts-body-lg-weight: var(--font-weight-regular);
   --ts-body-lg-line-height: var(--line-height-relaxed);
-  --ts-body-lg-tracking:    var(--tracking-normal);
+  --ts-body-lg-tracking: var(--tracking-normal);
 
-  --ts-body-md-family:      var(--font-sans);
-  --ts-body-md-size:        1rem;          // 16px
-  --ts-body-md-weight:      var(--font-weight-regular);
+  --ts-body-md-family: var(--font-sans);
+  --ts-body-md-size: 1rem; // 16px
+  --ts-body-md-weight: var(--font-weight-regular);
   --ts-body-md-line-height: var(--line-height-relaxed);
-  --ts-body-md-tracking:    var(--tracking-normal);
+  --ts-body-md-tracking: var(--tracking-normal);
 
-  --ts-body-sm-family:      var(--font-sans);
-  --ts-body-sm-size:        0.875rem;      // 14px
-  --ts-body-sm-weight:      var(--font-weight-regular);
+  --ts-body-sm-family: var(--font-sans);
+  --ts-body-sm-size: 0.875rem; // 14px
+  --ts-body-sm-weight: var(--font-weight-regular);
   --ts-body-sm-line-height: var(--line-height-normal);
-  --ts-body-sm-tracking:    var(--tracking-normal);
+  --ts-body-sm-tracking: var(--tracking-normal);
 
-  --ts-label-lg-family:      var(--font-sans);
-  --ts-label-lg-size:        0.8125rem;    // 13px
-  --ts-label-lg-weight:      var(--font-weight-medium);
+  --ts-label-lg-family: var(--font-sans);
+  --ts-label-lg-size: 0.8125rem; // 13px
+  --ts-label-lg-weight: var(--font-weight-medium);
   --ts-label-lg-line-height: var(--line-height-normal);
-  --ts-label-lg-tracking:    var(--tracking-wide);
+  --ts-label-lg-tracking: var(--tracking-wide);
 
-  --ts-label-md-family:      var(--font-sans);
-  --ts-label-md-size:        0.75rem;      // 12px
-  --ts-label-md-weight:      var(--font-weight-medium);
+  --ts-label-md-family: var(--font-sans);
+  --ts-label-md-size: 0.75rem; // 12px
+  --ts-label-md-weight: var(--font-weight-medium);
   --ts-label-md-line-height: var(--line-height-normal);
-  --ts-label-md-tracking:    var(--tracking-wider);
+  --ts-label-md-tracking: var(--tracking-wider);
 
-  --ts-label-sm-family:      var(--font-sans);
-  --ts-label-sm-size:        0.6875rem;    // 11px
-  --ts-label-sm-weight:      var(--font-weight-semibold);
+  --ts-label-sm-family: var(--font-sans);
+  --ts-label-sm-size: 0.6875rem; // 11px
+  --ts-label-sm-weight: var(--font-weight-semibold);
   --ts-label-sm-line-height: var(--line-height-normal);
-  --ts-label-sm-tracking:    var(--tracking-widest);
+  --ts-label-sm-tracking: var(--tracking-widest);
 
-  --ts-mono-lg-family:      var(--font-mono);
-  --ts-mono-lg-size:        0.9375rem;    // 15px
-  --ts-mono-lg-weight:      var(--font-weight-regular);
+  --ts-mono-lg-family: var(--font-mono);
+  --ts-mono-lg-size: 0.9375rem; // 15px
+  --ts-mono-lg-weight: var(--font-weight-regular);
   --ts-mono-lg-line-height: var(--line-height-relaxed);
-  --ts-mono-lg-tracking:    var(--tracking-normal);
+  --ts-mono-lg-tracking: var(--tracking-normal);
 
-  --ts-mono-md-family:      var(--font-mono);
-  --ts-mono-md-size:        0.8125rem;    // 13px
-  --ts-mono-md-weight:      var(--font-weight-regular);
+  --ts-mono-md-family: var(--font-mono);
+  --ts-mono-md-size: 0.8125rem; // 13px
+  --ts-mono-md-weight: var(--font-weight-regular);
   --ts-mono-md-line-height: var(--line-height-relaxed);
-  --ts-mono-md-tracking:    var(--tracking-normal);
+  --ts-mono-md-tracking: var(--tracking-normal);
 
-  --ts-mono-sm-family:      var(--font-mono);
-  --ts-mono-sm-size:        0.75rem;      // 12px
-  --ts-mono-sm-weight:      var(--font-weight-regular);
+  --ts-mono-sm-family: var(--font-mono);
+  --ts-mono-sm-size: 0.75rem; // 12px
+  --ts-mono-sm-weight: var(--font-weight-regular);
   --ts-mono-sm-line-height: var(--line-height-normal);
-  --ts-mono-sm-tracking:    var(--tracking-normal);
+  --ts-mono-sm-tracking: var(--tracking-normal);
 
-  --ts-caption-family:      var(--font-sans);
-  --ts-caption-size:        0.75rem;       // 12px
-  --ts-caption-weight:      var(--font-weight-regular);
+  --ts-caption-family: var(--font-sans);
+  --ts-caption-size: 0.75rem; // 12px
+  --ts-caption-weight: var(--font-weight-regular);
   --ts-caption-line-height: var(--line-height-normal);
-  --ts-caption-tracking:    var(--tracking-normal);
+  --ts-caption-tracking: var(--tracking-normal);
 
-  --ts-eyebrow-family:      var(--font-sans);
-  --ts-eyebrow-size:        0.6875rem;     // 11px
-  --ts-eyebrow-weight:      var(--font-weight-semibold);
+  --ts-eyebrow-family: var(--font-sans);
+  --ts-eyebrow-size: 0.6875rem; // 11px
+  --ts-eyebrow-weight: var(--font-weight-semibold);
   --ts-eyebrow-line-height: var(--line-height-normal);
-  --ts-eyebrow-tracking:    var(--tracking-widest);
+  --ts-eyebrow-tracking: var(--tracking-widest);
 
   // ── Spacing ─────────────────────────────────────────────────────────────────
   // 4pt grid system. All spacing is a multiple of 4px.
-  --space-0:  0px;
-  --space-1:  0.25rem;   // 4px
-  --space-2:  0.5rem;    // 8px
-  --space-3:  0.75rem;   // 12px
-  --space-4:  1rem;      // 16px
-  --space-5:  1.25rem;   // 20px
-  --space-6:  1.5rem;    // 24px
-  --space-7:  1.75rem;   // 28px
-  --space-8:  2rem;      // 32px
-  --space-10: 2.5rem;    // 40px
-  --space-12: 3rem;      // 48px
-  --space-14: 3.5rem;    // 56px
-  --space-16: 4rem;      // 64px
-  --space-20: 5rem;      // 80px
-  --space-24: 6rem;      // 96px
-  --space-32: 8rem;      // 128px
+  --space-0: 0px;
+  --space-1: 0.25rem; // 4px
+  --space-2: 0.5rem; // 8px
+  --space-3: 0.75rem; // 12px
+  --space-4: 1rem; // 16px
+  --space-5: 1.25rem; // 20px
+  --space-6: 1.5rem; // 24px
+  --space-7: 1.75rem; // 28px
+  --space-8: 2rem; // 32px
+  --space-10: 2.5rem; // 40px
+  --space-12: 3rem; // 48px
+  --space-14: 3.5rem; // 56px
+  --space-16: 4rem; // 64px
+  --space-20: 5rem; // 80px
+  --space-24: 6rem; // 96px
+  --space-32: 8rem; // 128px
 
   // ── Semantic spacing ─────────────────────────────────────────────────────────
-  --space-page-margin-mobile:  var(--space-6);    // 24px
-  --space-page-margin-tablet:  var(--space-10);   // 40px
-  --space-page-margin-desktop: var(--space-16);   // 64px
-  --space-section-gap:         var(--space-24);   // 96px
-  --space-content-gap:         var(--space-12);   // 48px
-  --space-component-gap:       var(--space-6);    // 24px
-  --space-card-padding:        var(--space-6);    // 24px
-  --space-card-padding-sm:     var(--space-4);    // 16px
+  --space-page-margin-mobile: var(--space-6); // 24px
+  --space-page-margin-tablet: var(--space-10); // 40px
+  --space-page-margin-desktop: var(--space-16); // 64px
+  --space-section-gap: var(--space-24); // 96px
+  --space-content-gap: var(--space-12); // 48px
+  --space-component-gap: var(--space-6); // 24px
+  --space-card-padding: var(--space-6); // 24px
+  --space-card-padding-sm: var(--space-4); // 16px
 
   // ── Border radius ────────────────────────────────────────────────────────────
-  --radius-0:    0px;
-  --radius-2:    2px;
-  --radius-4:    4px;
-  --radius-6:    6px;
-  --radius-8:    8px;
-  --radius-12:   12px;
-  --radius-16:   16px;
-  --radius-full:  9999px;
+  --radius-0: 0px;
+  --radius-2: 2px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-full: 9999px;
 
   // ── Motion ───────────────────────────────────────────────────────────────────
   // Durations
-  --duration-instant:    80ms;
-  --duration-fast:       150ms;
-  --duration-normal:     250ms;
-  --duration-slow:       400ms;
+  --duration-instant: 80ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
   --duration-deliberate: 600ms;
 
   // Easings — for CSS transitions. Framer Motion uses its own spring config.
-  --ease-out-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-smooth:   cubic-bezier(0.7, 0, 0.84, 0);
-  --ease-editorial:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-linear:      linear;
+  --ease-out-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-smooth: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-editorial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-linear: linear;
 
   // ── Layout ───────────────────────────────────────────────────────────────────
   --max-width-content: 1280px;
   --max-width-article: 740px;
-  --max-width-wide:    1440px;
-  --max-width-narrow:  560px;
+  --max-width-wide: 1440px;
+  --max-width-narrow: 560px;
 
   // ── Grid ─────────────────────────────────────────────────────────────────────
-  --grid-columns:      12;
-  --grid-gutter:       var(--space-6);   // 24px
-  --grid-gutter-sm:    var(--space-4);   // 16px (mobile)
+  --grid-columns: 12;
+  --grid-gutter: var(--space-6); // 24px
+  --grid-gutter-sm: var(--space-4); // 16px (mobile)
 }

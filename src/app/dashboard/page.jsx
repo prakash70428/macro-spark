@@ -13,7 +13,9 @@ export default function DashboardPage() {
       <Container>
         <FadeIn direction="up">
           <div style={{ paddingBlock: 'var(--space-12) var(--space-20)', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '2rem', color: 'var(--color-text-primary)', marginBottom: '1rem' }}>
+            <h1
+              style={{ fontSize: '2rem', color: 'var(--color-text-primary)', marginBottom: '1rem' }}
+            >
               Dashboard
             </h1>
             <p style={{ color: 'var(--color-text-secondary)' }}>

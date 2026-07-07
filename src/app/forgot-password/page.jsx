@@ -19,9 +19,7 @@ export default function ForgotPasswordPage() {
           </Link>
 
           <h1 className={styles.heading}>Reset your password</h1>
-          <p className={styles.sub}>
-            Enter your email and we&apos;ll send a reset link.
-          </p>
+          <p className={styles.sub}>Enter your email and we&apos;ll send a reset link.</p>
 
           <ForgotPasswordForm />
         </div>

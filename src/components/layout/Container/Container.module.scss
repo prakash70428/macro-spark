@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .container {
   width: 100%;
@@ -6,11 +6,11 @@
   margin-inline: auto;
   padding-inline: var(--space-page-margin-mobile);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     padding-inline: var(--space-page-margin-tablet);
   }
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-inline: var(--space-page-margin-desktop);
   }
 }

@@ -1,9 +1,9 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .section {
   padding-block: var(--space-20);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-24);
   }
 }
@@ -25,14 +25,14 @@
 }
 
 .eyebrow {
-  @include type-scale('eyebrow');
+  @include type-scale("eyebrow");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
 }
 
 .heading {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   color: var(--color-text-primary);
 }
 
@@ -42,7 +42,7 @@
   grid-template-columns: 1fr;
   gap: var(--space-6);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
   }
@@ -50,7 +50,7 @@
 
 // Featured article spans full height on the left
 .featured {
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     grid-row: 1 / 3;
   }
 }
@@ -72,28 +72,24 @@
 .featuredImage {
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: linear-gradient(
-    135deg,
-    var(--color-bg-elevated) 0%,
-    rgba(59, 130, 246, 0.08) 100%
-  );
+  background: linear-gradient(135deg, var(--color-bg-elevated) 0%, rgba(59, 130, 246, 0.08) 100%);
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
 
   // Placeholder graphic
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(135deg, rgba(59,130,246,0.1) 0%, transparent 60%),
+      linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 60%),
       repeating-linear-gradient(
         90deg,
         transparent,
         transparent 40px,
-        rgba(255,255,255,0.02) 40px,
-        rgba(255,255,255,0.02) 41px
+        rgba(255, 255, 255, 0.02) 40px,
+        rgba(255, 255, 255, 0.02) 41px
       );
   }
 }
@@ -102,7 +98,7 @@
   position: absolute;
   top: var(--space-4);
   left: var(--space-4);
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-on-primary);
@@ -120,7 +116,7 @@
 }
 
 .featuredHeadline {
-  @include type-scale('heading-xl');
+  @include type-scale("heading-xl");
   color: var(--color-text-primary);
   transition: color var(--duration-fast) ease;
 
@@ -132,7 +128,7 @@
 }
 
 .featuredExcerpt {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   color: var(--color-text-secondary);
   @include truncate-multiline(3);
   flex: 1;
@@ -148,7 +144,7 @@
 }
 
 .author {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-secondary);
 }
 
@@ -159,12 +155,12 @@
 }
 
 .readTime {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
 .date {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -183,7 +179,7 @@
 }
 
 .secondaryIndex {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   font-family: var(--font-mono);
   color: var(--color-border-strong);
   flex-shrink: 0;
@@ -201,14 +197,14 @@
 }
 
 .secondaryTag {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-interactive-primary);
 }
 
 .secondaryHeadline {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   color: var(--color-text-primary);
   @include truncate-multiline(2);
   transition: color var(--duration-fast) ease;
@@ -221,7 +217,7 @@
 }
 
 .secondaryMeta {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
   margin-top: var(--space-1);
 }

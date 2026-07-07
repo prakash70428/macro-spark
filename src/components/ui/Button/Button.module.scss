@@ -1,8 +1,8 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Base ──────────────────────────────────────────────────────────────────────
 .btn {
-  @include type-scale('label-lg');
+  @include type-scale("label-lg");
   @include focus-ring;
   @include interactive-scale;
 
@@ -17,12 +17,12 @@
   text-decoration: none;
   transition:
     background-color var(--duration-fast) var(--ease-out-smooth),
-    border-color     var(--duration-fast) var(--ease-out-smooth),
-    color            var(--duration-fast) var(--ease-out-smooth),
-    opacity          var(--duration-fast) ease;
+    border-color var(--duration-fast) var(--ease-out-smooth),
+    color var(--duration-fast) var(--ease-out-smooth),
+    opacity var(--duration-fast) ease;
 
   &:disabled,
-  &[aria-disabled='true'] {
+  &[aria-disabled="true"] {
     opacity: 0.45;
     cursor: not-allowed;
     pointer-events: none;
@@ -31,7 +31,7 @@
 
 // ── Sizes ─────────────────────────────────────────────────────────────────────
 .sm {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-4);
 }
@@ -41,7 +41,7 @@
 }
 
 .lg {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   font-weight: var(--font-weight-medium);
   padding: var(--space-4) var(--space-8);
   border-radius: var(--radius-8);
@@ -117,7 +117,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .loadingText {

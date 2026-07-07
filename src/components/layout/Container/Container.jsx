@@ -20,11 +20,7 @@ export default function Container({
 }) {
   return (
     <Tag
-      className={clsx(
-        styles.container,
-        size !== 'default' && styles[size],
-        className
-      )}
+      className={clsx(styles.container, size !== 'default' && styles[size], className)}
       {...props}
     >
       {children}

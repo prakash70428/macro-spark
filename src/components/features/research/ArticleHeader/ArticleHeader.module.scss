@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .header {
   padding-bottom: var(--space-10);
@@ -15,7 +15,7 @@
 }
 
 .back {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   @include focus-ring;
   color: var(--color-text-tertiary);
   text-decoration: none;
@@ -25,12 +25,14 @@
   transition: color var(--duration-fast) ease;
 
   @media (hover: hover) {
-    &:hover { color: var(--color-text-primary); }
+    &:hover {
+      color: var(--color-text-primary);
+    }
   }
 }
 
 .tag {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-interactive-primary);
@@ -40,7 +42,7 @@
 }
 
 .typeBadge {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: capitalize;
   color: var(--color-text-tertiary);
   border: 1px solid var(--color-border-default);
@@ -49,18 +51,18 @@
 }
 
 .headline {
-  @include type-scale('display-md');
+  @include type-scale("display-md");
   color: var(--color-text-primary);
   margin-bottom: var(--space-6);
   text-wrap: balance;
 
-  @include respond-to('lg') {
-    @include type-scale('display-lg');
+  @include respond-to("lg") {
+    @include type-scale("display-lg");
   }
 }
 
 .excerpt {
-  @include type-scale('body-xl');
+  @include type-scale("body-xl");
   color: var(--color-text-secondary);
   margin-bottom: var(--space-8);
   max-width: 65ch;
@@ -80,13 +82,13 @@
 }
 
 .authorName {
-  @include type-scale('label-lg');
+  @include type-scale("label-lg");
   color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
 .authorRole {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -103,13 +105,13 @@
 }
 
 .metaLabel {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
 }
 
 .metaValue {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-secondary);
 }

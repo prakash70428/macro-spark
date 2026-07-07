@@ -22,7 +22,11 @@ export default function NewsletterForm() {
   }
 
   return (
-    <form className={styles.newsletterForm} onSubmit={handleSubmit} aria-label="Newsletter subscription">
+    <form
+      className={styles.newsletterForm}
+      onSubmit={handleSubmit}
+      aria-label="Newsletter subscription"
+    >
       <input
         type="email"
         className={styles.emailInput}

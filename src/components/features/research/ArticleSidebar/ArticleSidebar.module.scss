@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .sidebar {
   display: flex;
@@ -8,7 +8,7 @@
 
 // Sticky on desktop
 .sticky {
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     position: sticky;
     top: calc(72px + var(--space-6)); // navbar height + gap
   }
@@ -25,7 +25,7 @@
 }
 
 .widgetTitle {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
@@ -48,14 +48,14 @@
 }
 
 .relatedTag {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-interactive-primary);
 }
 
 .relatedLink {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   @include focus-ring;
   color: var(--color-text-primary);
   text-decoration: none;
@@ -64,12 +64,14 @@
   display: block;
 
   @media (hover: hover) {
-    &:hover { color: var(--color-interactive-primary); }
+    &:hover {
+      color: var(--color-interactive-primary);
+    }
   }
 }
 
 .relatedMeta {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -80,25 +82,21 @@
 
 // ── Newsletter widget ─────────────────────────────────────────────────────────
 .newsletterWidget {
-  background: linear-gradient(
-    135deg,
-    var(--color-bg-elevated) 0%,
-    rgba(59, 130, 246, 0.05) 100%
-  );
+  background: linear-gradient(135deg, var(--color-bg-elevated) 0%, rgba(59, 130, 246, 0.05) 100%);
 }
 
 .nlHeading {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   color: var(--color-text-primary);
 }
 
 .nlBody {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   color: var(--color-text-secondary);
 }
 
 .nlInput {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   @include focus-ring;
   width: 100%;
   padding: var(--space-3) var(--space-4);
@@ -108,6 +106,11 @@
   color: var(--color-text-primary);
   transition: border-color var(--duration-fast) ease;
 
-  &::placeholder { color: var(--color-text-tertiary); }
-  &:focus-visible { border-color: var(--color-interactive-primary); outline: none; }
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+  &:focus-visible {
+    border-color: var(--color-interactive-primary);
+    outline: none;
+  }
 }

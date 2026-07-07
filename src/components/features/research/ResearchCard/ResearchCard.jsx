@@ -26,7 +26,12 @@ export default function ResearchCard({ article, featured = false }) {
         </div>
         <div className={styles.meta}>
           <span className={styles.readTime}>{article.readTime} read</span>
-          <time className={styles.date} dateTime={new Date(article.date).toISOString().split('T')[0]}>{article.date}</time>
+          <time
+            className={styles.date}
+            dateTime={new Date(article.date).toISOString().split('T')[0]}
+          >
+            {article.date}
+          </time>
         </div>
       </div>
     </Link>

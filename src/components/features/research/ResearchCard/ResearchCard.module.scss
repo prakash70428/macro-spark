@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .card {
   @include surface(1);
@@ -14,7 +14,7 @@
   height: 100%;
   transition:
     border-color var(--duration-normal) var(--ease-out-smooth),
-    transform    var(--duration-normal) var(--ease-out-smooth),
+    transform var(--duration-normal) var(--ease-out-smooth),
     background-color var(--duration-fast) ease;
 
   @media (hover: hover) {
@@ -33,14 +33,14 @@
 }
 
 .tag {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-interactive-primary);
 }
 
 .typeBadge {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: capitalize;
   color: var(--color-text-tertiary);
   background-color: var(--color-bg-elevated);
@@ -51,7 +51,7 @@
 
 // ── Headline ──────────────────────────────────────────────────────────────────
 .headline {
-  @include type-scale('heading-md');
+  @include type-scale("heading-md");
   color: var(--color-text-primary);
   @include truncate-multiline(2);
   flex: 1;
@@ -66,7 +66,7 @@
 
 // ── Excerpt ───────────────────────────────────────────────────────────────────
 .excerpt {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   color: var(--color-text-secondary);
   @include truncate-multiline(3);
 }
@@ -90,12 +90,12 @@
 }
 
 .authorName {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-primary);
 }
 
 .authorRole {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -107,26 +107,22 @@
 }
 
 .readTime {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
 .date {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
 // ── Featured variant ──────────────────────────────────────────────────────────
 .featured {
   border-color: rgba(59, 130, 246, 0.25);
-  background: linear-gradient(
-    135deg,
-    var(--color-bg-surface) 0%,
-    rgba(59, 130, 246, 0.03) 100%
-  );
+  background: linear-gradient(135deg, var(--color-bg-surface) 0%, rgba(59, 130, 246, 0.03) 100%);
 
   .headline {
-    @include type-scale('heading-xl');
+    @include type-scale("heading-xl");
     -webkit-line-clamp: 3;
   }
 }

@@ -4,10 +4,10 @@
 // All functions can be called from any layer without creating output.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'sass:math';
-@use 'sass:map';
-@use 'sass:list';
-@use 'tokens' as t;
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "tokens" as t;
 
 // ── rem() ─────────────────────────────────────────────────────────────────────
 // Convert a pixel value to rem.

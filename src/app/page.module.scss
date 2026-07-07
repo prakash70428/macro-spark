@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 .hero {
@@ -7,7 +7,7 @@
   display: flex;
   align-items: flex-end;
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     min-height: 70vh;
     padding-block: var(--space-24) var(--space-20);
   }
@@ -21,7 +21,7 @@
 .heroHeading {
   margin-bottom: var(--space-6);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     max-width: 14ch;
   }
 }
@@ -51,7 +51,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -60,7 +60,7 @@
 .analysis {
   padding-block: var(--space-16);
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-block: var(--space-24);
   }
 }
@@ -77,11 +77,11 @@
   grid-template-columns: 1fr;
   gap: var(--space-6);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     grid-template-columns: repeat(3, 1fr);
   }
 }

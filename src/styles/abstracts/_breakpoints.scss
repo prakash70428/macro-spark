@@ -3,8 +3,8 @@
 // Mobile-first breakpoint mixin. Single source of truth for all media queries.
 // ─────────────────────────────────────────────────────────────────────────────
 
-@use 'sass:map';
-@use 'tokens' as t;
+@use "sass:map";
+@use "tokens" as t;
 
 // ── respond-to() ──────────────────────────────────────────────────────────────
 // Wraps content in a min-width media query using the $breakpoints map.

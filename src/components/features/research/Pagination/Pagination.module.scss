@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 .wrapper {
   display: flex;
@@ -9,7 +9,7 @@
 }
 
 .btn {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   @include focus-ring(2px);
   display: flex;
   align-items: center;
@@ -25,8 +25,8 @@
   cursor: pointer;
   transition:
     background-color var(--duration-fast) ease,
-    border-color     var(--duration-fast) ease,
-    color            var(--duration-fast) ease;
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
 
   @media (hover: hover) {
     &:hover:not(.active):not(.disabled) {
@@ -52,14 +52,14 @@
 }
 
 .ellipsis {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-tertiary);
   padding-inline: var(--space-2);
   pointer-events: none;
 }
 
 .info {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
   text-align: center;
   padding-top: var(--space-3);

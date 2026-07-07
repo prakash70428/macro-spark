@@ -3,38 +3,38 @@ import styles from './Typography.module.scss'
 
 const scaleMap = {
   'display-2xl': styles.display2xl,
-  'display-xl':  styles.displayXl,
-  'display-lg':  styles.displayLg,
-  'display-md':  styles.displayMd,
-  'display-sm':  styles.displaySm,
-  'heading-xl':  styles.headingXl,
-  'heading-lg':  styles.headingLg,
-  'heading-md':  styles.headingMd,
-  'heading-sm':  styles.headingSm,
-  'body-xl':     styles.bodyXl,
-  'body-lg':     styles.bodyLg,
-  'body-md':     styles.bodyMd,
-  'body-sm':     styles.bodySm,
-  'label-lg':    styles.labelLg,
-  'label-md':    styles.labelMd,
-  'label-sm':    styles.labelSm,
-  eyebrow:       styles.eyebrow,
-  caption:       styles.caption,
+  'display-xl': styles.displayXl,
+  'display-lg': styles.displayLg,
+  'display-md': styles.displayMd,
+  'display-sm': styles.displaySm,
+  'heading-xl': styles.headingXl,
+  'heading-lg': styles.headingLg,
+  'heading-md': styles.headingMd,
+  'heading-sm': styles.headingSm,
+  'body-xl': styles.bodyXl,
+  'body-lg': styles.bodyLg,
+  'body-md': styles.bodyMd,
+  'body-sm': styles.bodySm,
+  'label-lg': styles.labelLg,
+  'label-md': styles.labelMd,
+  'label-sm': styles.labelSm,
+  eyebrow: styles.eyebrow,
+  caption: styles.caption,
 }
 
 const colorMap = {
-  primary:   styles.colorPrimary,
+  primary: styles.colorPrimary,
   secondary: styles.colorSecondary,
-  tertiary:  styles.colorTertiary,
-  accent:    styles.colorAccent,
-  positive:  styles.colorPositive,
-  negative:  styles.colorNegative,
+  tertiary: styles.colorTertiary,
+  accent: styles.colorAccent,
+  positive: styles.colorPositive,
+  negative: styles.colorNegative,
 }
 
 const alignMap = {
-  left:   styles.alignLeft,
+  left: styles.alignLeft,
   center: styles.alignCenter,
-  right:  styles.alignRight,
+  right: styles.alignRight,
 }
 
 /**

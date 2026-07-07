@@ -36,13 +36,15 @@ export default function NewsletterCTA() {
                 Stay ahead of the market
               </h2>
               <p className={styles.body}>
-                Join 40,000+ professionals who read MacroSpark every week.
-                Concise, expert, and always signal over noise.
+                Join 40,000+ professionals who read MacroSpark every week. Concise, expert, and
+                always signal over noise.
               </p>
               <div className={styles.perks}>
                 {PERKS.map((p) => (
                   <div key={p} className={styles.perk}>
-                    <div className={styles.perkCheck} aria-hidden="true">✓</div>
+                    <div className={styles.perkCheck} aria-hidden="true">
+                      ✓
+                    </div>
                     <span className={styles.perkText}>{p}</span>
                   </div>
                 ))}
@@ -62,7 +64,9 @@ export default function NewsletterCTA() {
             ) : (
               <form className={styles.newsletterForm} onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>
-                  <label htmlFor="nl-name" className={styles.formLabel}>First name</label>
+                  <label htmlFor="nl-name" className={styles.formLabel}>
+                    First name
+                  </label>
                   <input
                     id="nl-name"
                     type="text"
@@ -74,7 +78,9 @@ export default function NewsletterCTA() {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label htmlFor="nl-email" className={styles.formLabel}>Work email</label>
+                  <label htmlFor="nl-email" className={styles.formLabel}>
+                    Work email
+                  </label>
                   <input
                     id="nl-email"
                     type="email"
@@ -86,12 +92,7 @@ export default function NewsletterCTA() {
                   />
                 </div>
                 <div className={styles.submitRow}>
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    loading={status === 'loading'}
-                  >
+                  <Button type="submit" variant="primary" size="lg" loading={status === 'loading'}>
                     Subscribe free
                   </Button>
                   <span className={styles.privacy}>No credit card. No spam.</span>

@@ -1,9 +1,17 @@
 'use strict'
 
 const { Router } = require('express')
-const { register, login, refresh, logout, me, forgotPassword, resetPassword } = require('../controllers/auth.controller')
-const validate       = require('../middlewares/validate.middleware')
-const authenticate   = require('../middlewares/authenticate.middleware')
+const {
+  register,
+  login,
+  refresh,
+  logout,
+  me,
+  forgotPassword,
+  resetPassword,
+} = require('../controllers/auth.controller')
+const validate = require('../middlewares/validate.middleware')
+const authenticate = require('../middlewares/authenticate.middleware')
 const { authLimiter, passwordLimiter } = require('../middlewares/rateLimiter.middleware')
 const { registerSchema, loginSchema, refreshSchema } = require('../validators/auth.validator')
 

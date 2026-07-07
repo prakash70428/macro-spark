@@ -9,15 +9,10 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/dashboard',
-          '/settings',
-          '/bookmarks',
-          '/api/',
-        ],
+        disallow: ['/dashboard', '/settings', '/bookmarks', '/api/'],
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
-    host:    BASE_URL,
+    host: BASE_URL,
   }
 }

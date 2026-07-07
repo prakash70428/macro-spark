@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Root ──────────────────────────────────────────────────────────────────────
 .hero {
@@ -21,8 +21,11 @@
   background-image:
     radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
     radial-gradient(circle at 80% 20%, rgba(201, 169, 74, 0.04) 0%, transparent 50%),
-    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 28px 28px;
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    28px 28px;
 }
 
 // Gradient overlay — makes bottom readable
@@ -37,15 +40,18 @@
   );
 }
 
-[data-theme='light'] .bg {
+[data-theme="light"] .bg {
   background-image:
     radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
     radial-gradient(circle at 80% 20%, rgba(146, 114, 14, 0.04) 0%, transparent 50%),
-    radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 28px 28px;
+    radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    28px 28px;
 }
 
-[data-theme='light'] .bgGradient {
+[data-theme="light"] .bgGradient {
   background: linear-gradient(
     to bottom,
     transparent 0%,
@@ -61,7 +67,7 @@
 }
 
 .eyebrow {
-  @include type-scale('eyebrow');
+  @include type-scale("eyebrow");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-accent-gold);
@@ -71,7 +77,7 @@
   margin-bottom: var(--space-6);
 
   &::before {
-    content: '';
+    content: "";
     display: block;
     width: 32px;
     height: 1px;
@@ -80,14 +86,14 @@
 }
 
 .heading {
-  @include type-scale('display-xl');
+  @include type-scale("display-xl");
   color: var(--color-text-primary);
   max-width: 16ch;
   margin-bottom: var(--space-6);
   text-wrap: balance;
 
-  @include respond-to('lg') {
-    @include type-scale('display-2xl');
+  @include respond-to("lg") {
+    @include type-scale("display-2xl");
   }
 
   em {
@@ -97,7 +103,7 @@
 }
 
 .sub {
-  @include type-scale('body-xl');
+  @include type-scale("body-xl");
   color: var(--color-text-secondary);
   max-width: 52ch;
   margin-bottom: var(--space-10);
@@ -135,7 +141,7 @@
 }
 
 .trustLabel {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-tertiary);
 }
 
@@ -149,7 +155,7 @@
   gap: var(--space-3);
   z-index: 1;
 
-  @include respond-to('xl') {
+  @include respond-to("xl") {
     display: flex;
   }
 }
@@ -165,25 +171,29 @@
 }
 
 .pillLabel {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
 }
 
 .pillValue {
-  @include type-scale('heading-md');
+  @include type-scale("heading-md");
   font-family: var(--font-mono);
-  font-feature-settings: 'tnum' 1;
+  font-feature-settings: "tnum" 1;
   color: var(--color-text-primary);
 }
 
 .pillChange {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   font-family: var(--font-mono);
 
-  &.positive { color: var(--color-market-positive); }
-  &.negative { color: var(--color-market-negative); }
+  &.positive {
+    color: var(--color-market-positive);
+  }
+  &.negative {
+    color: var(--color-market-negative);
+  }
 }
 
 // ── Scroll hint ───────────────────────────────────────────────────────────────
@@ -208,12 +218,19 @@
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(1.1); }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.1);
+  }
 }
 
 .scrollText {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);

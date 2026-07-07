@@ -54,6 +54,7 @@ Browser → macrospark.vercel.app
 ## 📦 Client Content Add Karne Ka Flow
 
 ### Blog Add Karna
+
 ```
 1. src/app/blogs/data.js kholo
 2. BLOGS array mein naya object add karo:
@@ -69,6 +70,7 @@ Browser → macrospark.vercel.app
 ```
 
 ### Article / Research PDF Add Karna
+
 ```
 1. PDF file yahan daalo:
    └── public/
@@ -83,6 +85,7 @@ Browser → macrospark.vercel.app
 ```
 
 ### Quant Project (.py) Add Karna
+
 ```
 1. .py file yahan daalo:
    └── public/
@@ -126,13 +129,14 @@ Browser → macrospark.vercel.app
 
 ## 🚀 Deployment
 
-| Layer      | Platform       | URL                              |
-|------------|----------------|----------------------------------|
-| Frontend   | Vercel         | macrospark.vercel.app            |
-| Backend    | Railway        | macrospark-api.railway.app       |
-| Database   | MongoDB Atlas  | Cloud (free M0 cluster)          |
+| Layer    | Platform      | URL                        |
+| -------- | ------------- | -------------------------- |
+| Frontend | Vercel        | macrospark.vercel.app      |
+| Backend  | Railway       | macrospark-api.railway.app |
+| Database | MongoDB Atlas | Cloud (free M0 cluster)    |
 
 ### Environment Variables (Backend — Railway mein set karna)
+
 ```
 NODE_ENV=production
 PORT=5000
@@ -143,10 +147,11 @@ CLIENT_URL=https://macrospark.vercel.app
 ```
 
 ### Environment Variables (Frontend — Vercel mein set karna)
+
 ```
 NEXT_PUBLIC_API_URL=https://macrospark-api.railway.app
 ```
 
 ---
 
-*Client ko sirf `public/` folder aur `data.js` files touch karni hain — baaki sab automatic.*
+_Client ko sirf `public/` folder aur `data.js` files touch karni hain — baaki sab automatic._

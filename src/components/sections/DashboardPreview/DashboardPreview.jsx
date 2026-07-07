@@ -26,17 +26,17 @@ const FEATURES = [
 const NAV_ITEMS = ['About', 'Blogs', 'Articles', 'Research', 'Quant Projects']
 
 const METRICS = [
-  { label: 'S&P 500',  value: '5,482', change: '+0.82%', pos: true  },
-  { label: 'US 10Y',   value: '4.31%', change: '−3bp',   pos: false },
-  { label: 'Gold',     value: '$2,341', change: '+0.54%', pos: true  },
+  { label: 'S&P 500', value: '5,482', change: '+0.82%', pos: true },
+  { label: 'US 10Y', value: '4.31%', change: '−3bp', pos: false },
+  { label: 'Gold', value: '$2,341', change: '+0.54%', pos: true },
 ]
 
 const BAR_HEIGHTS = [35, 50, 42, 65, 55, 80, 60, 75, 58, 90, 70, 85, 62, 78, 95]
 
 const FEED = [
-  { text: 'Fed Chair Powell speaks at 14:30 ET',   time: '2m ago' },
-  { text: 'UK CPI data beats consensus at 2.3%',   time: '18m ago' },
-  { text: 'ECB minutes: rate cut signals soften',   time: '1h ago' },
+  { text: 'Fed Chair Powell speaks at 14:30 ET', time: '2m ago' },
+  { text: 'UK CPI data beats consensus at 2.3%', time: '18m ago' },
+  { text: 'ECB minutes: rate cut signals soften', time: '1h ago' },
 ]
 
 export default function DashboardPreview() {
@@ -52,14 +52,16 @@ export default function DashboardPreview() {
                 Everything in one workspace
               </h2>
               <p className={styles.body}>
-                MacroSpark brings together live market data, research, and macro intelligence
-                so you stop tab-switching and start thinking.
+                MacroSpark brings together live market data, research, and macro intelligence so you
+                stop tab-switching and start thinking.
               </p>
 
               <div className={styles.features}>
                 {FEATURES.map((f) => (
                   <div key={f.title} className={styles.feature}>
-                    <div className={styles.featureIcon} aria-hidden="true">{f.icon}</div>
+                    <div className={styles.featureIcon} aria-hidden="true">
+                      {f.icon}
+                    </div>
                     <div className={styles.featureText}>
                       <span className={styles.featureTitle}>{f.title}</span>
                       <span className={styles.featureDesc}>{f.desc}</span>
@@ -94,7 +96,10 @@ export default function DashboardPreview() {
                   <div className={styles.dashSidebar}>
                     <div className={styles.dashLogo}>MacroSpark</div>
                     {NAV_ITEMS.map((item, i) => (
-                      <div key={item} className={`${styles.dashNavItem} ${i === 0 ? styles.active : ''}`}>
+                      <div
+                        key={item}
+                        className={`${styles.dashNavItem} ${i === 0 ? styles.active : ''}`}
+                      >
                         <span className={styles.navDot} />
                         {item}
                       </div>
@@ -109,7 +114,9 @@ export default function DashboardPreview() {
                         <div key={m.label} className={styles.dashMetric}>
                           <span className={styles.dashMetricLabel}>{m.label}</span>
                           <span className={styles.dashMetricValue}>{m.value}</span>
-                          <span className={`${styles.dashMetricChange} ${m.pos ? styles.pos : styles.neg}`}>
+                          <span
+                            className={`${styles.dashMetricChange} ${m.pos ? styles.pos : styles.neg}`}
+                          >
                             {m.change}
                           </span>
                         </div>

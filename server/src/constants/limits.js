@@ -36,7 +36,7 @@ const LIMITS = Object.freeze({
   },
 
   // Body parser size limits
-  JSON_BODY_LIMIT:       '10kb',
+  JSON_BODY_LIMIT: '10kb',
   URLENCODED_BODY_LIMIT: '10kb',
 
   // Auth brute-force lockout after N failed logins

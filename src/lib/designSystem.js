@@ -5,11 +5,11 @@
  */
 
 export const COLORS = {
-  interactive:  'var(--color-interactive-primary)',
-  textPrimary:  'var(--color-text-primary)',
-  textSecond:   'var(--color-text-secondary)',
-  positive:     'var(--color-market-positive)',
-  negative:     'var(--color-market-negative)',
+  interactive: 'var(--color-interactive-primary)',
+  textPrimary: 'var(--color-text-primary)',
+  textSecond: 'var(--color-text-secondary)',
+  positive: 'var(--color-market-positive)',
+  negative: 'var(--color-market-negative)',
   chart: [
     'var(--color-chart-1)',
     'var(--color-chart-2)',
@@ -22,30 +22,30 @@ export const COLORS = {
 
 export const FONT_FAMILIES = {
   editorial: 'var(--font-editorial)',
-  sans:      'var(--font-sans)',
-  display:   'var(--font-display)',
-  mono:      'var(--font-mono)',
+  sans: 'var(--font-sans)',
+  display: 'var(--font-display)',
+  mono: 'var(--font-mono)',
 }
 
 export const DURATION = {
-  instant:    80,
-  fast:       150,
-  normal:     250,
-  slow:       400,
+  instant: 80,
+  fast: 150,
+  normal: 250,
+  slow: 400,
   deliberate: 600,
 }
 
 // Framer Motion easing arrays
 export const EASING = {
-  outSmooth:  [0.16, 1, 0.3, 1],
-  inSmooth:   [0.7, 0, 0.84, 0],
-  editorial:  [0.25, 0.46, 0.45, 0.94],
+  outSmooth: [0.16, 1, 0.3, 1],
+  inSmooth: [0.7, 0, 0.84, 0],
+  editorial: [0.25, 0.46, 0.45, 0.94],
 }
 
 export const BREAKPOINTS = {
-  sm:  480,
-  md:  768,
-  lg:  1024,
-  xl:  1280,
+  sm: 480,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
   '2xl': 1440,
 }

@@ -19,11 +19,7 @@ const devFormat = combine(
 )
 
 // Production: structured JSON, parsed by log aggregators
-const prodFormat = combine(
-  timestamp(),
-  errors({ stack: true }),
-  json()
-)
+const prodFormat = combine(timestamp(), errors({ stack: true }), json())
 
 const logger = createLogger({
   level: env.NODE_ENV === 'production' ? 'info' : 'debug',

@@ -18,10 +18,10 @@ const INITIAL_ERRORS = { name: '', email: '', subject: '', message: '' }
  * }}
  */
 export function useContactForm() {
-  const [form, setForm]               = useState(INITIAL_FORM)
+  const [form, setForm] = useState(INITIAL_FORM)
   const [fieldErrors, setFieldErrors] = useState(INITIAL_ERRORS)
   const [globalError, setGlobalError] = useState('')
-  const [status, setStatus]           = useState('idle')
+  const [status, setStatus] = useState('idle')
 
   function update(field) {
     return (e) => {
@@ -82,7 +82,9 @@ export function useContactForm() {
       if (err instanceof ApiError) {
         if (err.status === 422 && err.details?.length) {
           const errs = { ...INITIAL_ERRORS }
-          err.details.forEach(({ field, message }) => { errs[field] = message })
+          err.details.forEach(({ field, message }) => {
+            errs[field] = message
+          })
           setFieldErrors(errs)
         } else {
           setGlobalError(err.message || 'Something went wrong. Please try again.')

@@ -127,11 +127,13 @@ import { ROUTES } from '@/constants/routes'
 ## Env vars
 
 ### Frontend
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 ### Backend (`server/.env`)
+
 ```
 NODE_ENV=development
 PORT=5000
@@ -153,14 +155,14 @@ BCRYPT_ROUNDS=12
 
 ## DB collections
 
-| Collection | Purpose |
-|---|---|
-| `users` | Auth identity. Roles: ADMIN / EDITOR. |
-| `refresh_tokens` | Token registry (SHA-256 hash stored). TTL index on `expiresAt`. |
-| `newsletter_subscribers` | Subscription lifecycle (PENDING / CONFIRMED / UNSUBSCRIBED) |
-| `contact_messages` | Inbound contact form. Admin read-only. |
-| `audit_logs` | Append-only. Never update or delete this collection. |
-| `content_metadata` | Sanity shadow copy for server-side queries + Algolia sync state |
+| Collection               | Purpose                                                         |
+| ------------------------ | --------------------------------------------------------------- |
+| `users`                  | Auth identity. Roles: ADMIN / EDITOR.                           |
+| `refresh_tokens`         | Token registry (SHA-256 hash stored). TTL index on `expiresAt`. |
+| `newsletter_subscribers` | Subscription lifecycle (PENDING / CONFIRMED / UNSUBSCRIBED)     |
+| `contact_messages`       | Inbound contact form. Admin read-only.                          |
+| `audit_logs`             | Append-only. Never update or delete this collection.            |
+| `content_metadata`       | Sanity shadow copy for server-side queries + Algolia sync state |
 
 All schemas: `strict: true`, `timestamps: true`. `toJSON` strips `__v`, renames `_id → id`. Sensitive fields (`passwordHash`, `confirmToken`) are `select: false`.
 
@@ -168,15 +170,15 @@ All schemas: `strict: true`, `timestamps: true`. `toJSON` strips `__v`, renames 
 
 ## Error codes
 
-| Code | HTTP | When |
-|---|---|---|
-| `INVALID_CREDENTIALS` | 401 | Wrong email or password |
-| `ACCOUNT_LOCKED` | 401 | 5 failed attempts → 30min lockout |
-| `TOKEN_EXPIRED` | 401 | Access token past expiry |
-| `TOKEN_REVOKED` | 401 | Refresh token reused → all sessions killed |
-| `ALREADY_EXISTS` | 409 | Duplicate email on register |
-| `VALIDATION_ERROR` | 422 | Zod fail — `details[]` has per-field errors |
-| `NOT_FOUND` | 404 | Resource missing |
+| Code                  | HTTP | When                                        |
+| --------------------- | ---- | ------------------------------------------- |
+| `INVALID_CREDENTIALS` | 401  | Wrong email or password                     |
+| `ACCOUNT_LOCKED`      | 401  | 5 failed attempts → 30min lockout           |
+| `TOKEN_EXPIRED`       | 401  | Access token past expiry                    |
+| `TOKEN_REVOKED`       | 401  | Refresh token reused → all sessions killed  |
+| `ALREADY_EXISTS`      | 409  | Duplicate email on register                 |
+| `VALIDATION_ERROR`    | 422  | Zod fail — `details[]` has per-field errors |
+| `NOT_FOUND`           | 404  | Resource missing                            |
 
 ---
 
@@ -216,15 +218,15 @@ npx jest server/__tests__/integration/auth.routes.test.js
 
 ## Sprint status
 
-| Sprint | What | Status |
-|---|---|---|
-| 1–2 | Setup, SCSS design system, routing | ✓ |
-| 3 | Home, Research, Markets, About, Contact pages | ✓ |
-| 4 | Analysis detail, Newsletter, Legal, 404 | ✓ |
-| 5 | Express + MongoDB + auth endpoints | ✓ |
-| 6 | QA — 3C + 6H + 6M + 4L bugs fixed | ✓ |
-| 7 | Auth flow, Zustand, apiClient, middleware, tests | ✓ |
-| 8 | Resend email, Sanity CMS, Playwright E2E, mobile menu focus trap | todo |
+| Sprint | What                                                             | Status |
+| ------ | ---------------------------------------------------------------- | ------ |
+| 1–2    | Setup, SCSS design system, routing                               | ✓      |
+| 3      | Home, Research, Markets, About, Contact pages                    | ✓      |
+| 4      | Analysis detail, Newsletter, Legal, 404                          | ✓      |
+| 5      | Express + MongoDB + auth endpoints                               | ✓      |
+| 6      | QA — 3C + 6H + 6M + 4L bugs fixed                                | ✓      |
+| 7      | Auth flow, Zustand, apiClient, middleware, tests                 | ✓      |
+| 8      | Resend email, Sanity CMS, Playwright E2E, mobile menu focus trap | todo   |
 
 Production readiness: **82/100**
 

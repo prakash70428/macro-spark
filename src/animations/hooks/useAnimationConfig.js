@@ -31,9 +31,9 @@ export function useAnimationConfig() {
   const transition = prefersReducedMotion
     ? { fast: instant, normal: instant, slow: instant, spring: instant }
     : {
-        fast:   { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
+        fast: { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
         normal: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
-        slow:   { duration: 0.4,  ease: [0.16, 1, 0.3, 1] },
+        slow: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
         spring: { type: 'spring', stiffness: 400, damping: 30 },
       }
 

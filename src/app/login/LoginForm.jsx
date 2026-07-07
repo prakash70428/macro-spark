@@ -11,18 +11,18 @@ import { ApiError } from '@/lib/apiClient'
 import styles from './page.module.scss'
 
 export default function LoginForm() {
-  const router       = useRouter()
+  const router = useRouter()
   const searchParams = useSearchParams()
-  const storeLogin   = useAuthStore((s) => s.login)
+  const storeLogin = useAuthStore((s) => s.login)
 
-  const [form, setForm]     = useState({ email: '', password: '' })
+  const [form, setForm] = useState({ email: '', password: '' })
   const [status, setStatus] = useState('idle')
-  const [error, setError]   = useState('')
+  const [error, setError] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
 
   function update(field) {
     return (e) => {
-      setForm((p)      => ({ ...p, [field]: e.target.value }))
+      setForm((p) => ({ ...p, [field]: e.target.value }))
       setFieldErrors((p) => ({ ...p, [field]: '' }))
       setError('')
     }
@@ -50,7 +50,9 @@ export default function LoginForm() {
         if (err.status === 422 && err.details?.length) {
           // Field-level validation errors
           const errs = {}
-          err.details.forEach(({ field, message }) => { errs[field] = message })
+          err.details.forEach(({ field, message }) => {
+            errs[field] = message
+          })
           setFieldErrors(errs)
         } else if (err.status === 401) {
           setError('Invalid email or password.')
@@ -75,7 +77,9 @@ export default function LoginForm() {
       )}
 
       <div className={styles.field}>
-        <label htmlFor="email" className={styles.label}>Email address</label>
+        <label htmlFor="email" className={styles.label}>
+          Email address
+        </label>
         <input
           id="email"
           type="email"
@@ -97,7 +101,9 @@ export default function LoginForm() {
 
       <div className={styles.field}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <label htmlFor="password" className={styles.label}>Password</label>
+          <label htmlFor="password" className={styles.label}>
+            Password
+          </label>
           <Link href={ROUTES.FORGOT_PASSWORD} className={styles.forgotLink}>
             Forgot password?
           </Link>

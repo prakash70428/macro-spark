@@ -1,6 +1,8 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
-.page { padding-block: var(--space-12) var(--space-20); }
+.page {
+  padding-block: var(--space-12) var(--space-20);
+}
 
 .hero {
   text-align: center;
@@ -8,7 +10,7 @@
   margin: 0 auto var(--space-16);
 }
 .eyebrow {
-  @include type-scale('eyebrow');
+  @include type-scale("eyebrow");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-interactive-primary);
@@ -16,12 +18,12 @@
   margin-bottom: var(--space-4);
 }
 .heading {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   color: var(--color-text-primary);
   margin-bottom: var(--space-5);
 }
 .sub {
-  @include type-scale('body-lg');
+  @include type-scale("body-lg");
   color: var(--color-text-secondary);
   margin-bottom: var(--space-8);
 }
@@ -35,7 +37,7 @@
   margin-bottom: var(--space-4);
 }
 .input {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   @include focus-ring;
   flex: 1;
   min-width: 260px;
@@ -45,10 +47,12 @@
   background: var(--color-bg-surface);
   border: 1px solid var(--color-border-default);
   color: var(--color-text-primary);
-  &::placeholder { color: var(--color-text-tertiary); }
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
 }
 .privacy {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
   text-align: center;
 }
@@ -65,21 +69,23 @@
   border-top: 1px solid var(--color-border-subtle);
   border-bottom: 1px solid var(--color-border-subtle);
 }
-.proofStat { text-align: center; }
+.proofStat {
+  text-align: center;
+}
 .proofValue {
-  @include type-scale('heading-lg');
+  @include type-scale("heading-lg");
   color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
   display: block;
 }
 .proofLabel {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
 // ── Edition archive ───────────────────────────────────────────────────────────
 .sectionTitle {
-  @include type-scale('heading-sm');
+  @include type-scale("heading-sm");
   color: var(--color-text-primary);
   margin-bottom: var(--space-6);
 }
@@ -98,16 +104,22 @@
   gap: var(--space-4);
   text-decoration: none;
   transition: background var(--duration-fast) ease;
-  &:hover { background: var(--color-bg-elevated); }
+  &:hover {
+    background: var(--color-bg-elevated);
+  }
 }
-.editionInfo { display: flex; flex-direction: column; gap: var(--space-1); }
+.editionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
 .editionTitle {
-  @include type-scale('body-md');
+  @include type-scale("body-md");
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
 }
 .editionMeta {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 .editionArrow {

@@ -1,4 +1,4 @@
-@use 'styles/abstracts' as *;
+@use "styles/abstracts" as *;
 
 // ── Base card ─────────────────────────────────────────────────────────────────
 .card {
@@ -9,7 +9,7 @@
   overflow: hidden;
   transition:
     border-color var(--duration-normal) var(--ease-out-smooth),
-    transform    var(--duration-normal) var(--ease-out-smooth);
+    transform var(--duration-normal) var(--ease-out-smooth);
 
   &.interactive {
     cursor: pointer;
@@ -68,24 +68,24 @@
 }
 
 .articleCard .tag {
-  @include type-scale('eyebrow');
+  @include type-scale("eyebrow");
   text-transform: uppercase;
   color: var(--color-interactive-primary);
   letter-spacing: var(--tracking-widest);
 }
 
 .articleCard .readTime {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 
   &::before {
-    content: '·';
+    content: "·";
     margin-right: var(--space-2);
   }
 }
 
 .articleCard .headline {
-  @include type-scale('heading-md');
+  @include type-scale("heading-md");
   color: var(--color-text-primary);
   transition: color var(--duration-fast) ease;
 }
@@ -97,7 +97,7 @@
 }
 
 .articleCard .excerpt {
-  @include type-scale('body-sm');
+  @include type-scale("body-sm");
   color: var(--color-text-secondary);
   @include truncate-multiline(2);
 }
@@ -127,12 +127,12 @@
 }
 
 .articleCard .authorName {
-  @include type-scale('label-md');
+  @include type-scale("label-md");
   color: var(--color-text-secondary);
 }
 
 .articleCard .date {
-  @include type-scale('caption');
+  @include type-scale("caption");
   color: var(--color-text-tertiary);
 }
 
@@ -143,38 +143,44 @@
   gap: var(--space-3);
   padding: var(--space-card-padding-sm);
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     padding: var(--space-card-padding);
   }
 }
 
 .dataCard .label {
-  @include type-scale('label-sm');
+  @include type-scale("label-sm");
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
   color: var(--color-text-tertiary);
 }
 
 .dataCard .value {
-  @include type-scale('display-sm');
+  @include type-scale("display-sm");
   font-family: var(--font-mono);
-  font-feature-settings: 'tnum' 1;
+  font-feature-settings: "tnum" 1;
   color: var(--color-text-primary);
   letter-spacing: var(--tracking-tight);
 }
 
 .dataCard .change {
-  @include type-scale('label-lg');
+  @include type-scale("label-lg");
   font-family: var(--font-mono);
-  font-feature-settings: 'tnum' 1;
+  font-feature-settings: "tnum" 1;
   display: flex;
   align-items: center;
   gap: var(--space-1);
 }
 
-.changePositive { color: var(--color-market-positive); }
-.changeNegative { color: var(--color-market-negative); }
-.changeNeutral  { color: var(--color-market-neutral); }
+.changePositive {
+  color: var(--color-market-positive);
+}
+.changeNegative {
+  color: var(--color-market-negative);
+}
+.changeNeutral {
+  color: var(--color-market-neutral);
+}
 
 .dataCard .sparkline {
   height: 48px;
