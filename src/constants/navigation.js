@@ -31,6 +31,11 @@ export const PRIMARY_NAV = [
     href: ROUTES.QUANT_PROJECTS,
     description: 'Quantitative finance projects built in Python',
   },
+  {
+    label: 'Labs',
+    href: ROUTES.LABS,
+    description: 'AI-powered and quantitative finance tools',
+  },
 ]
 
 /** @type {NavItem[]} */
@@ -40,6 +45,7 @@ export const FOOTER_NAV_PRODUCT = [
   { label: 'Articles', href: ROUTES.ARTICLES },
   { label: 'Research', href: ROUTES.RESEARCH },
   { label: 'Quant Projects', href: ROUTES.QUANT_PROJECTS },
+  { label: 'Labs', href: ROUTES.LABS },
   { label: 'Newsletter', href: ROUTES.NEWSLETTER },
 ]
 

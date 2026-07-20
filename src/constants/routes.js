@@ -11,6 +11,7 @@ export const ROUTES = /** @type {const} */ ({
   ARTICLES: '/articles',
   RESEARCH: '/research',
   QUANT_PROJECTS: '/quant-projects',
+  LABS: '/labs',
   FINANCIAL_LITERACY: '/financial-literacy',
   NEWSLETTER: '/newsletter',
   // legacy — kept only for backward-compat dynamic builders below
@@ -40,6 +41,9 @@ export const ROUTES = /** @type {const} */ ({
 
   /** @param {string} slug */
   ARTICLE: (slug) => `/articles/${slug}`,
+
+  /** @param {string} slug */
+  LABS_TOOL: (slug) => `/labs/${slug}`,
 })
 
 /** Routes accessible without authentication */
@@ -50,6 +54,7 @@ export const PUBLIC_ROUTES = [
   ROUTES.ARTICLES,
   ROUTES.RESEARCH,
   ROUTES.QUANT_PROJECTS,
+  ROUTES.LABS,
   ROUTES.FINANCIAL_LITERACY,
   ROUTES.NEWSLETTER,
   ROUTES.ABOUT,

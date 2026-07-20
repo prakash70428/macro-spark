@@ -1,0 +1,91 @@
+@use "styles/abstracts" as *;
+
+.panel {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 640px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.breakdownCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+}
+
+.resultTitle {
+  @include type-scale("heading-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-5);
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 160px 1fr 44px;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.barLabel {
+  @include type-scale("body-sm");
+  color: var(--color-text-secondary);
+}
+
+.barTrack {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-border-subtle);
+  overflow: hidden;
+}
+.barFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+
+.barValue {
+  @include type-scale("label-sm");
+  font-family: var(--font-mono);
+  color: var(--color-text-tertiary);
+  text-align: right;
+}

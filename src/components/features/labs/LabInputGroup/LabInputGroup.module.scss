@@ -1,0 +1,95 @@
+@use "styles/abstracts" as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  @include type-scale("label-sm");
+  color: var(--color-text-tertiary);
+}
+
+// ── Segmented control ─────────────────────────────────────────────────────────
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  padding: var(--space-1);
+  gap: var(--space-1);
+  width: fit-content;
+}
+.segment {
+  @include type-scale("label-sm");
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-6);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-text-primary);
+    }
+  }
+}
+.segmentActive {
+  background: var(--color-interactive-primary);
+  color: #fff;
+}
+
+// ── Slider ────────────────────────────────────────────────────────────────────
+.sliderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sliderValue {
+  @include type-scale("label-sm");
+  font-family: var(--font-mono);
+  color: var(--color-interactive-primary);
+  font-weight: var(--font-weight-medium);
+}
+.slider {
+  width: 100%;
+  accent-color: var(--color-interactive-primary);
+  cursor: pointer;
+}
+
+// ── Number / text input ───────────────────────────────────────────────────────
+.numberWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.numberInput,
+.textInput {
+  @include type-scale("body-md");
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  transition: border-color var(--duration-fast) ease;
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--color-interactive-primary);
+  }
+}
+.numberInput {
+  padding-right: var(--space-10);
+}
+.numberUnit {
+  position: absolute;
+  right: var(--space-4);
+  @include type-scale("label-sm");
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+}
