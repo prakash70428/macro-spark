@@ -15,7 +15,7 @@ const PAPERS = [
     title:
       "How Interest Rate Cycles Affect Small-Cap IPO Performance: A Quantitative Study of India's Primary Markets (2018–2024)",
     abstract:
-      "A quantitative study of small-cap IPOs on the NSE and BSE from 2018-2024, using correlation and linear regression to test how the RBI repo rate at time of issue relates to listing-day gains and 30-day post-listing returns.",
+      'A quantitative study of small-cap IPOs on the NSE and BSE from 2018-2024, using correlation and linear regression to test how the RBI repo rate at time of issue relates to listing-day gains and 30-day post-listing returns.',
     authors: 'Arnav Mangla',
     date: 'Jul 2025',
     pages: 11,

@@ -183,9 +183,9 @@ export default function DcfCalculatorPage() {
           </div>
 
           <p className={styles.sensitivityNote}>
-            Sensitivity: a 1% increase in the discount rate or a 1% decrease in revenue growth
-            would meaningfully lower this estimate — intrinsic value from a DCF model is highly
-            sensitive to the discount and terminal growth assumptions.
+            Sensitivity: a 1% increase in the discount rate or a 1% decrease in revenue growth would
+            meaningfully lower this estimate — intrinsic value from a DCF model is highly sensitive
+            to the discount and terminal growth assumptions.
           </p>
         </div>
       )}

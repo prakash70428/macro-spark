@@ -2,7 +2,12 @@
 
 import { useRef, useState } from 'react'
 import LabToolLayout from '@/components/features/labs/LabToolLayout'
-import { SegmentedControl, SliderField, TextField, NumberField } from '@/components/features/labs/LabInputGroup'
+import {
+  SegmentedControl,
+  SliderField,
+  TextField,
+  NumberField,
+} from '@/components/features/labs/LabInputGroup'
 import Button from '@/components/ui/Button/Button'
 import { LABS_TOOLS } from '../data'
 import styles from './page.module.scss'

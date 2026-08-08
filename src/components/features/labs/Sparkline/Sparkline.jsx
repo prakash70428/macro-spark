@@ -38,7 +38,13 @@ export default function Sparkline({
       fill="none"
       aria-hidden="true"
     >
-      <polyline points={points} stroke={color} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline
+        points={points}
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 }

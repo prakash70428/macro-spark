@@ -91,8 +91,8 @@ export default function RiskAnalyticsPage() {
         </div>
 
         <p className={styles.note}>
-          This is a UI preview — metrics below are sample values, not computed from real market
-          data for the ticker entered.
+          This is a UI preview — metrics below are sample values, not computed from real market data
+          for the ticker entered.
         </p>
       </div>
 

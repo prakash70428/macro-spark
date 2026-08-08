@@ -13,7 +13,13 @@ import styles from './StatTile.module.scss'
  * @param {string} [props.trendLabel]
  * @param {number[]} [props.sparklineData]
  */
-export default function StatTile({ label, value, trendDirection = 'flat', trendLabel, sparklineData }) {
+export default function StatTile({
+  label,
+  value,
+  trendDirection = 'flat',
+  trendLabel,
+  sparklineData,
+}) {
   const trendColor =
     trendDirection === 'up'
       ? 'var(--color-success, #10b981)'
