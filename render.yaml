@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: macrospark-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_PRIVATE_KEY
+        sync: false
+      - key: JWT_PUBLIC_KEY
+        sync: false
+      - key: JWT_ACCESS_EXPIRY
+        value: 15m
+      - key: JWT_REFRESH_EXPIRY
+        value: 7d
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: BCRYPT_ROUNDS
+        value: "12"

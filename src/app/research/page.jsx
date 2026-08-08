@@ -12,6 +12,28 @@ export const metadata = {
 
 const PAPERS = [
   {
+    title:
+      "How Interest Rate Cycles Affect Small-Cap IPO Performance: A Quantitative Study of India's Primary Markets (2018–2024)",
+    abstract:
+      "A quantitative study of small-cap IPOs on the NSE and BSE from 2018-2024, using correlation and linear regression to test how the RBI repo rate at time of issue relates to listing-day gains and 30-day post-listing returns.",
+    authors: 'Arnav Mangla',
+    date: 'Jul 2025',
+    pages: 11,
+    tags: ['IPOs', 'Monetary Policy', 'Indian Equity Markets'],
+    pdf: '/research/interest-rate-cycles-small-cap-ipo-india.pdf',
+  },
+  {
+    title:
+      'Narrative-Driven Markets: Artificial Intelligence Optimism, Retail Investor Behaviour, and Sectoral Equity Performance in India (2022–2025)',
+    abstract:
+      'A quantitative study examining the extent to which AI-related market optimism and retail investor sentiment affected sectoral stock performance in Indian equity markets between 2022 and 2025, using comparative return analysis against the NIFTY 50 and an original AI Narrative Intensity framework.',
+    authors: 'Arnav Mangla',
+    date: 'Aug 2026',
+    pages: 26,
+    tags: ['Artificial Intelligence', 'Behavioral Finance', 'Indian Equity Markets'],
+    pdf: '/research/narrative-driven-markets-ai-optimism-india.pdf',
+  },
+  {
     title: 'Asymmetric Monetary Policy Transmission in Emerging Markets: Evidence from 2015–2024',
     abstract:
       'We test whether contractionary and expansionary monetary policy shocks have asymmetric effects on output and inflation across 18 emerging market economies using a panel SVAR framework.',
