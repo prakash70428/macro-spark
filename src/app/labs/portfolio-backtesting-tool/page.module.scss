@@ -1,0 +1,85 @@
+@use "styles/abstracts" as *;
+
+.panel {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip,
+.chipActive {
+  @include type-scale("label-sm");
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.chipActive {
+  font-weight: var(--font-weight-medium);
+}
+
+.fieldsRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  max-width: 640px;
+
+  @include respond-to("sm") {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+  max-width: 720px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.chartCard,
+.strategyCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+}
+
+.resultTitle {
+  @include type-scale("heading-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

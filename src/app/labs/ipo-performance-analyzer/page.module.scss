@@ -1,0 +1,188 @@
+@use "styles/abstracts" as *;
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-6);
+  max-width: 720px;
+}
+
+.tableWrap {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  overflow-x: auto;
+  margin-bottom: var(--space-8);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+
+  th,
+  td {
+    padding: var(--space-3) var(--space-4);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  th:first-child,
+  td:first-child,
+  th:nth-child(2),
+  td:nth-child(2) {
+    text-align: left;
+  }
+
+  thead th {
+    @include type-scale("label-sm");
+    color: var(--color-text-tertiary);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+}
+
+.sortButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  @include focus-ring;
+}
+
+.row,
+.rowSelected {
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background-color var(--duration-fast) ease;
+
+  &:hover {
+    background: var(--color-bg-elevated);
+  }
+}
+
+.rowSelected {
+  background: var(--color-bg-elevated);
+}
+
+.companyCell {
+  @include type-scale("body-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.sectorCell {
+  @include type-scale("body-sm");
+  color: var(--color-text-secondary);
+}
+
+.cellUp,
+.cellDown,
+.cellFlat {
+  @include type-scale("mono-sm");
+  font-family: var(--font-mono);
+}
+
+.cellUp {
+  color: var(--color-success, #10b981);
+}
+
+.cellDown {
+  color: var(--color-danger, #ef4444);
+}
+
+.cellFlat {
+  color: var(--color-text-tertiary);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.detailCard,
+.breakdownCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+}
+
+.resultTitle {
+  @include type-scale("heading-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.detailSub {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.chartWrap {
+  margin-top: var(--space-2);
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 200px 1fr 64px;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.barLabel {
+  @include type-scale("body-sm");
+  color: var(--color-text-secondary);
+}
+
+.barCount {
+  color: var(--color-text-tertiary);
+}
+
+.barTrack {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-border-subtle);
+  overflow: hidden;
+}
+
+.barFillUp {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-success, #10b981);
+}
+
+.barFillDown {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-danger, #ef4444);
+}
+
+.barValue {
+  @include type-scale("label-sm");
+  font-family: var(--font-mono);
+  color: var(--color-text-tertiary);
+  text-align: right;
+}

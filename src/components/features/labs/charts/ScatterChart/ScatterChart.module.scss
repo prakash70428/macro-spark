@@ -1,0 +1,12 @@
+@use "styles/abstracts" as *;
+
+.axisLabel {
+  @include type-scale("caption");
+  fill: var(--color-text-tertiary);
+}
+
+.finding {
+  margin-top: var(--space-3);
+  @include type-scale("body-sm");
+  color: var(--color-text-secondary);
+}

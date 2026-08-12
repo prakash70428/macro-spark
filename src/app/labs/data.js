@@ -81,6 +81,39 @@ export const LABS_TOOLS = [
     href: ROUTES.LABS_TOOL('risk-analytics'),
   },
   {
+    id: 'ipo-performance-analyzer',
+    slug: 'ipo-performance-analyzer',
+    title: 'IPO Performance Analyzer',
+    description:
+      'Track issue price, listing gains, and 1-month/6-month/1-year returns across major Indian IPOs, with a sector-by-sector performance breakdown computed from real listing data.',
+    phase: 5,
+    icon: 'index',
+    status: 'available',
+    href: ROUTES.LABS_TOOL('ipo-performance-analyzer'),
+  },
+  {
+    id: 'portfolio-backtesting-tool',
+    slug: 'portfolio-backtesting-tool',
+    title: 'Portfolio Backtesting Tool',
+    description:
+      'Backtest Index, Momentum, Value, and Growth strategies against historical annual returns and compare CAGR, Sharpe ratio, maximum drawdown, and total return.',
+    phase: 5,
+    icon: 'pie',
+    status: 'available',
+    href: ROUTES.LABS_TOOL('portfolio-backtesting-tool'),
+  },
+  {
+    id: 'interest-rate-impact-model',
+    slug: 'interest-rate-impact-model',
+    title: 'Interest Rate Impact Model',
+    description:
+      'Analyze how RBI repo rate cycles correlate with returns across small-cap, financial, and technology stocks using real regression and correlation analysis.',
+    phase: 5,
+    icon: 'risk',
+    status: 'available',
+    href: ROUTES.LABS_TOOL('interest-rate-impact-model'),
+  },
+  {
     id: 'capital-intelligence-index',
     slug: 'capital-intelligence-index',
     title: 'MacroSpark Capital Intelligence Index',

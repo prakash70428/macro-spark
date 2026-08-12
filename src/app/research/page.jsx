@@ -1,7 +1,9 @@
+import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout/PageLayout'
 import Container from '@/components/layout/Container/Container'
 import FadeIn from '@/components/animation/FadeIn'
 import StaggerList, { StaggerItem } from '@/components/animation/StaggerList'
+import { ROUTES } from '@/constants/routes'
 import styles from './page.module.scss'
 
 export const metadata = {
@@ -21,6 +23,7 @@ const PAPERS = [
     pages: 11,
     tags: ['IPOs', 'Monetary Policy', 'Indian Equity Markets'],
     pdf: '/research/interest-rate-cycles-small-cap-ipo-india.pdf',
+    labTool: ROUTES.LABS_TOOL('ipo-performance-analyzer'),
   },
   {
     title:
@@ -119,28 +122,35 @@ export default function ResearchPage() {
 
                   <div className={styles.cardFooter}>
                     <span className={styles.authors}>{paper.authors}</span>
-                    <a
-                      href={paper.pdf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.btnPdf}
-                      aria-label={`Download paper: ${paper.title}`}
-                    >
-                      <svg
-                        width="15"
-                        height="15"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        aria-hidden="true"
+                    <div className={styles.footerActions}>
+                      {paper.labTool && (
+                        <Link href={paper.labTool} className={styles.btnTool}>
+                          Try the interactive analysis →
+                        </Link>
+                      )}
+                      <a
+                        href={paper.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.btnPdf}
+                        aria-label={`Download paper: ${paper.title}`}
                       >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                      </svg>
-                      Download PDF
-                    </a>
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          aria-hidden="true"
+                        >
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="7 10 12 15 17 10" />
+                          <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download PDF
+                      </a>
+                    </div>
                   </div>
                 </div>
               </StaggerItem>
