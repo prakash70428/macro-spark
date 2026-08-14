@@ -27,7 +27,7 @@ export const ARTICLES = [
     excerpt:
       'We examine the predictive power of the 2s10s spread across eight recession cycles since 1980, testing whether the relationship still holds in a post-QE world.',
     date: 'Jun 15, 2026',
-    pages: 14,
+    pages: 3,
     category: 'Fixed Income',
     pdf: '/articles/yield-curve-recession-predictor.pdf',
   },
@@ -36,7 +36,7 @@ export const ARTICLES = [
     excerpt:
       "Brent Johnson's Dollar Milkshake thesis has attracted significant attention. This article stress-tests the mechanism against current capital flow data.",
     date: 'Jun 10, 2026',
-    pages: 11,
+    pages: 2,
     category: 'FX',
     pdf: '/articles/dollar-milkshake-theory.pdf',
   },
@@ -45,7 +45,7 @@ export const ARTICLES = [
     excerpt:
       'A meta-analysis of 60 empirical studies on ESG factor returns. We separate signal from marketing across different time horizons and geographies.',
     date: 'Jun 5, 2026',
-    pages: 18,
+    pages: 2,
     category: 'Equities',
     pdf: '/articles/esg-premium-discount.pdf',
   },
@@ -54,7 +54,7 @@ export const ARTICLES = [
     excerpt:
       'Using historical inflation regime data, we construct asset allocation frameworks that outperformed traditional 60/40 portfolios across high-inflation periods.',
     date: 'May 28, 2026',
-    pages: 22,
+    pages: 2,
     category: 'Macro',
     pdf: '/articles/inflation-regimes-asset-allocation.pdf',
   },
@@ -63,7 +63,7 @@ export const ARTICLES = [
     excerpt:
       'A technical review of CBDC architectures across 12 countries, examining disintermediation risk, privacy trade-offs, and monetary policy implications.',
     date: 'May 20, 2026',
-    pages: 16,
+    pages: 3,
     category: 'Monetary Policy',
     pdf: '/articles/cbdc-design-tradeoffs.pdf',
   },
@@ -72,7 +72,7 @@ export const ARTICLES = [
     excerpt:
       'Private credit AUM has doubled in five years. We examine covenant quality, illiquidity premiums, and whether the market is pricing default risk correctly.',
     date: 'May 12, 2026',
-    pages: 13,
+    pages: 3,
     category: 'Credit',
     pdf: '/articles/private-credit-boom.pdf',
   },
