@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Container from '@/components/layout/Container/Container'
 import Button from '@/components/ui/Button/Button'
 import FadeIn from '@/components/animation/FadeIn'
+import { api, ApiError } from '@/lib/apiClient'
 import styles from './CTASection.module.scss'
 
 const PERKS = [
@@ -17,12 +18,28 @@ export default function NewsletterCTA() {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('loading')
-    await new Promise((r) => setTimeout(r, 900))
-    setStatus('success')
+    setErrorMessage('')
+
+    try {
+      await api.post(
+        '/newsletter/subscribe',
+        { email: email.trim(), firstName: name.trim() || undefined, source: 'hero' },
+        { skipAuth: true }
+      )
+      setStatus('success')
+    } catch (err) {
+      setStatus('idle')
+      setErrorMessage(
+        err instanceof ApiError
+          ? err.message || 'Something went wrong. Please try again.'
+          : 'Unable to connect. Check your internet connection.'
+      )
+    }
   }
 
   return (
@@ -97,6 +114,11 @@ export default function NewsletterCTA() {
                   </Button>
                   <span className={styles.privacy}>No credit card. No spam.</span>
                 </div>
+                {errorMessage && (
+                  <p role="alert" style={{ color: 'var(--color-market-negative)' }}>
+                    {errorMessage}
+                  </p>
+                )}
               </form>
             )}
           </FadeIn>

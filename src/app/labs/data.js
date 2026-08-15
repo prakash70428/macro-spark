@@ -17,9 +17,9 @@ export const LABS_TOOLS = [
   {
     id: 'earnings-analyzer',
     slug: 'earnings-analyzer',
-    title: 'AI Earnings Report Analyzer',
+    title: 'Earnings Analyzer',
     description:
-      "Upload a company's annual report or financial statements and receive an AI-generated summary covering business overview, financial performance, risks, opportunities, key ratios, and investment insights.",
+      "Enter a company's current and prior-period revenue, profit, and EPS to get YoY growth, margin change, and rule-based flags on the earnings trend, computed live.",
     phase: 1,
     icon: 'document',
     status: 'available',
@@ -28,9 +28,9 @@ export const LABS_TOOLS = [
   {
     id: 'statement-explainer',
     slug: 'statement-explainer',
-    title: 'AI Financial Statement Explainer',
+    title: 'Financial Statement Analyzer',
     description:
-      'Upload a Balance Sheet, Income Statement, or Cash Flow Statement and receive a simple AI-powered explanation of the company’s financial health.',
+      "Enter a company's key balance sheet and income statement figures and get liquidity, leverage, and profitability ratios computed live, each with a plain-language interpretation.",
     phase: 1,
     icon: 'explain',
     status: 'available',
@@ -310,6 +310,17 @@ export const LABS_TOOLS = [
     icon: 'index',
     status: 'available',
     href: ROUTES.LABS_TOOL('startup-funding-tracker'),
+  },
+  {
+    id: 'economic-forecasting-model',
+    slug: 'economic-forecasting-model',
+    title: 'Economic Forecasting Model',
+    description:
+      'Project GDP growth or CPI inflation forward using a linear trend regression fitted to historical data, with an approximate confidence range computed from the residual error.',
+    phase: 6,
+    icon: 'index',
+    status: 'available',
+    href: ROUTES.LABS_TOOL('economic-forecasting-model'),
   },
   {
     id: 'capital-intelligence-index',

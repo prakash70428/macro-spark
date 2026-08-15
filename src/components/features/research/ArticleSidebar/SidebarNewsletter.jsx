@@ -2,17 +2,34 @@
 
 import { useState } from 'react'
 import Button from '@/components/ui/Button/Button'
+import { api, ApiError } from '@/lib/apiClient'
 import styles from './ArticleSidebar.module.scss'
 
 export default function SidebarNewsletter() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('loading')
-    await new Promise((r) => setTimeout(r, 800))
-    setStatus('success')
+    setErrorMessage('')
+
+    try {
+      await api.post(
+        '/newsletter/subscribe',
+        { email: email.trim(), source: 'article' },
+        { skipAuth: true }
+      )
+      setStatus('success')
+    } catch (err) {
+      setStatus('idle')
+      setErrorMessage(
+        err instanceof ApiError
+          ? err.message || 'Something went wrong. Please try again.'
+          : 'Unable to connect. Check your internet connection.'
+      )
+    }
   }
 
   if (status === 'success') {
@@ -40,6 +57,11 @@ export default function SidebarNewsletter() {
       <Button type="submit" variant="primary" size="sm" loading={status === 'loading'} fullWidth>
         Subscribe free
       </Button>
+      {errorMessage && (
+        <p role="alert" style={{ color: 'var(--color-market-negative)', fontSize: '0.8125rem' }}>
+          {errorMessage}
+        </p>
+      )}
     </form>
   )
 }
