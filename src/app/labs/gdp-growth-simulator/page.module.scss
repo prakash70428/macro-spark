@@ -1,0 +1,130 @@
+@use "styles/abstracts" as *;
+
+.panel {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 640px;
+}
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.heroCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+  border-color: color-mix(in srgb, var(--color-interactive-primary) 40%, transparent);
+  max-width: 640px;
+}
+.heroLabel {
+  @include type-scale("label-sm");
+  color: var(--color-text-tertiary);
+}
+.heroValue {
+  @include type-scale("display-sm");
+  font-family: var(--font-mono);
+  color: var(--color-interactive-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.chartCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+}
+
+.resultTitle {
+  @include type-scale("heading-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-5);
+}
+
+.barList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.barRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.barLabelRow {
+  display: flex;
+  justify-content: space-between;
+  @include type-scale("body-md");
+}
+
+.barLabel {
+  color: var(--color-text-secondary);
+}
+
+.barValue {
+  font-family: var(--font-mono);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.barTrack {
+  width: 100%;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2, rgba(148, 163, 184, 0.15));
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--duration-fast) ease;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  @include type-scale("caption");
+  color: var(--color-text-secondary);
+}
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}

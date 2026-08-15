@@ -1,0 +1,126 @@
+@use "styles/abstracts" as *;
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-6);
+  max-width: 760px;
+}
+
+.filterGroup {
+  margin-bottom: var(--space-4);
+}
+
+.filterLabel {
+  @include type-scale("label-sm");
+  color: var(--color-text-tertiary);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip,
+.chipActive {
+  @include type-scale("label-sm");
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.chipActive {
+  font-weight: var(--font-weight-medium);
+  border-color: var(--color-interactive-primary);
+  color: var(--color-interactive-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin: var(--space-6) 0 var(--space-8);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tableWrap {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+
+  th,
+  td {
+    padding: var(--space-3) var(--space-4);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  th:first-child,
+  td:first-child,
+  th:nth-child(2),
+  td:nth-child(2),
+  th:nth-child(3),
+  td:nth-child(3) {
+    text-align: left;
+  }
+
+  thead th {
+    @include type-scale("label-sm");
+    color: var(--color-text-tertiary);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+}
+
+.nameCell {
+  @include type-scale("body-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.sectorCell,
+.stageCell {
+  @include type-scale("body-sm");
+  color: var(--color-text-secondary);
+}
+
+.amountCell {
+  @include type-scale("mono-sm");
+  font-family: var(--font-mono);
+  color: var(--color-text-primary);
+}
+
+.monthCell {
+  @include type-scale("body-sm");
+  color: var(--color-text-tertiary);
+}
+
+.emptyCell {
+  text-align: center !important;
+  color: var(--color-text-tertiary);
+  padding: var(--space-8) var(--space-4) !important;
+}

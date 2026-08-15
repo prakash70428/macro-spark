@@ -1,87 +1,110 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import LabToolLayout from '@/components/features/labs/LabToolLayout'
-import {
-  SegmentedControl,
-  SliderField,
-  TextField,
-  NumberField,
-} from '@/components/features/labs/LabInputGroup'
-import Button from '@/components/ui/Button/Button'
+import { SegmentedControl, SliderField } from '@/components/features/labs/LabInputGroup'
 import { LABS_TOOLS } from '../data'
+import {
+  ASSET_CLASSES,
+  MAX_VOLATILITY_BY_RISK,
+  RISK_FREE_RATE,
+  correlationBetween,
+} from './data'
 import styles from './page.module.scss'
 
 const TOOL = LABS_TOOLS.find((t) => t.id === 'portfolio-optimizer')
 
 const RISK_LEVELS = ['Low', 'Medium', 'High']
+const WEIGHT_STEP = 5
 
-// Sample allocation model — illustrative only, not a real optimizer.
-const MOCK_ALLOCATIONS = {
-  Low: {
-    mix: [
-      { label: 'Bonds', weight: 55, color: '#3b82f6' },
-      { label: 'Equity', weight: 25, color: '#8b5cf6' },
-      { label: 'Gold', weight: 12, color: '#f59e0b' },
-      { label: 'Cash', weight: 8, color: '#10b981' },
-    ],
-    expectedReturn: '6.5%',
-    volatility: '4.8%',
-    sharpe: '0.92',
-  },
-  Medium: {
-    mix: [
-      { label: 'Equity', weight: 45, color: '#8b5cf6' },
-      { label: 'Bonds', weight: 35, color: '#3b82f6' },
-      { label: 'Gold', weight: 12, color: '#f59e0b' },
-      { label: 'Cash', weight: 8, color: '#10b981' },
-    ],
-    expectedReturn: '10.2%',
-    volatility: '9.6%',
-    sharpe: '1.05',
-  },
-  High: {
-    mix: [
-      { label: 'Equity', weight: 70, color: '#8b5cf6' },
-      { label: 'Bonds', weight: 15, color: '#3b82f6' },
-      { label: 'Gold', weight: 8, color: '#f59e0b' },
-      { label: 'Cash', weight: 7, color: '#10b981' },
-    ],
-    expectedReturn: '14.8%',
-    volatility: '17.3%',
-    sharpe: '0.86',
-  },
+function portfolioStats(weightsPct, assets) {
+  const weights = weightsPct.map((w) => w / 100)
+  const expReturn = assets.reduce((sum, a, i) => sum + weights[i] * a.expectedReturn, 0)
+
+  let variance = 0
+  for (let i = 0; i < assets.length; i++) {
+    for (let j = 0; j < assets.length; j++) {
+      const cov =
+        correlationBetween(assets[i].id, assets[j].id) * assets[i].volatility * assets[j].volatility
+      variance += weights[i] * weights[j] * cov
+    }
+  }
+
+  return { expReturn, volatility: Math.sqrt(Math.max(variance, 0)) }
+}
+
+/**
+ * Real mean-variance (Markowitz) grid search: enumerates every weight
+ * combination across the included asset classes in 5% increments, keeps only
+ * combinations within the risk tier's max volatility, and returns the one
+ * with the highest Sharpe ratio.
+ */
+function optimizePortfolio(assets, maxVolatility) {
+  let best = null
+
+  function consider(weightsPct) {
+    const { expReturn, volatility } = portfolioStats(weightsPct, assets)
+    if (volatility > maxVolatility + 1e-9) return
+    const sharpe = volatility < 1e-6 ? 0 : (expReturn - RISK_FREE_RATE) / volatility
+    if (!best || sharpe > best.sharpe) {
+      best = { weightsPct, expReturn, volatility, sharpe }
+    }
+  }
+
+  const n = assets.length
+  if (n === 0) return null
+
+  if (n === 1) {
+    consider([100])
+  } else if (n === 2) {
+    for (let a = 0; a <= 100; a += WEIGHT_STEP) consider([a, 100 - a])
+  } else if (n === 3) {
+    for (let a = 0; a <= 100; a += WEIGHT_STEP)
+      for (let b = 0; b <= 100 - a; b += WEIGHT_STEP) consider([a, b, 100 - a - b])
+  } else {
+    for (let a = 0; a <= 100; a += WEIGHT_STEP)
+      for (let b = 0; b <= 100 - a; b += WEIGHT_STEP)
+        for (let c = 0; c <= 100 - a - b; c += WEIGHT_STEP)
+          consider([a, b, c, 100 - a - b - c])
+  }
+
+  return best
+}
+
+function formatPct(decimal, digits = 1) {
+  return `${(decimal * 100).toFixed(digits)}%`
 }
 
 export default function PortfolioOptimizerPage() {
   const [riskTolerance, setRiskTolerance] = useState('Medium')
   const [expectedReturn, setExpectedReturn] = useState(10)
-  const [assets, setAssets] = useState([
-    { id: 1, ticker: 'NIFTYBEES', weight: 50 },
-    { id: 2, ticker: 'GOLDBEES', weight: 20 },
-  ])
-  const [status, setStatus] = useState('idle') // idle | optimizing | done
-  const nextAssetId = useRef(3)
+  const [includedIds, setIncludedIds] = useState(ASSET_CLASSES.map((a) => a.id))
 
-  function updateAsset(id, field, value) {
-    setAssets((prev) => prev.map((a) => (a.id === id ? { ...a, [field]: value } : a)))
+  function toggleAsset(id) {
+    setIncludedIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    )
   }
 
-  function addAsset() {
-    const id = nextAssetId.current++
-    setAssets((prev) => [...prev, { id, ticker: '', weight: 0 }])
-  }
+  const includedAssets = useMemo(
+    () => ASSET_CLASSES.filter((a) => includedIds.includes(a.id)),
+    [includedIds]
+  )
 
-  function removeAsset(id) {
-    setAssets((prev) => prev.filter((a) => a.id !== id))
-  }
+  const maxVolatility = MAX_VOLATILITY_BY_RISK[riskTolerance]
 
-  function handleOptimize() {
-    setStatus('optimizing')
-    setTimeout(() => setStatus('done'), 1000)
-  }
+  const result = useMemo(() => {
+    if (includedAssets.length === 0) return null
+    return optimizePortfolio(includedAssets, maxVolatility)
+  }, [includedAssets, maxVolatility])
 
-  const result = MOCK_ALLOCATIONS[riskTolerance]
+  const mix =
+    result &&
+    includedAssets
+      .map((asset, i) => ({ ...asset, weight: result.weightsPct[i] }))
+      .filter((a) => a.weight > 0)
+
+  const targetMet = result ? result.expReturn * 100 >= expectedReturn : false
 
   return (
     <LabToolLayout title={TOOL.title} description={TOOL.description}>
@@ -90,19 +113,13 @@ export default function PortfolioOptimizerPage() {
           label="Risk tolerance"
           options={RISK_LEVELS}
           value={riskTolerance}
-          onChange={(v) => {
-            setRiskTolerance(v)
-            setStatus('idle')
-          }}
+          onChange={setRiskTolerance}
         />
 
         <SliderField
           label="Expected return target"
           value={expectedReturn}
-          onChange={(v) => {
-            setExpectedReturn(v)
-            setStatus('idle')
-          }}
+          onChange={setExpectedReturn}
           min={2}
           max={25}
           step={0.5}
@@ -110,59 +127,48 @@ export default function PortfolioOptimizerPage() {
         />
 
         <div className={styles.assetsBlock}>
-          <p className={styles.assetsLabel}>Assets to include</p>
-          <div className={styles.assetsList}>
-            {assets.map((asset) => (
-              <div className={styles.assetRow} key={asset.id}>
-                <TextField
-                  value={asset.ticker}
-                  onChange={(v) => updateAsset(asset.id, 'ticker', v)}
-                  placeholder="Ticker, e.g. NIFTYBEES"
-                />
-                <NumberField
-                  value={asset.weight}
-                  onChange={(v) => updateAsset(asset.id, 'weight', v)}
-                  placeholder="Weight"
-                  unit="%"
-                  min={0}
-                  max={100}
-                />
-                <button
-                  type="button"
-                  className={styles.removeBtn}
-                  onClick={() => removeAsset(asset.id)}
-                  aria-label={`Remove ${asset.ticker || 'asset'}`}
-                >
-                  ✕
-                </button>
-              </div>
+          <p className={styles.assetsLabel}>Asset classes to include</p>
+          <div className={styles.chips}>
+            {ASSET_CLASSES.map((asset) => (
+              <button
+                key={asset.id}
+                type="button"
+                className={includedIds.includes(asset.id) ? styles.chipActive : styles.chip}
+                style={
+                  includedIds.includes(asset.id)
+                    ? { borderColor: asset.color, color: asset.color }
+                    : undefined
+                }
+                aria-pressed={includedIds.includes(asset.id)}
+                onClick={() => toggleAsset(asset.id)}
+              >
+                {asset.label}
+              </button>
             ))}
           </div>
-          <button type="button" className={styles.addBtn} onClick={addAsset}>
-            + Add asset
-          </button>
         </div>
 
-        <div className={styles.actions}>
-          <Button variant="primary" loading={status === 'optimizing'} onClick={handleOptimize}>
-            Optimize Portfolio
-          </Button>
-        </div>
+        {includedAssets.length === 0 && (
+          <p className={styles.warning}>Include at least one asset class to optimize.</p>
+        )}
 
         <p className={styles.note}>
-          This is a UI preview — allocation below is a sample model based on your selected risk
-          tolerance, not a real optimization of the assets you entered.
+          Runs a real mean-variance (Markowitz) grid search across the asset classes above, using
+          assumed long-run expected return, volatility, and correlation for each (see this tool&apos;s
+          dataset file) — it selects the combination with the highest Sharpe ratio that stays within
+          your risk tolerance&apos;s volatility limit. Not personalized to specific tickers or live
+          market data.
         </p>
       </div>
 
-      {status === 'done' && (
+      {result && mix && (
         <div className={styles.results}>
           <div className={styles.allocationCard}>
-            <h2 className={styles.resultTitle}>Suggested Allocation</h2>
+            <h2 className={styles.resultTitle}>Optimized Allocation</h2>
             <div className={styles.stackedBar}>
-              {result.mix.map((slice) => (
+              {mix.map((slice) => (
                 <div
-                  key={slice.label}
+                  key={slice.id}
                   className={styles.stackedSegment}
                   style={{ width: `${slice.weight}%`, background: slice.color }}
                   title={`${slice.label}: ${slice.weight}%`}
@@ -170,8 +176,8 @@ export default function PortfolioOptimizerPage() {
               ))}
             </div>
             <div className={styles.legend}>
-              {result.mix.map((slice) => (
-                <div className={styles.legendItem} key={slice.label}>
+              {mix.map((slice) => (
+                <div className={styles.legendItem} key={slice.id}>
                   <span className={styles.legendDot} style={{ background: slice.color }} />
                   {slice.label} — {slice.weight}%
                 </div>
@@ -182,17 +188,25 @@ export default function PortfolioOptimizerPage() {
           <div className={styles.statsGrid}>
             <div className={styles.statCard}>
               <span className={styles.statLabel}>Expected Return</span>
-              <span className={styles.statValue}>{result.expectedReturn}</span>
+              <span className={styles.statValue}>{formatPct(result.expReturn)}</span>
             </div>
             <div className={styles.statCard}>
               <span className={styles.statLabel}>Volatility</span>
-              <span className={styles.statValue}>{result.volatility}</span>
+              <span className={styles.statValue}>{formatPct(result.volatility)}</span>
             </div>
             <div className={styles.statCard}>
               <span className={styles.statLabel}>Sharpe Ratio</span>
-              <span className={styles.statValue}>{result.sharpe}</span>
+              <span className={styles.statValue}>{result.sharpe.toFixed(2)}</span>
             </div>
           </div>
+
+          {!targetMet && (
+            <p className={styles.warning}>
+              This risk tolerance can&apos;t reach your {expectedReturn}% return target within its
+              volatility limit — the best achievable expected return is{' '}
+              {formatPct(result.expReturn)}. Try a higher risk tolerance.
+            </p>
+          )}
         </div>
       )}
     </LabToolLayout>

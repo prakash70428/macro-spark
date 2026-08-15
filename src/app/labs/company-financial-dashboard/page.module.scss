@@ -1,0 +1,63 @@
+@use "styles/abstracts" as *;
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-6);
+  max-width: 760px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.chip,
+.chipActive {
+  @include type-scale("label-sm");
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.chipActive {
+  font-weight: var(--font-weight-medium);
+}
+
+.chipSector {
+  color: var(--color-text-tertiary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.chartCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+}
+
+.resultTitle {
+  @include type-scale("heading-sm");
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-5);
+}

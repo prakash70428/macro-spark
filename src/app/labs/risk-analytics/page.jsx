@@ -1,128 +1,207 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import LabToolLayout from '@/components/features/labs/LabToolLayout'
-import { TextField } from '@/components/features/labs/LabInputGroup'
 import StatTile from '@/components/features/labs/StatTile'
-import Button from '@/components/ui/Button/Button'
+import {
+  calcVolatility,
+  calcSharpeRatio,
+  calcMaxDrawdown,
+  buildEquityCurve,
+  pearsonCorrelation,
+  linearRegression,
+} from '@/lib/finance'
 import { LABS_TOOLS } from '../data'
+import { ANNUAL_RETURNS, BENCHMARK_ID, TICKERS, YEARS } from './data'
 import styles from './page.module.scss'
 
 const TOOL = LABS_TOOLS.find((t) => t.id === 'risk-analytics')
+const RISK_FREE_RATE = 0.06
+const MIN_WINDOW = 4
 
-// Static sample metrics — illustrative only, not computed from real market data.
-const MOCK_METRICS = [
-  {
-    label: 'Beta',
-    value: '1.18',
-    trendDirection: 'up',
-    trendLabel: 'more volatile than market',
-    sparklineData: [0.95, 1.02, 1.08, 1.1, 1.15, 1.18],
-  },
-  {
-    label: 'Sharpe Ratio',
-    value: '1.24',
-    trendDirection: 'up',
-    trendLabel: '+0.08',
-    sparklineData: [0.9, 1.0, 1.05, 1.12, 1.18, 1.24],
-  },
-  {
-    label: 'Sortino Ratio',
-    value: '1.61',
-    trendDirection: 'up',
-    trendLabel: '+0.11',
-    sparklineData: [1.2, 1.3, 1.38, 1.45, 1.53, 1.61],
-  },
-  {
-    label: 'Max Drawdown',
-    value: '-18.4%',
-    trendDirection: 'down',
-    trendLabel: 'worst peak-to-trough',
-    sparklineData: [-5, -9, -14, -12, -16, -18.4],
-  },
-  {
-    label: 'Volatility (Annualized)',
-    value: '22.6%',
-    trendDirection: 'flat',
-    trendLabel: 'vs 19.8% market avg',
-    sparklineData: [20.1, 21.0, 21.8, 22.2, 22.4, 22.6],
-  },
-]
+function sortinoRatio(returns, riskFree) {
+  if (returns.length < 2) return 0
+  const mean = returns.reduce((sum, r) => sum + r, 0) / returns.length
+  const downside = returns.map((r) => Math.min(r - riskFree, 0))
+  const downsideDev = Math.sqrt(downside.reduce((sum, d) => sum + d * d, 0) / returns.length)
+  return downsideDev < 1e-9 ? 0 : (mean - riskFree) / downsideDev
+}
 
-const RISK_BREAKDOWN = [
-  { label: 'Market Risk', weight: 42, color: '#8b5cf6' },
-  { label: 'Sector Risk', weight: 26, color: '#3b82f6' },
-  { label: 'Company-Specific Risk', weight: 21, color: '#f59e0b' },
-  { label: 'Liquidity Risk', weight: 11, color: '#10b981' },
-]
+function betaOf(assetReturns, marketReturns) {
+  const assetVol = calcVolatility(assetReturns)
+  const marketVol = calcVolatility(marketReturns)
+  if (marketVol < 1e-9) return 0
+  return pearsonCorrelation(marketReturns, assetReturns) * (assetVol / marketVol)
+}
+
+/** Real trailing (expanding-window) metric series, used to drive each StatTile's sparkline. */
+function trailingSeries(assetReturns, marketReturns) {
+  const beta = []
+  const sharpe = []
+  const sortino = []
+  const maxDrawdown = []
+  const volatility = []
+
+  for (let i = MIN_WINDOW; i <= assetReturns.length; i++) {
+    const aSlice = assetReturns.slice(0, i)
+    const mSlice = marketReturns.slice(0, i)
+    beta.push(betaOf(aSlice, mSlice))
+    sharpe.push(calcSharpeRatio(aSlice, RISK_FREE_RATE))
+    sortino.push(sortinoRatio(aSlice, RISK_FREE_RATE))
+    maxDrawdown.push(calcMaxDrawdown(buildEquityCurve(1, aSlice)) * 100)
+    volatility.push(calcVolatility(aSlice) * 100)
+  }
+
+  return { beta, sharpe, sortino, maxDrawdown, volatility }
+}
+
+function trendFor(current, series) {
+  if (series.length < 2) return 'flat'
+  const prev = series[series.length - 2]
+  if (current > prev + 1e-6) return 'up'
+  if (current < prev - 1e-6) return 'down'
+  return 'flat'
+}
 
 export default function RiskAnalyticsPage() {
-  const [ticker, setTicker] = useState('')
-  const [status, setStatus] = useState('idle') // idle | analyzing | done
+  const [selectedId, setSelectedId] = useState('reliance')
 
-  function handleAnalyze() {
-    if (!ticker.trim()) return
-    setStatus('analyzing')
-    setTimeout(() => setStatus('done'), 900)
-  }
+  const analysis = useMemo(() => {
+    const assetReturns = YEARS.map((y) => ANNUAL_RETURNS[selectedId][y])
+    const marketReturns = YEARS.map((y) => ANNUAL_RETURNS[BENCHMARK_ID][y])
+
+    const beta = betaOf(assetReturns, marketReturns)
+    const sharpe = calcSharpeRatio(assetReturns, RISK_FREE_RATE)
+    const sortino = sortinoRatio(assetReturns, RISK_FREE_RATE)
+    const equityCurve = buildEquityCurve(1, assetReturns)
+    const maxDrawdown = calcMaxDrawdown(equityCurve) * 100
+    const volatility = calcVolatility(assetReturns) * 100
+    const marketVolatility = calcVolatility(marketReturns) * 100
+    const { r2 } = linearRegression(marketReturns, assetReturns)
+
+    const trails = trailingSeries(assetReturns, marketReturns)
+
+    return {
+      beta,
+      sharpe,
+      sortino,
+      maxDrawdown,
+      volatility,
+      marketVolatility,
+      marketRiskPct: r2 * 100,
+      specificRiskPct: (1 - r2) * 100,
+      trails,
+    }
+  }, [selectedId])
+
+  const isBenchmark = selectedId === BENCHMARK_ID
+  const selectedTicker = TICKERS.find((t) => t.id === selectedId)
 
   return (
     <LabToolLayout title={TOOL.title} description={TOOL.description}>
       <div className={styles.panel}>
-        <TextField
-          label="Stock or portfolio ticker"
-          value={ticker}
-          onChange={(v) => {
-            setTicker(v)
-            setStatus('idle')
-          }}
-          placeholder="e.g. RELIANCE, TCS, or a portfolio name"
-        />
-
-        <div className={styles.actions}>
-          <Button
-            variant="primary"
-            disabled={!ticker.trim()}
-            loading={status === 'analyzing'}
-            onClick={handleAnalyze}
-          >
-            Analyze Risk
-          </Button>
+        <div className={styles.chips}>
+          {TICKERS.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              className={selectedId === t.id ? styles.chipActive : styles.chip}
+              style={selectedId === t.id ? { borderColor: t.color, color: t.color } : undefined}
+              aria-pressed={selectedId === t.id}
+              onClick={() => setSelectedId(t.id)}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
         <p className={styles.note}>
-          This is a UI preview — metrics below are sample values, not computed from real market data
-          for the ticker entered.
+          Computed at runtime from a static annual-return dataset (2016–2025, illustrative
+          approximations of real historical behavior — not a live feed) via Beta, Sharpe, Sortino,
+          max drawdown, and volatility formulas. Nifty 50 is used as the market benchmark for Beta
+          and the risk breakdown below.
         </p>
       </div>
 
-      {status === 'done' && (
-        <div className={styles.results}>
-          <div className={styles.grid}>
-            {MOCK_METRICS.map((metric) => (
-              <StatTile key={metric.label} {...metric} />
-            ))}
-          </div>
+      <div className={styles.results}>
+        <div className={styles.grid}>
+          <StatTile
+            label="Beta"
+            value={analysis.beta.toFixed(2)}
+            trendDirection={isBenchmark ? 'flat' : trendFor(analysis.beta, analysis.trails.beta)}
+            trendLabel={
+              isBenchmark
+                ? 'benchmark'
+                : analysis.beta > 1
+                  ? 'more volatile than market'
+                  : 'less volatile than market'
+            }
+            sparklineData={analysis.trails.beta.slice(-6)}
+          />
+          <StatTile
+            label="Sharpe Ratio"
+            value={analysis.sharpe.toFixed(2)}
+            trendDirection={trendFor(analysis.sharpe, analysis.trails.sharpe)}
+            trendLabel={`vs. ${(RISK_FREE_RATE * 100).toFixed(0)}% risk-free`}
+            sparklineData={analysis.trails.sharpe.slice(-6)}
+          />
+          <StatTile
+            label="Sortino Ratio"
+            value={analysis.sortino.toFixed(2)}
+            trendDirection={trendFor(analysis.sortino, analysis.trails.sortino)}
+            trendLabel="downside-risk adjusted"
+            sparklineData={analysis.trails.sortino.slice(-6)}
+          />
+          <StatTile
+            label="Max Drawdown"
+            value={`${analysis.maxDrawdown.toFixed(1)}%`}
+            trendDirection={analysis.maxDrawdown < -0.5 ? 'down' : 'flat'}
+            trendLabel="worst peak-to-trough (2016–2025)"
+            sparklineData={analysis.trails.maxDrawdown.slice(-6)}
+          />
+          <StatTile
+            label="Volatility (Annualized)"
+            value={`${analysis.volatility.toFixed(1)}%`}
+            trendDirection={analysis.volatility > analysis.marketVolatility ? 'up' : 'flat'}
+            trendLabel={`vs ${analysis.marketVolatility.toFixed(1)}% market`}
+            sparklineData={analysis.trails.volatility.slice(-6)}
+          />
+        </div>
 
-          <div className={styles.breakdownCard}>
-            <h2 className={styles.resultTitle}>Risk Breakdown</h2>
-            <div className={styles.bars}>
-              {RISK_BREAKDOWN.map((item) => (
-                <div className={styles.barRow} key={item.label}>
-                  <span className={styles.barLabel}>{item.label}</span>
-                  <div className={styles.barTrack}>
-                    <div
-                      className={styles.barFill}
-                      style={{ width: `${item.weight}%`, background: item.color }}
-                    />
-                  </div>
-                  <span className={styles.barValue}>{item.weight}%</span>
-                </div>
-              ))}
+        <div className={styles.breakdownCard}>
+          <h2 className={styles.resultTitle}>
+            Risk Breakdown — {selectedTicker?.label}
+          </h2>
+          <div className={styles.bars}>
+            <div className={styles.barRow}>
+              <span className={styles.barLabel}>Systematic (Market) Risk</span>
+              <div className={styles.barTrack}>
+                <div
+                  className={styles.barFill}
+                  style={{ width: `${analysis.marketRiskPct}%`, background: '#8b5cf6' }}
+                />
+              </div>
+              <span className={styles.barValue}>{analysis.marketRiskPct.toFixed(0)}%</span>
+            </div>
+            <div className={styles.barRow}>
+              <span className={styles.barLabel}>Idiosyncratic (Stock-Specific) Risk</span>
+              <div className={styles.barTrack}>
+                <div
+                  className={styles.barFill}
+                  style={{ width: `${analysis.specificRiskPct}%`, background: '#f59e0b' }}
+                />
+              </div>
+              <span className={styles.barValue}>{analysis.specificRiskPct.toFixed(0)}%</span>
             </div>
           </div>
+          <p className={styles.note} style={{ marginTop: 'var(--space-4)' }}>
+            The systematic share is the R² of {selectedTicker?.label}&apos;s returns regressed
+            against the Nifty 50 benchmark — the portion of its return variance explained by
+            broad-market moves. The remainder is stock-specific risk that diversification could
+            reduce.
+          </p>
         </div>
-      )}
+      </div>
     </LabToolLayout>
   )
 }

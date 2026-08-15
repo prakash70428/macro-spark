@@ -1,0 +1,94 @@
+@use "styles/abstracts" as *;
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-6);
+  max-width: 760px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include respond-to("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include respond-to("lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.statCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.name {
+  @include type-scale("label-sm");
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.level {
+  @include type-scale("heading-md");
+  font-family: var(--font-mono);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.badgeUp,
+.badgeDown,
+.badgeFlat {
+  @include type-scale("label-sm");
+  font-family: var(--font-mono);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.badgeUp {
+  color: var(--color-success, #10b981);
+  background: color-mix(in srgb, var(--color-success, #10b981) 12%, transparent);
+}
+
+.badgeDown {
+  color: var(--color-danger, #ef4444);
+  background: color-mix(in srgb, var(--color-danger, #ef4444) 12%, transparent);
+}
+
+.badgeFlat {
+  color: var(--color-text-tertiary);
+  background: var(--color-border-subtle);
+}
+
+.metaRow {
+  @include type-scale("caption");
+}
+
+.weeklyUp {
+  color: var(--color-success, #10b981);
+}
+
+.weeklyDown {
+  color: var(--color-danger, #ef4444);
+}
+
+.weeklyFlat {
+  color: var(--color-text-tertiary);
+}
+
+.sparklineWrap {
+  margin-top: var(--space-2);
+}

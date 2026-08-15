@@ -1,0 +1,89 @@
+@use "styles/abstracts" as *;
+
+.panel {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 640px;
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.note {
+  @include type-scale("caption");
+  color: var(--color-text-tertiary);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.heroCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+  max-width: 640px;
+  border-color: color-mix(in srgb, var(--color-interactive-primary) 40%, transparent);
+}
+.heroLabel {
+  @include type-scale("label-sm");
+  color: var(--color-text-tertiary);
+}
+.heroValue {
+  @include type-scale("display-sm");
+  font-family: var(--font-mono);
+  color: var(--color-interactive-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  max-width: 900px;
+}
+.statCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.statLabel {
+  @include type-scale("label-sm");
+  color: var(--color-text-tertiary);
+}
+.statValue {
+  @include type-scale("heading-sm");
+  font-family: var(--font-mono);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.chartCard {
+  @include surface(1);
+  border-radius: var(--radius-12);
+  padding: var(--space-6);
+  max-width: 900px;
+}
+.resultTitle {
+  @include type-scale("heading-sm");
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-5);
+}
