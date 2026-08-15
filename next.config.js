@@ -48,10 +48,23 @@ const nextConfig = {
     ]
   },
 
-  // Redirect www to non-www in production
+  // Redirects
   async redirects() {
-    if (process.env.NODE_ENV !== 'production') return []
+    const redirects = [
+      // /about was a duplicate of /about-us with stale placeholder content —
+      // consolidate on the one real About page.
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true,
+      },
+    ]
+
+    if (process.env.NODE_ENV !== 'production') return redirects
+
+    // Redirect www to non-www in production
     return [
+      ...redirects,
       {
         source: '/(.*)',
         has: [{ type: 'host', value: 'www.macrospark.com' }],

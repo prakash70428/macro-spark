@@ -51,7 +51,7 @@ export const FOOTER_NAV_PRODUCT = [
 
 /** @type {NavItem[]} */
 export const FOOTER_NAV_COMPANY = [
-  { label: 'About', href: ROUTES.ABOUT },
+  { label: 'About', href: ROUTES.ABOUT_US },
   { label: 'Contact', href: ROUTES.CONTACT },
   { label: 'Privacy', href: ROUTES.PRIVACY },
   { label: 'Terms', href: ROUTES.TERMS },

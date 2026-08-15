@@ -1,8 +1,6 @@
-import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout/PageLayout'
 import Container from '@/components/layout/Container/Container'
 import FadeIn from '@/components/animation/FadeIn'
-import StaggerList, { StaggerItem } from '@/components/animation/StaggerList'
 import NewsletterSignupForm from './NewsletterSignupForm'
 import styles from './page.module.scss'
 
@@ -12,19 +10,10 @@ export const metadata = {
 }
 
 const PROOF = [
-  { value: '40,000+', label: 'Active readers' },
-  { value: '214', label: 'Editions published' },
-  { value: '4.9★', label: 'Average rating' },
+  { value: 'Weekly', label: 'Every Sunday' },
   { value: 'Free', label: 'Always' },
-]
-
-const ARCHIVE = [
-  { title: '#214 — The Dollar Dilemma', date: 'Jun 22, 2026', href: '#' },
-  { title: "#213 — ECB's Impossible Triangle", date: 'Jun 15, 2026', href: '#' },
-  { title: '#212 — China Property: End Game?', date: 'Jun 8, 2026', href: '#' },
-  { title: '#211 — Carry Trades & Currency Crises', date: 'Jun 1, 2026', href: '#' },
-  { title: '#210 — EM Debt in a Higher-for-Longer World', date: 'May 25, 2026', href: '#' },
-  { title: '#209 — AI, Productivity, and the Output Gap', date: 'May 18, 2026', href: '#' },
+  { value: 'No spam', label: 'Unsubscribe any time' },
+  { value: 'Independent', label: 'No advertiser influence' },
 ]
 
 export default function NewsletterPage() {
@@ -38,8 +27,8 @@ export default function NewsletterPage() {
               <span className={styles.eyebrow}>MacroSpark Weekly</span>
               <h1 className={styles.heading}>Your Sunday Morning Edge</h1>
               <p className={styles.sub}>
-                Every Sunday, 40,000+ professionals read the MacroSpark Weekly for sharp takes on
-                markets, policy, and global economics. No ads. No fluff. Just signal.
+                Every Sunday, the MacroSpark Weekly delivers sharp takes on markets, policy, and
+                global economics. No ads. No fluff. Just signal.
               </p>
               <NewsletterSignupForm />
               <p className={styles.privacy}>Free forever · No spam · Unsubscribe any time</p>
@@ -57,24 +46,6 @@ export default function NewsletterPage() {
               ))}
             </div>
           </FadeIn>
-
-          {/* Archive */}
-          <FadeIn direction="up" delay={0.15}>
-            <h2 className={styles.sectionTitle}>Recent Editions</h2>
-          </FadeIn>
-          <StaggerList as="div" className={styles.archive} stagger={0.06}>
-            {ARCHIVE.map((ed) => (
-              <StaggerItem key={ed.href + ed.title}>
-                <Link href={ed.href} className={styles.edition}>
-                  <div className={styles.editionInfo}>
-                    <span className={styles.editionTitle}>{ed.title}</span>
-                    <span className={styles.editionMeta}>{ed.date}</span>
-                  </div>
-                  <span className={styles.editionArrow}>→</span>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerList>
         </Container>
       </div>
     </PageLayout>
